@@ -26,7 +26,7 @@ $(function(){
         //console.log("使用行動裝置!");
         console.log("#Device : Mobile");
 
-        var fps = 30, //顯示的fps偵數，滑順度
+        var fps = 30; //顯示的fps偵數，滑順度
 
         //取得滑鼠移動x, y座標
         $body.mousemove(function(e){
@@ -54,7 +54,7 @@ $(function(){
         //console.log("使用桌上型裝置!");
         console.log("#Device : PC");
 
-        var fps = 60, //顯示的fps偵數，滑順度
+        var fps = 60; //顯示的fps偵數，滑順度
 
         //左鍵點擊事件
         function left_click_action(){
