@@ -50,8 +50,12 @@ $(function(){
             //sy = e.pageY;
             //console.log(sx, sy);
             //console.log(sx);
-            if (sx < 350) left_click_action();
-            if (sx >= 350) right_click_action(e);
+            var r = $("#stage").offset().left,
+                w = $stage.width()/2,
+                mid = r+w;
+            
+            if (sx < mid) left_click_action();
+            if (sx >= mid) right_click_action(e);
         });
     }
     else {
