@@ -222,10 +222,12 @@ $(function(){
             }
             $(this).css("top", enemy_y+enemy_fall_speed+"px");
             
+            /*
             //顯示分數
             $score.html(score);
             score += score_add;
             score = parseInt(score); //轉為整數，去除小數點
+            */
         })                    
     }
     
