@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Pokemon Game</title>
+		<script src="jquery-3.1.0.min.js"></script>
+        <script src="control.js"></script>
+        <script src="soundmanager2-jsmin.js"></script>
+        <script>
+            soundManager.setup({
+                onready: function(){
+                    soundManager.createSound({
+                        id: 'mySound',
+                        url: 'Pokemon_Go.mp3',
+                        autoLoad: true,
+                        autoPlay: true,
+                        volume: 50
+                    });
+                }
+            });
+        </script>
+        
+        <link type="text/css" rel="stylesheet" href="main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+        <h1>Pokemon Game</h1>
+        <div id="stage">
+            <div id="score" class="sprite score"></div>
+            <div id="player" class="sprite player"></div>
+        </div>
+	</body>
+</html>
