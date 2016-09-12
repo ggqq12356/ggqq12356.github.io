@@ -16,7 +16,6 @@ $(function(){
         enemy_fall_max_speed = 12, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
-        fps = 60, //顯示的fps偵數，滑順度
         hit_test_r = 20, //碰撞半徑
         score = 0, //分數
         score_add = 1, //獲得分數
@@ -26,7 +25,9 @@ $(function(){
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         //console.log("使用行動裝置!");
         console.log("#Device : Mobile");
-                
+
+        var fps = 30, //顯示的fps偵數，滑順度
+
         //取得滑鼠移動x, y座標
         $body.mousemove(function(e){
             //sx = e.pageX + document.documentElement.scrollTop;
@@ -52,7 +53,9 @@ $(function(){
     else {
         //console.log("使用桌上型裝置!");
         console.log("#Device : PC");
-        
+
+        var fps = 60, //顯示的fps偵數，滑順度
+
         //左鍵點擊事件
         function left_click_action(){
             var x = parseInt($player.css("left"));
