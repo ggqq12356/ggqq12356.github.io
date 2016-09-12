@@ -22,28 +22,13 @@ $(function(){
         score_add = 1, //獲得分數
         loop,
         speedup;
-    
-    //左鍵點擊事件
-    function left_click_action(){
-        var x = parseInt($player.css("left"));
-        if(x > 10)
-            $player.css("left", x-100+"px");
-    }
-    
-    //右鍵點擊事件
-    function right_click_action(e){
-        e.preventDefault();
-        var x = parseInt($player.css("left"));
-        if(x < 210)
-            $player.css("left", x+100+"px");
-    }
-    
     //判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         //console.log("使用行動裝置!");
         console.log("#Device : Mobile");
+                
         //取得滑鼠移動x, y座標
-        $body.mousemove(function (e) {
+        $body.mousemove(function(e){
             //sx = e.pageX + document.documentElement.scrollTop;
             //sy = e.pageY + document.documentElement.scrollLeft;
             sx = e.pageX;
@@ -51,16 +36,36 @@ $(function(){
             //console.log(sx, sy);
             //console.log(sx);
             var r = $("#stage").offset().left,
-                w = $stage.width()/2,
+                w = ($stage.width()/2),
                 mid = r+w;
-            
-            if (sx < mid) left_click_action();
-            if (sx >= mid) right_click_action(e);
+            //console.log(mid);
+            var x = parseInt($player.css("left"));
+            if (sx < mid){
+                if(x > 10) $player.css("left", x-100+"px");
+            }
+                
+            if (sx >= mid){
+                if(x < 210) $player.css("left", x+100+"px");
+            }
         });
     }
     else {
         //console.log("使用桌上型裝置!");
         console.log("#Device : PC");
+        
+        //左鍵點擊事件
+        function left_click_action(){
+            var x = parseInt($player.css("left"));
+            if(x > 10) $player.css("left", x-100+"px");
+        }
+
+        //右鍵點擊事件
+        function right_click_action(e){
+            e.preventDefault();
+            var x = parseInt($player.css("left"));
+            if(x < 210) $player.css("left", x+100+"px");
+        }
+        
         //鍵盤 w,a,s,d點擊
         $body.keypress(function(e){
             $key = String.fromCharCode(e.keyCode);
@@ -207,6 +212,7 @@ $(function(){
             if (hit_test_r*2 > p_e_dist)
                 GameOver();
             
+            //超出範圍移除
             if (enemy_y > $stage.height()){
                 $(this).remove();
                 return;
