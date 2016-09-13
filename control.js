@@ -241,7 +241,7 @@ $(function(){
     function speedup_func(){
         if (enemy_fall_speed >= enemy_fall_max_speed)
         {
-            enemy_fall_speed = 15;
+            enemy_fall_speed = 20;
             clearInterval(speedup);
         }
         enemy_fall_speed += add_speed;
