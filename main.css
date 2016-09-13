@@ -2,16 +2,12 @@ body{
     text-align: center;
     background-color: darksalmon;
 }
-h1{
-    color: yellow;
-}
 #stage{
     background-image: url(BG.jpg);
     background-size: cover;
     display: inline-block;
     position: relative;
     text-align: left;
-    top: 50px;
     width: 300px;
     height: 500px;
     overflow: hidden;
@@ -39,7 +35,6 @@ h1{
     text-align: right;
     z-index: 999;
 }
-
 .gameover{
     background:black;
     opacity:0.5;

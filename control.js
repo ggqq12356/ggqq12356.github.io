@@ -11,16 +11,17 @@ $(function(){
         $stage = $("#stage"),
         $player = $("#player"),
         $score = $("#score"),
-        enemy_count = 2, //障礙物數量
-        enemy_fall_speed = 3, //障礙物初始掉落速度
+        enemy_count = 1, //障礙物數量
+        enemy_fall_speed = 5, //障礙物初始掉落速度
         enemy_fall_max_speed = 12, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
         hit_test_r = 20, //碰撞半徑
         score = 0, //分數
-        score_add = 1, //獲得分數
+        score_add = 100, //獲得分數
         loop,
         speedup;
+    
     //判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         //console.log("使用行動裝置!");
@@ -44,7 +45,7 @@ $(function(){
             if (sx < mid){
                 if(x > 10) $player.css("left", x-100+"px");
             }
-                
+            
             if (sx >= mid){
                 if(x < 210) $player.css("left", x+100+"px");
             }
@@ -101,12 +102,12 @@ $(function(){
             e.preventDefault();
         });
         */
-    }    
+    }
     
     //遊戲參數初始化
     function resetGame(){
         //參數
-        enemy_fall_speed = 3, //障礙物初始掉落速度
+        enemy_fall_speed = 5, //障礙物初始掉落速度
         enemy_wave = 0, //障礙物初始波數
         score = 0; //分數
         
@@ -211,26 +212,26 @@ $(function(){
                 ey = parseInt($(this).css("top"))+$(this).height()/2,
                 p_e_dist = Math.sqrt(Math.pow(px-ex,2)+Math.pow(py-ey,2));
             
-            //碰撞停止遊戲
-            if (hit_test_r*2 > p_e_dist)
-                GameOver();
+            //吃到皮卡丘&&加分
+            if (hit_test_r*2 > p_e_dist){
+            	$(this).remove();
+		        score += score_add;
+		        score = parseInt(score); //轉為整數，去除小數點
+            }
             
             //超出範圍移除
             if (enemy_y > $stage.height()){
-                $(this).remove();
-                return;
+                GameOver();
             }
             $(this).css("top", enemy_y+enemy_fall_speed+"px");
             
             //顯示分數
             $score.html(score);
-            score += score_add;
-            score = parseInt(score); //轉為整數，去除小數點
         })                    
     }
     
     //每秒增加落下速度
-    var add_speed = 0.1; //落下加速度
+    var add_speed = 0.2; //落下加速度
     function speedup_func(){
         if (enemy_fall_speed >= enemy_fall_max_speed)
         {
@@ -238,7 +239,6 @@ $(function(){
             clearInterval(speedup);
         }
         enemy_fall_speed += add_speed;
-        score_add *= 1.1;
     }
     
 })
