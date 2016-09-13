@@ -11,9 +11,10 @@ $(function(){
         $stage = $("#stage"),
         $player = $("#player"),
         $score = $("#score"),
+        $speed = $("#speed"),
         enemy_count = 1, //障礙物數量
         enemy_fall_speed = 5, //障礙物初始掉落速度
-        enemy_fall_max_speed = 12, //障礙物掉落極限速度
+        enemy_fall_max_speed = 15, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
         hit_test_r = 20, //碰撞半徑
@@ -31,17 +32,15 @@ $(function(){
 
         //取得滑鼠移動x, y座標
         $body.mousemove(function(e){
-            //sx = e.pageX + document.documentElement.scrollTop;
-            //sy = e.pageY + document.documentElement.scrollLeft;
+
             sx = e.pageX;
             //sy = e.pageY;
-            //console.log(sx, sy);
-            //console.log(sx);
+
             var r = $("#stage").offset().left,
                 w = ($stage.width()/2),
-                mid = r+w;
-            //console.log(mid);
-            var x = parseInt($player.css("left"));
+                mid = r+w,
+            	x = parseInt($player.css("left"));
+
             if (sx < mid){
                 if(x > 10) $player.css("left", x-100+"px");
             }
@@ -118,6 +117,9 @@ $(function(){
         //score 初始位置
         $score.css("left", $stage.width()-$score.width()-5+"px");
         $score.css("top", "5px");
+
+        //speed 初始位置
+        $speed.css("top", "5px");
         
         //建立敵人
         creatEnemy();
@@ -226,7 +228,11 @@ $(function(){
             $(this).css("top", enemy_y+enemy_fall_speed+"px");
             
             //顯示分數
-            $score.html(score);
+            $score.html(score+':分數');
+
+            //顯示加速度
+            speed = parseInt(enemy_fall_speed);
+        	$speed.html('速度:'+speed);
         })                    
     }
     
@@ -235,7 +241,7 @@ $(function(){
     function speedup_func(){
         if (enemy_fall_speed >= enemy_fall_max_speed)
         {
-            enemy_fall_speed = 12;
+            enemy_fall_speed = 15;
             clearInterval(speedup);
         }
         enemy_fall_speed += add_speed;

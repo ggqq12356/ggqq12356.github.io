@@ -29,10 +29,19 @@ body{
 .score{
     color: red;
     font-weight: bolder;
-    font-size: 24px;
+    font-size: 20px;
     width: 100%;
     height: auto;
     text-align: right;
+    z-index: 999;
+}
+.speed{
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+    text-align: left;
     z-index: 999;
 }
 .gameover{
@@ -51,4 +60,5 @@ body{
     opacity:0.7;
     color:yellow;
     font-size:50px;
+    cursor:pointer;
 }
