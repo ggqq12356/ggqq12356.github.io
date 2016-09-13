@@ -14,7 +14,7 @@ $(function(){
         $speed = $("#speed"),
         enemy_count = 1, //障礙物數量
         enemy_fall_speed = 5, //障礙物初始掉落速度
-        enemy_fall_max_speed = 15, //障礙物掉落極限速度
+        enemy_fall_max_speed = 20, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
         hit_test_r = 20, //碰撞半徑
