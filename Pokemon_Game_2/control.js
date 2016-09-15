@@ -122,7 +122,7 @@ $(function(){
         $speed.css("top", "5px");
         
         //建立敵人
-        creatEnemy();
+        createEnemy();
         
         //計時器重設
         loop = setInterval(loop_func,1000/fps);
@@ -139,7 +139,7 @@ $(function(){
     resetGame(); //初始化
     
     //生成障礙物
-    function creatEnemy(){
+    function createEnemy(){
         var enemy_pos = [10, 110, 210]; //障礙物初始位置
         for (var i=0 ; i<enemy_count ; i++)
         {
@@ -147,7 +147,8 @@ $(function(){
             var $enemy = $stage.find(".enemy:last");
             $enemy.data("wave", enemy_wave);
             var rand_index = getRandomInt(0, enemy_pos.length-1);
-            var enemy_x = enemy_pos.splice(rand_index, 1)[0]; //障礙物起始位置                    
+            var enemy_x = enemy_pos.splice(rand_index, 1)[0]; 
+            //障礙物起始位置                    
             $enemy.css("left", enemy_x+"px");
             $enemy.css("top", -($enemy.height())+"px");
         };
@@ -205,9 +206,10 @@ $(function(){
             var enemy_y = parseInt($(this).css("top"));
             if (enemy_y > enemy_wave_gap && $(this).data("wave") == enemy_wave){
                 enemy_wave++;
-                creatEnemy();
+                createEnemy();
             }
             
+            //計算碰撞距離
             var px = parseInt($player.css("left"))+$player.width()/2,
                 py = parseInt($player.css("top"))+$player.height()/2,
                 ex = parseInt($(this).css("left"))+$(this).width()/2,
