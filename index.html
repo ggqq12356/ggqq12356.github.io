@@ -16,21 +16,33 @@
 			display: inline-table;
 			border: 3px solid green;
 			width: 500px;
-			height: 600px;
+			height: 500px;
 		}
 		.text{
+			color: yellow;
 			display: inline-block;
 			position: relative;
 			font-size: 30px;
-			width: 300px;
-			height: 50px;
 			text-decoration: none;
+			transition-duration: 0.5s;
+		}
+		.text:hover{
+			color: #FF00FF;
+			font-size: 50px;
+		}
+		.text:active{
+			color: #FF0000;
+		}
+		.title{
+			color: pink;
+			font-size: 50px;
 		}
 	</style>
 </head>
 <body>
 	<div class="list">
-		<div class="text">
+		<div>
+			<div class="title"><b>[ Game List ]</b></div>
 			<a href="./Pokemon_Game_1/index.html" class="text">Pokemon Game 1</a>
 			<br>
 			<a href="./Pokemon_Game_2/index.html" class="text">Pokemon Game 2</a>
