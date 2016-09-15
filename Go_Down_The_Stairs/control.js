@@ -10,6 +10,7 @@ $(function(){
         $warm = $("#warm"),
         $enemy = $("#enemy"),
         $gameover = $("#gameover"),
+        $stairs = $("#stairs"),
         $obj = $(".obj"),
         sceen_width = $screen.width(),
         sceen_height = $screen.height(),
@@ -225,44 +226,51 @@ $(function(){
     //生成障礙物
     function createEnemy(){
         $screen.append("<div id=\"enemy\" class=\"enemy\"></div>");
-        var $enemy_place = $screen.find(".enemy:last");
+        var $enemy_place = $screen.find(".enemy:last"),
+            et = $enemy_place.height();
 
         //障礙物起始位置
         $enemy_place.css("left", 0); //左右
-        $enemy_place.css("top", 0); //上下
+        $enemy_place.css("top", 0-et); //上下
     }
     createEnemy();
 
-    //生成階梯
+    //生成新階梯
     var c_t = setInterval(createStairs, 3000);
     function createStairs(){
-        $screen.append("<div id=\"stairs\" class=\"obj stairs\"></div>");
+        $screen.append("<div id=\"stairs\" class=\"stairs\"></div>");
         var $stairs_space = $screen.find(".stairs:last");
 
-        //階梯起始位置
-        $stairs_space.css("left", 160); //左右
-        $stairs_space.css("top", $screen.height()); //上下
+        //新階梯起始位置
+        $stairs_space.css("left", 160); //x軸位置
+        $stairs_space.css("top", $screen.height()); //y軸位置
     }
     createStairs();
 
     //////////螢幕向上移動//////////
     var s_m = setInterval(screen_move, 1000);
     function screen_move() {
+
+        var y = parseInt($player.css("top"));
         px_t = parseInt($player.offset().top); //角色top座標
+
+        st = $screen.find(".stairs:last");
+        st_t = parseInt(st.css("top"));
+        console.log(st_t);
+
         if(px_t!=edge_t){
-            var y = parseInt($obj.css("top")),
-                st = $screen.find(".stairs");
-            $obj.css("top", y-80);
-            st.css("top", y-5);
+            $player.css("top", y-80);
         }
+
+
+        st.css("top", st_t-80);
     }
 
-    function timer() {
-        setInterval(createStairs, 5000);
-    }
-    timer();
+    /*
+    var timer = setInterval(function(){
 
-
+    }, 5000);
+    */
 
     //////////遊戲結束//////////
     function GameOver_action(){
