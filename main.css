@@ -114,7 +114,6 @@
 		color: var(--bodypink);
 	}
 	.author:hover{
-		cursor: pointer;
 		color: var(--lightblue);
 		background-color: var(--bodypink);
 		/*bottom: 20px;*/
@@ -128,6 +127,7 @@
 		transition-duration: 0.5s;
 	}
 	.authorfont:hover{
+		cursor: pointer;
 		color: var(--milk);
 	}
 	.fun{
