@@ -4,11 +4,9 @@
 		background-size: cover;
 	}
 	.contain{
-		display: inline-block;
-		position: static;
-		text-align: right;
-		display: inline-block;
-		position: absolute;
+		text-align: center;
+		display: inline;
+		position: relative;
 	}
 	.icons{
 		width: 60px;
@@ -38,7 +36,6 @@
 		height: 300px;
 		background-image: url(body_bg.png);
 		background-size: auto;
-		position: relative;
 		display: inline-block;
 		text-align: center;
 		border: 3px solid yellow;
