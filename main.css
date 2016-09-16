@@ -1,11 +1,14 @@
 	body{
+		width: auto;
+		height: auto;
 		background-color: black;
 		background-image: url(rainbow.jpg);
 		background-size: cover;
+		text-align: center;
 	}
 	.contain{
 		text-align: center;
-		display: inline;
+		display: inline-flex;
 		position: relative;
 	}
 
@@ -13,8 +16,8 @@
 	.icons{
 		width: 60px;
 		height: 300px;
-		background-color: pink;
 		font-size: 36px;
+		background-color: pink;
 		text-align: center;
 		border: 3px solid #0000FF;
 		border-radius: 10px;
@@ -23,10 +26,9 @@
 		width: 60px;
 		height: 60px;
 		color: white;
-		display: inline-block;
 		transition-duration: 0.5s;
 	}
-	.fa:hover{font-size: 48px; cursor: pointer;}
+	.fa:hover{font-size: 60px; cursor: pointer;}
 	.fa-github:hover{color: grey;}
 	.fa-facebook-square:hover{color: rgb(59, 89, 152);}
 	.fa-youtube-square:hover{color: rgb(223, 41, 37);}
