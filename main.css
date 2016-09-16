@@ -1,11 +1,24 @@
+	/* 自訂參數 */
+	:root{
+		--milk: rgb(255, 237, 136);
+		--lightblue: rgb(17, 204, 255);
+		--bodypink: rgb(255, 102, 136);
+		--github-color: grey;
+		--facebook-color: rgb(59, 89, 152);
+		--youtube-color: rgb(223, 41, 37);
+		--wordpress-color: rgb(30, 140, 189);
+	}
+
 	body{
 		width: auto;
 		height: auto;
-		background-color: black;
-		background-image: url(rainbow.jpg);
+		background-color: var(--milk);
+		/*background-image: url(rainbow.jpg);*/
 		background-size: cover;
 		font-family: Microsoft JhengHei;
 	}
+
+	/* 內容 */
 	.contain{
 		display: inline-flex;
 		position: absolute;
@@ -14,7 +27,7 @@
 		top: 50%;
 		left: 50%;
 		margin-top: -200px;
-		margin-left: -200px;
+		margin-left: -400px;
 	}
 
 	/* icons */
@@ -22,56 +35,100 @@
 		width: 60px;
 		height: 400px;
 		font-size: 36px;
-		background-color: pink;
+		background-color: var(--bodypink);
 		text-align: center;
-		border: 3px solid #0000FF;
+		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 80px 80px 80px black;
+		box-shadow: 40px 40px 50px var(--lightblue);
 	}
 	.fa{
 		width: 60px;
 		height: 60px;
-		color: white;
+		color: var(--milk);
 		transition-duration: 0.5s;
+		box-shadow: 0px 2px 0px var(--milk);
 	}
 	.fa:hover{font-size: 60px; cursor: pointer;}
-	.fa-github:hover{color: grey;}
-	.fa-facebook-square:hover{color: rgb(59, 89, 152);}
-	.fa-youtube-square:hover{color: rgb(223, 41, 37);}
-	.fa-wordpress:hover{color: rgb(30, 140, 189);}
+	.fa-github:hover{color: var(--github-color);}
+	.fa-facebook-square:hover{color: var(--facebook-color);}
+	.fa-youtube-square:hover{color: var(--youtube-color);}
+	.fa-wordpress:hover{color: var(--wordpress-color);}
 	.fa:link{color: black;}
 	a{text-decoration: none;}
 
 	/* 清單 */
 	.list{
-		width: 400px;
+		width: 350px;
 		height: 400px;
-		background-image: url(body_bg.png);
+		/*background-image: url(body_bg.png);*/
+		background-color: purple;
 		background-size: auto;
 		display: inline-block;
 		text-align: center;
-		border: 3px solid yellow;
+		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 80px 80px 80px black;
-	}
-	.text{
-		color: #00FF00;
-		font-size: 30px;
-		text-decoration: none;
-		transition-duration: 0.5s;
-	}
-	.text:hover{
-		color: #FF00FF;
-		border: 3px solid yellow;
-		border-radius: 10px;
-	}
-	.text:active{
-		color: #FF0000;
+		box-shadow: 40px 40px 50px var(--bodypink);
+		margin-left: 10px;
 	}
 	.title{
 		text-align: center;
-		color: #55CCFF;
+		color: var(--lightblue);
 		font-size: 50px;
-		box-shadow: 0px 0px 10px black;
+		font-weight: bolder;
+		box-shadow: 0px 10px 0px var(--milk);
 	}
-	
+	.text{
+		color: black;
+		font-size: 30px;
+		text-decoration: none;
+		transition-duration: 1s;
+	}
+	.text:hover{
+		color: white;
+		background-color: var(--bodypink);
+		font-weight: bolder;
+		border: 3px solid none;
+		border-radius: 10px;
+		box-shadow: 10px 10px 10px black;
+	}
+	.text:active{
+		color: var(--milk);
+	}
+
+	/* 作者 */
+	.author{
+		width: 350px;
+		height: 400px;
+		background-color: var(--lightblue);
+		/*background-image: url(author_BG.png);*/
+		border: 3px solid none;
+		border-radius: 10px;
+		box-shadow: 40px 40px 50px purple;
+		margin-left: 10px;
+		display: inline-block;
+		position: relative;
+		transition-duration: 0.5s;
+		text-align: auto;
+		color: var(--bodypink);
+	}
+	.author:hover{
+		cursor: pointer;
+	}
+	.author:active{
+		color: var(--lightblue);
+		background-color: var(--bodypink);
+		/*bottom: 20px;*/
+	}
+	.authorfont{
+		font-size: 30px;
+		font-weight: bolder;
+		transition-duration: 0.5s;
+	}
+	.authorfont:hover{
+		color: var(--milk);
+	}
+	.fun{
+		width: 270;
+		height: 270;
+		margin-left: 40px;
+	}
