@@ -1,8 +1,12 @@
+//當DOM載入
 $(function(){
+
+/**************************************************************************/
 
     //////////預設值//////////
     //參數
     var $body = $("body"),
+        $stage = $("#stage"),
         $screen = $("#screen"),
         $player = $("#player"),
         $point = $("#point"),
@@ -11,41 +15,55 @@ $(function(){
         $enemy = $("#enemy"),
         $gameover = $("#gameover"),
         $stairs = $("#stairs"),
-        $obj = $(".obj"),
-        sceen_width = $screen.width(),
-        sceen_height = $screen.height(),
-        player_width = $player.width(),
-        player_height = $player.height(),
-        edge_width = ( (sceen_width - player_width*5) / 2),
 
-        sx_l = parseInt($screen.offset().left), //螢幕left座標
-        sx_r = sx_l + $screen.width(), //螢幕right座標
-        sx_m = sx_l + $screen.width()/2, //螢幕mid座標
+        screen_width = $screen.width(),         //螢幕寬度
+        screen_height = $screen.height(),       //螢幕高度
+        player_width = $player.width(),         //人物寬度
+        player_height = $player.height(),       //人物高度
 
-        sy_t = parseInt($screen.offset().top), //螢幕top座標
-        sy_b = sy_t + $screen.height(); //螢幕bottom座標
+        sx_l = parseInt($screen.offset().left), //左 - 螢幕座標
+        sx_r = sx_l + $screen.width(),          //右 - 螢幕座標
+        sy_t = parseInt($screen.offset().top),  //上 - 螢幕座標
+        sy_b = sy_t + $screen.height(),         //下 - 螢幕座標
 
-        edge_l = sx_l + 30 + edge_width,
-        edge_r = sx_r - player_width,
-        edge_t = sy_t,
-        edge_b = sy_b - player_height;
+        px_l = parseInt($player.offset().left), //左 - 角色座標
+        px_r = px_l + player_width,             //右 - 角色座標
+        px_t = parseInt($player.offset().top),  //上 - 角色座標
+        px_b = px_t + player_height,            //下 - 角色座標
 
-    //player 初始位置
+        edge_l = sx_l + player_width,   //左 - 邊界座標
+        edge_r = sx_r - player_width,   //右 - 邊界座標
+        edge_t = sy_t,                  //上 - 邊界座標
+        edge_b = sy_b - player_height,  //下 - 邊界座標
+
+        //寬高資料
+        width_data = '螢幕=>'+'寬:'+screen_width+', 高:'+screen_height,
+        player_data = '人物=>'+'寬:'+player_width+', 高:'+player_height,
+        //螢幕座標
+        screen_data = '螢幕座標=>'+'左:'+sx_l+', 右:'+sx_r+', 上:'+sy_t+', 下:'+sy_b,
+        //角色座標
+        player_data = '角色座標=>'+'左:'+px_l+', 右:'+px_r+', 上:'+px_t+', 下:'+px_b,
+        //邊界座標
+        edge_data = '邊界座標=>'+'左:'+edge_l+', 右:'+edge_r+', 上:'+edge_t+', 下:'+edge_b;
+
+        //console.log(width_data);
+
+    //人物初始位置
     $player.css("left", ($screen.width()-$player.width())/2+"px");
     $player.css("top", $screen.height()-$player.height());
 
+/**************************************************************************/
+
     //////////使用者操作//////////
+    //滑鼠移動
+    $body.mousemove(function(e){
+        //px_l = parseInt($player.offset().left), //角色left座標
+        //px_r = px_l + $player.width(), //角色right座標
+        mx = e.pageX;   //點擊座標
+        my = e.pageY;   //點擊座標
 
-    //滑鼠點擊
-    $body.mousedown(function(e){
-            px_l = parseInt($player.offset().left), //角色left座標
-            px_r = px_l + $player.width(), //角色right座標
-            px_m = px_l + $player.width()/2, //角色mid座標
-            mx = e.pageX;   //點擊座標
-            my = e.pageY;   //點擊座標
-
-        //console.log(sx_l, sx_r, sx_m, px_l, px_r, px_m, mx);
-        $point.html('[當前座標] : ' + 'X:' + mx + ' , ' + 'Y:' + my + " | ");
+        //console.log('[滑鼠座標] : ' + 'X:' + mx + ' , ' + 'Y:' + my + ' , ');
+        $point.html('[滑鼠座標] : ' + 'X:' + mx + ' , ' + 'Y:' + my + ' , ');
 
         //滑鼠移動
         /*
@@ -63,120 +81,67 @@ $(function(){
         e.preventDefault();
     })
     //鍵盤
-    //var moveleft=2, moveright=2, moveup=7, movedown=0;
     $body.keypress(function(e){
         var $key = String.fromCharCode(e.keyCode),
-            px_l = parseInt($player.offset().left), //角色left座標
+
             px_t = parseInt($player.offset().top), //角色top座標
-            px_m = px_l + $player.width()/2; //角色mid座標
+            px_l = parseInt($player.offset().left), //角色left座標
+            px_r = px_l + $player.width(); //角色right座標
 
-        console.log('[Key]:', $key, '[Left座標] :', px_l, '[Top座標] :', px_t);
-        $information.html('[Key] : ' + $key + ' , [Left座標] : ' + px_l + ' , [Top座標] : ' + px_t);
+        state();
 
         switch ($key) {
             case 'a':
-                if(px_l!=edge_l){
-                    left_action(), $warm.html('');
+                if(px_l > edge_l){
+                    left_action(), normal();
                 }else{warm();}
                 break;
             case 'd':
-                if(px_l!=edge_r){
-                    right_action(), $warm.html('');
+                if(px_l < edge_r){
+                    right_action(), normal();
                 }else{warm();}
                 break;
-            /*
+
             case 'w':
-                if(px_t!=edge_t){
-                    jump_action(), $warm.html('');
+                if(px_t > edge_t){
+                    jump_action(), normal();
                 }else{warm();}
                 break;
-            */
+
             case 's':
-                if(px_t!=edge_b){
-                    down_action(), $warm.html('');
+                if(px_t < edge_b){
+                    down_action(), normal();
                 }else{warm();}
                 break;
             default:
                 break;
         }
 
-        /*
-        //console.log(moveleft, moveright);
-        switch ($key) {
-            case 'a':
-                if(moveleft!=0){
-                    moveleft--;
-                    moveright++;
-                    left_action(), $warm.html('');
-                }else{warm();}
-                break;
-            case 'd':
-                if(moveright!=0){
-                    moveright--;
-                    moveleft++;
-                    right_action(), $warm.html('');
-                }else{warm();}
-                break;
-            case 'w':
-                if(moveup!=0){
-                    moveup--;
-                    movedown++;
-                    jump_action(), $warm.html('');
-                }else{warm();}
-                break;
-            case 's':
-                if(movedown!=0){
-                    movedown--;
-                    moveup++;
-                    down_action(), $warm.html('');
-                }else{warm();}
-                break;
-            default:
-                break;
+        function normal() {
+            //console.log("[狀態] : 正常移動");
+            $warm.html('[狀態] : 正常移動');
         }
-        */
 
         function warm() {
-            console.log("無法移動!!!"), $warm.html('無法移動!!!');
+            //console.log("[狀態] : 無法移動");
+            $warm.html('[狀態] : 無法移動');
+        }
+
+        function state() {
+            //console.log('[鍵盤]:', $key, '[Left座標] :', px_l, '[Top座標] :', px_t);
+            $information.html('[鍵盤] : ' + $key + ' , [Left座標] : ' + px_l + ' , [Top座標] : ' + px_t);
         }
 
     })
 
+/**************************************************************************/
+
     //////////人物動作//////////
-    var delayTime = 50;
-    //Jump
-    var jmp;
-    function jump_action() {
-        $player.css({"background-image":"url(player_j.png)"});
-        jmp = window.setTimeout(jump_start, delayTime);
-    }
-    function jump_start() {
-        var y = parseInt($player.css("top"));
-        parseInt($player.css("top", y-80));
-        jump_stop();
-    }
-    function jump_stop() {
-        $player.css({"background-image":"url(player_n.png)"});
-        window.clearTimeout(jmp);
-    }
+    //參數
+    var delayTime = 50,     //延遲時間
+        moveDis = 80;       //移動距離
 
-    //Down
-    var dwn;
-    function down_action() {
-        $player.css({"background-image":"url(player_j.png)"});
-        dwn = window.setTimeout(down_start, delayTime);
-    }
-    function down_start() {
-        var y = parseInt($player.css("top"));
-        parseInt($player.css("top", y+80));
-        down_stop();
-    }
-    function down_stop() {
-        $player.css({"background-image":"url(player_n.png)"});
-        window.clearTimeout(dwn);
-    }
-
-    //Left
+    //人物向左
     var lft;
     function left_action() {
         $player.css({"background-image":"url(player_j.png)"});
@@ -184,7 +149,7 @@ $(function(){
     }
     function left_start() {
         var x = parseInt($player.css("left"));
-        parseInt($player.css("left", x-80));
+        parseInt($player.css("left", x - moveDis));
         left_stop();
     }
     function left_stop() {
@@ -192,7 +157,7 @@ $(function(){
         window.clearTimeout(lft);
     }
 
-    //Right
+    //人物向右
     var rt;
     function right_action() {
         $player.css({"background-image":"url(player_j.png)"});
@@ -200,7 +165,7 @@ $(function(){
     }
     function right_start() {
         var x = parseInt($player.css("left"));
-        parseInt($player.css("left", x+80));
+        parseInt($player.css("left", x + moveDis));
         right_stop();
     }
     function right_stop() {
@@ -208,71 +173,93 @@ $(function(){
         window.clearTimeout(rt);
     }
 
+    //人物向上
+    var jmp;
+    function jump_action() {
+        $player.css({"background-image":"url(player_j.png)"});
+        jmp = window.setTimeout(jump_start, delayTime);
+    }
+    function jump_start() {
+        var y = parseInt($player.css("top"));
+        parseInt($player.css("top", y - moveDis));
+        jump_stop();
+    }
+    function jump_stop() {
+        $player.css({"background-image":"url(player_n.png)"});
+        window.clearTimeout(jmp);
+    }
 
-    //////////障礙物//////////
+    ////人物向下
+    var dwn;
+    function down_action() {
+        $player.css({"background-image":"url(player_j.png)"});
+        dwn = window.setTimeout(down_start, delayTime);
+    }
+    function down_start() {
+        var y = parseInt($player.css("top"));
+        parseInt($player.css("top", y + moveDis));
+        down_stop();
+    }
+    function down_stop() {
+        $player.css({"background-image":"url(player_n.png)"});
+        window.clearTimeout(dwn);
+    }
 
-    /*
+/**************************************************************************/
+
+    //////////障礙物 && 階梯//////////
     //建立障礙物
     function createEnemy() {
         $enemy_div = "<div id=\"enemy\" class=\"enemy\"></div>";
         $screen.append($enemy_div);
-
-        $enemy_place = $screen.find(".enemy").each();
-        $enemy_place.css("top", -($enemy.height()+320));
-    }
-    createEnemy();
-    */
-
-    //生成障礙物
-    function createEnemy(){
-        $screen.append("<div id=\"enemy\" class=\"enemy\"></div>");
-        var $enemy_place = $screen.find(".enemy:last"),
-            et = $enemy_place.height();
-
-        //障礙物起始位置
-        $enemy_place.css("left", 0); //左右
-        $enemy_place.css("top", 0-et); //上下
+        enemy_place = $screen.find(".enemy");
+        enemy_place.css("top", 0);
+        enemy_place.css("left", 0);
     }
     createEnemy();
 
     //生成新階梯
-    var c_t = setInterval(createStairs, 3000);
+    //var c_t = setInterval(createStairs, 3000);
+    stairs_place_list = [];
     function createStairs(){
         $screen.append("<div id=\"stairs\" class=\"stairs\"></div>");
         var $stairs_space = $screen.find(".stairs:last");
 
         //新階梯起始位置
-        $stairs_space.css("left", 160); //x軸位置
-        $stairs_space.css("top", $screen.height()); //y軸位置
+        $stairs_space.css("left", screen_width / 2 - 40);   //x軸位置
+        $stairs_space.css("top", $screen.height());         //y軸位置
     }
     createStairs();
 
-    //////////螢幕向上移動//////////
+/**************************************************************************/
+
+    //////////物件循環控制//////////
+    //螢幕移動
     var s_m = setInterval(screen_move, 1000);
     function screen_move() {
+        player_y_1 = $player.css("top"); //角色在螢幕中的座標上
+        player_y_2 = parseInt($player.offset().top); //角色座標上
 
-        var y = parseInt($player.css("top"));
-        px_t = parseInt($player.offset().top); //角色top座標
+        //console.log(px_t);
 
-        st = $screen.find(".stairs:last");
-        st_t = parseInt(st.css("top"));
-        console.log(st_t);
+        stairs_last = $screen.find(".stairs:last");
+        stairs = $screen.find(".stairs");
+        stairs_y = parseInt(stairs.css("top"));
 
-        if(px_t!=edge_t){
-            $player.css("top", y-80);
+        //階梯向上
+        //console.log(player_y_2);
+
+        //人物向下
+        if(player_y_1 < edge_b){
+            $player.css("top", player_y_1 + 1);
         }
-
-
-        st.css("top", st_t-80);
     }
 
-    /*
-    var timer = setInterval(function(){
 
-    }, 5000);
-    */
+/**************************************************************************/
 
     //////////遊戲結束//////////
+    /*
     function GameOver_action(){
         $screen.append("<div id=\"gameover\" calss=\"gameover\">GameOver</div>");
         console.log($gameover.css("top"));
@@ -280,5 +267,6 @@ $(function(){
             $(this).remove();
         })
     }
-    //GameOver_action();
+    GameOver_action();
+    */
 })

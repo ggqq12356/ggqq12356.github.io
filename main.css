@@ -1,0 +1,33 @@
+body{
+	background-color: pink;
+	text-align: center;
+}
+.list{
+	background-image: url(BG.jpg);
+	background-size: cover;
+	/*background-color: green;*/
+	position: relative;
+	display: inline-table;
+	border: 3px solid green;
+	width: 500px;
+	height: 700px;
+}
+.text{
+	color: yellow;
+	display: inline-block;
+	position: relative;
+	font-size: 30px;
+	text-decoration: none;
+	transition-duration: 0.5s;
+}
+.text:hover{
+	color: #FF00FF;
+	font-size: 50px;
+}
+.text:active{
+	color: #FF0000;
+}
+.title{
+	color: blue;
+	font-size: 50px;
+}

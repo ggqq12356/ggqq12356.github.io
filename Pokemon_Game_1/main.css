@@ -1,6 +1,18 @@
 body{
     text-align: center;
-    background-color: darksalmon;
+    background-color: rgb(11, 49, 132);
+}
+#logo{
+	background-image: url(pokemon_go_logo.png);
+	background-size: cover;
+    /* origin resolution 608 x 370*/
+	width: 152px;
+	height: 92.5px;
+	display: inline-block;
+	position: relative;
+}
+#logo:hover{
+    cursor: pointer;
 }
 #stage{
     background-image: url(BG.jpg);
