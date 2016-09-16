@@ -39,7 +39,7 @@
 		text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px var(--lightblue);
+		box-shadow: 40px 40px 50px black;
 	}
 	.fa{
 		width: 60px;
@@ -67,12 +67,12 @@
 		text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px var(--bodypink);
+		box-shadow: 40px 40px 50px black;
 		margin-left: 10px;
 	}
 	.title{
 		text-align: center;
-		color: var(--lightblue);
+		color: var(--milk);
 		font-size: 50px;
 		font-weight: bolder;
 		box-shadow: 0px 10px 0px var(--milk);
@@ -89,10 +89,12 @@
 		font-weight: bolder;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 10px 10px 10px black;
+		box-shadow: 0px 10px 10px var(--milk);
+		margin-left: 20px;
 	}
 	.text:active{
 		color: var(--milk);
+		box-shadow: 0px 0px 0px var(--milk);
 	}
 
 	/* 作者 */
@@ -103,7 +105,7 @@
 		/*background-image: url(author_BG.png);*/
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px purple;
+		box-shadow: 40px 40px 50px black;
 		margin-left: 10px;
 		display: inline-block;
 		position: relative;
@@ -113,11 +115,12 @@
 	}
 	.author:hover{
 		cursor: pointer;
-	}
-	.author:active{
 		color: var(--lightblue);
 		background-color: var(--bodypink);
 		/*bottom: 20px;*/
+	}
+	.author:active{
+
 	}
 	.authorfont{
 		font-size: 30px;
