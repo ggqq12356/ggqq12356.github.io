@@ -246,9 +246,6 @@ $(function(){
             speed = parseInt(enemy_fall_speed);
         	$speed.html('速度:'+speed);
         })
-
-
-
     }
 
     //每秒增加落下速度

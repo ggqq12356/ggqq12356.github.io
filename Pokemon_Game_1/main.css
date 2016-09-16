@@ -10,8 +10,10 @@ body{
 	height: 92.5px;
 	display: inline-block;
 	position: relative;
+	transition-duration: 0.5s;
 }
 #logo:hover{
+	background-image: url(pokemon_go_logo_hover.png);
     cursor: pointer;
 }
 #stage{
