@@ -184,7 +184,6 @@
 		margin-bottom: 0px;
 		display: var(--introduction-display);
 		position: var(--introduction-position);
-		text-align: left;
 		z-index: var(--introduction-z-index);
 	}
 	.author{
@@ -208,12 +207,11 @@
 		border: 0px;
 	}
 	.authorfont{
-		width: auto;
-		height: auto;
 		font-size: 30px;
 		font-weight: bolder;
 		transition-duration: 0.5s;
 		cursor: pointer;
+		text-align: left;
 	}
 	.authorfont:hover{
 		color: var(--milk);
@@ -222,12 +220,19 @@
 		padding-left: 20px;
 	}
 	.fun{
+		width: auto;
+		height: auto;
+		text-align: center;
+		margin-top: 30px;
+		margin-left: 2px;
+	}
+	.img{
 		width: 270;
 		height: 270;
-		cursor: pointer;
-		transition-duration: 0.5s;
 		border-radius: 10px;
+		transition-duration: 0.5s;
+		cursor: pointer;
 	}
-	.fun:active{
-		padding-left: 20px;
+	.img:active{
+		padding-top: 10px;
 	}
