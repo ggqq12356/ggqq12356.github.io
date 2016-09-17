@@ -19,4 +19,11 @@ $(document).ready(function(){
 		$toggle_off.show();
 		$icon.hide();
 	});
+
+	$fun = $(".fun");
+
+	$fun.click(function(){
+		alert("蛤？");
+	})
+
 });

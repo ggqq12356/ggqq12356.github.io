@@ -30,10 +30,10 @@
 		border-radius: 10px;
 		box-shadow: 40px 40px 50px black;
 		transition-duration: 0.5s;
+		cursor: pointer;
 	}
 	.bar:hover{
 		font-color: var(--bargreen);
-		cursor: pointer;
 	}
 	.bar:active{
 		margin-top: 60px;
@@ -59,25 +59,52 @@
 		margin-left: -400px;
 	}
 
-	/* icons */
+	/* Social Icons*/
 	.icons{
 		width: 60px;
-		height: 450px;
+		height: auto;
 		font-size: 36px;
 		background-color: var(--bodypink);
 		text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 40px 40px 50px black;
+		padding-top: 20px;
+		position: absolute;
+	}
+	.social{
+		font-size: 20px;
+		color: var(--bodypink);
+		background-color: var(--milk);
+		border: 3px solid none;
+		border-radius: 0px;
+	}
+	.social-line{
+		width: auto;
+		height: 10px;
+		background-color: var(--milk);
+		border: 0px;
+	}
+	.line{
+		width: auto;
+		height: 5px;
+		background-color: var(--milk);
+		border: 0px;
+	}
+	.bt{
+		color: var(--milk);
+		margin-top: 0px;
+		margin-bottom: 20px;
+		cursor: pointer;
 		transition-duration: 0.5s;
 	}
-	.fa{
+	.icon{
 		width: 60px;
 		height: 60px;
 		color: var(--milk);
 		transition-duration: 0.5s;
 	}
-	.fa:hover{font-size: 60px; cursor: pointer;}
+	.icon:hover{font-size: 60px; cursor: pointer;}
 	.fa-github:hover{color: var(--github-color);}
 	.fa-facebook-square:hover{color: var(--facebook-color);}
 	.fa-youtube-square:hover{color: var(--youtube-color);}
@@ -88,7 +115,7 @@
 	/* 清單 */
 	.list{
 		width: 350px;
-		height: 450px;
+		height: auto;
 		/*background-image: url(body_bg.png);*/
 		background-color: purple;
 		background-size: auto;
@@ -97,7 +124,8 @@
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 40px 40px 50px black;
-		margin-left: 10px;
+		margin-left: 70px;
+		z-index: 0;
 	}
 	.title{
 		text-align: center;
@@ -105,6 +133,7 @@
 		font-size: 50px;
 		font-weight: bolder;
 		box-shadow: 0px 10px 0px var(--milk);
+		margin-bottom: 30px;
 	}
 	.text{
 		color: black;
@@ -129,7 +158,7 @@
 	/* 作者 */
 	.author{
 		width: 350px;
-		height: 450px;
+		height: auto;
 		background-color: var(--lightblue);
 		border: 3px solid none;
 		border-radius: 10px;
@@ -150,20 +179,23 @@
 		font-size: 30px;
 		font-weight: bolder;
 		transition-duration: 0.5s;
+		cursor: pointer;
 	}
 	.authorfont:hover{
-		cursor: pointer;
 		color: var(--milk);
 	}
 	.authorfont:active{
 		padding-left: 20px;
 	}
-	.line{
-		background-color: var(--milk);
-		height: 1px;
-	}
 	.fun{
 		width: 270;
 		height: 270;
+		border-radius: 10px;
 		margin-left: 40px;
+		margin-bottom: 10px;
+		cursor: pointer;
+		transition-duration: 0.5s;
+	}
+	.fun:active{
+		padding-left: 20px;
 	}
