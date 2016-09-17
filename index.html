@@ -9,22 +9,53 @@
 	<link rel="bookmark" href="./game.ico"/>
 	<link type="text/css" rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="font-awesome-4.6.3\css\font-awesome.min.css">
+    <script src="jquery-3.1.0.min.js"></script>
+    <script>
+	    $(document).ready(function(){
+
+	    	$toggle_off = $(".fa-toggle-off");
+	    	$toggle_on = $(".fa-toggle-on");
+
+	    	$bt = $(".bt");
+	    	$icon = $(".icon");
+
+	    	$toggle_on.hide();
+	    	$icon.hide();
+
+	    	$toggle_off.click(function(){
+	    		$(this).hide();
+	    		$toggle_on.show();
+	    		$icon.show();
+	    	});
+
+	    	$toggle_on.click(function(){
+	    		$(this).hide();
+	    		$toggle_off.show();
+	    		$icon.hide();
+	    	});
+	    });
+    </script>
 </head>
 <body>
+	<div class="bar">
+		<h1><a href="#" class="barfont">SkywAlKer's WebSite</a></h1>
+	</div>
 	<div class="contain">
 		<div class="icons">
 			<br>
+			<i class="fa fa-toggle-off bt" aria-hidden="true"></i>
+			<i class="fa fa-toggle-on bt" aria-hidden="true"></i>
 			<a href="http://github.com/ggqq12356" target="_blank">
-				<i class="fa fa-github"></i>
+				<i class="fa fa-github icon"></i>
 			</a>
 			<a href="http://fb.com/handsome.py" target="_blank">
-				<i class="fa fa-facebook-square"></i>
+				<i class="fa fa-facebook-square icon"></i>
 			</a>
 			<a href="https://www.youtube.com/c/ggqq12356" target="_blank">
-				<i class="fa fa-youtube-square"></i>
+				<i class="fa fa-youtube-square icon"></i>
 			</a>
 			<a href="http://skywei.wordpress.com" target="_blank">
-				<i class="fa fa-wordpress"></i>
+				<i class="fa fa-wordpress icon"></i>
 			</a>
 		</div>
 		<div class="list">
@@ -36,10 +67,13 @@
 			<a href="./Go_Down_The_Stairs/" target="_blank" class="text">(3) Go Down The Stairs</a>
 		</div>
 		<div class="author">
-			<span class="authorfont">作者：SkywAlKer</span><br>
-			<span class="authorfont">興趣：摳弟硬</span><br>
-			<span class="authorfont">音樂：流行、搖滾、金屬</span><br>
-			<img class="fun" src="fun.gif"><br>
+			<span class="authorfont">作者：SkywAlKer</span>
+			<hr class="line">
+			<span class="authorfont">興趣：摳弟硬</span>
+			<hr class="line">
+			<span class="authorfont">音樂：流行、搖滾、金屬</span>
+			<hr class="line">
+			<img class="fun" src="fun.gif">
 		</div>
 	</div>
 </body>
