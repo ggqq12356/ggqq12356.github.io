@@ -1,5 +1,7 @@
 	/* 自訂參數 */
 	:root{
+
+		/* color */
 		--milk: rgb(255, 237, 136);
 		--bargreen: #5F5;
 		--lightblue: rgb(17, 204, 255);
@@ -8,69 +10,95 @@
 		--facebook-color: rgb(59, 89, 152);
 		--youtube-color: rgb(223, 41, 37);
 		--wordpress-color: rgb(30, 140, 189);
+		--shadow-color: none;
+		--line-color: none;
+
+		/* 
+		display : inline / inline-block / inline-flex / inline-grid / inline-table
+		position : relative / absolute
+
+		auto -> inline
+		*/
+		--top-display: auto;
+		--top-position: auto;
+
+		--mid-display: inline-flex;
+		--mid-position: auto;
+
+		--introduction-display: flex;
+		--introduction-position: auto;
+
+		--top-z-index: 0;
+		--mid-z-index: 0;
+		--introduction-z-index: 0;
 	}
 
 	body{
 		width: auto;
 		height: auto;
 		background-color: var(--milk);
-		/*background-image: url(rainbow.jpg);*/
-		background-size: cover;
+		background-size: auto;
 		font-family: Microsoft JhengHei;
 	}
 
+	/* 內容 */
+	.contain{
+		width: auto;
+		height: auto;
+		text-align: auto;
+	}
+
 	/* 橫幅 */
+	.top{
+		width: auto;
+		height: auto;
+		display: var(--top-display);
+		position: var(--top-position);
+		z-index: var(--top-z-index);
+	}
 	.bar{
-		width: 600px;
-		height: 100px;
+		width: 360px;
+		height: auto;
 		background-color: var(--bargreen);
-		margin-top: 5%;
-		margin-left: 20%;
 		border: 5px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px black;
+		box-shadow: 0px 0px 0px var(--shadow-color);
 		transition-duration: 0.5s;
 		cursor: pointer;
-	}
-	.bar:hover{
-		font-color: var(--bargreen);
-	}
-	.bar:active{
-		margin-top: 60px;
 	}
 	.barfont{
 		font-size: 50px;
 		font-weight: bolder;
 		color: var(--milk);
-		padding-top: 10px;
-		padding-left: 30px;
 		transition-duration: 0.5s;
 	}
+	.barfont:hover{
+		color: yellow;
+	}
 
-	/* 內容 */
-	.contain{
-		display: inline-flex;
-		position: absolute;
+	/* 中間 */
+	.mid{
+		display: var(--mid-display);
+		position: var(--mid-position);
 		width: auto;
 		height: auto;
 		top: 50%;
-		left: 50%;
-		margin-top: -200px;
-		margin-left: -400px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		text-align: center;
+		z-index: var(--mid-z-index);
 	}
 
 	/* Social Icons*/
 	.icons{
-		width: 60px;
+		width: 55px;
 		height: auto;
 		font-size: 36px;
 		background-color: var(--bodypink);
-		text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px black;
-		padding-top: 20px;
-		position: absolute;
+		box-shadow: 0px 0px 0px var(--shadow-color);
+		padding-top: 30px;
 	}
 	.social{
 		font-size: 20px;
@@ -79,15 +107,9 @@
 		border: 3px solid none;
 		border-radius: 0px;
 	}
-	.social-line{
-		width: auto;
-		height: 10px;
-		background-color: var(--milk);
-		border: 0px;
-	}
 	.line{
 		width: auto;
-		height: 5px;
+		height: 10px;
 		background-color: var(--milk);
 		border: 0px;
 	}
@@ -104,7 +126,7 @@
 		color: var(--milk);
 		transition-duration: 0.5s;
 	}
-	.icon:hover{font-size: 60px; cursor: pointer;}
+	.icon:hover{font-size: 48px; cursor: pointer;}
 	.fa-github:hover{color: var(--github-color);}
 	.fa-facebook-square:hover{color: var(--facebook-color);}
 	.fa-youtube-square:hover{color: var(--youtube-color);}
@@ -114,26 +136,23 @@
 
 	/* 清單 */
 	.list{
-		width: 350px;
-		height: auto;
+		width: 300px;
+		height: 400px;
 		/*background-image: url(body_bg.png);*/
 		background-color: purple;
 		background-size: auto;
-		display: inline-block;
 		text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px black;
-		margin-left: 70px;
-		z-index: 0;
+		box-shadow: 0px 0px 0px var(--shadow-color);
+		margin-left: 5px;
 	}
 	.title{
-		text-align: center;
+		width: auto;
+		height: auto;
 		color: var(--milk);
-		font-size: 50px;
+		font-size: 30px;
 		font-weight: bolder;
-		box-shadow: 0px 10px 0px var(--milk);
-		margin-bottom: 30px;
 	}
 	.text{
 		color: black;
@@ -148,7 +167,6 @@
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 10px 10px var(--milk);
-		margin-left: 20px;
 	}
 	.text:active{
 		color: var(--milk);
@@ -156,26 +174,42 @@
 	}
 
 	/* 作者 */
-	.author{
-		width: 350px;
+	.introduction{
+		width: auto;
 		height: auto;
+		top: 50%;
+		left: 50%;
+		margin-top: 0px;
+		margin-left: 60px;
+		margin-bottom: 0px;
+		display: var(--introduction-display);
+		position: var(--introduction-position);
+		text-align: left;
+		z-index: var(--introduction-z-index);
+	}
+	.author{
+		width: 300px;
+		height: 500px;
+		color: var(--bodypink);
 		background-color: var(--lightblue);
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 40px 40px 50px black;
-		margin-left: 10px;
-		display: inline-block;
-		position: relative;
-		text-align: auto;
+		box-shadow: 0px 0px 0px var(--shadow-color);
 		transition-duration: 0.5s;
-		color: var(--bodypink);
 	}
 	.author:hover{
 		color: var(--lightblue);
 		background-color: var(--bodypink);
-		/*bottom: 20px;*/
+	}
+	.author-line{
+		width: auto;
+		height: 5px;
+		background-color: var(--milk);
+		border: 0px;
 	}
 	.authorfont{
+		width: auto;
+		height: auto;
 		font-size: 30px;
 		font-weight: bolder;
 		transition-duration: 0.5s;
@@ -190,11 +224,9 @@
 	.fun{
 		width: 270;
 		height: 270;
-		border-radius: 10px;
-		margin-left: 40px;
-		margin-bottom: 10px;
 		cursor: pointer;
 		transition-duration: 0.5s;
+		border-radius: 10px;
 	}
 	.fun:active{
 		padding-left: 20px;
