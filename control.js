@@ -23,7 +23,7 @@
 		$fun = $(".fun");
 
 		$fun.click(function(){
-			alert("蛤？");
+			alert("\n" + "呆呆獸：蛤？");
 		})
 
 		//鎖定右鍵選單
