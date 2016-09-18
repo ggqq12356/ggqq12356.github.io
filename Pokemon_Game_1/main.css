@@ -16,8 +16,7 @@ body{
     cursor: pointer;
 }
 #stage{
-    /*background-image: url(BG.jpg);*/
-    background-color: aquamarine;
+    background-image: url(BG.jpg);
     background-size: cover;
     display: inline-block;
     position: relative;
