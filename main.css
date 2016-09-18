@@ -89,8 +89,16 @@
 		z-index: var(--mid-z-index);
 	}
 
+    /* horizon line */
+	.line{
+		width: auto;
+		height: 10px;
+		background-color: var(--milk);
+		border: 0px;
+	}
+
 	/* Social Icons*/
-	.icons{
+	.social-list{
 		width: 55px;
 		height: auto;
 		font-size: 36px;
@@ -98,20 +106,16 @@
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
-		padding-top: 30px;
+        margin-top: 0px;
+        padding-top: 21px;
+        line-height: 16px;
 	}
-	.social{
-		font-size: 20px;
+	.social-font{
+		font-size: 19px;
 		color: var(--bodypink);
 		background-color: var(--milk);
-		border: 3px solid none;
+		border: 1px solid var(--bodypink);
 		border-radius: 0px;
-	}
-	.line{
-		width: auto;
-		height: 10px;
-		background-color: var(--milk);
-		border: 0px;
 	}
 	.bt{
 		color: var(--milk);
@@ -141,7 +145,7 @@
 		/*background-image: url(body_bg.png);*/
 		background-color: purple;
 		background-size: auto;
-        text-align: left;
+        text-align: center;
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
@@ -153,7 +157,6 @@
 		color: var(--milk);
 		font-size: 35px;
 		font-weight: bolder;
-        text-align: center;
 	}
 	.text{
 		color: black;
