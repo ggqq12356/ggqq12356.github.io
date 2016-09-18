@@ -141,7 +141,7 @@
 		/*background-image: url(body_bg.png);*/
 		background-color: purple;
 		background-size: auto;
-		text-align: center;
+        text-align: left;
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
@@ -151,12 +151,13 @@
 		width: auto;
 		height: auto;
 		color: var(--milk);
-		font-size: 30px;
+		font-size: 35px;
 		font-weight: bolder;
+        text-align: center;
 	}
 	.text{
 		color: black;
-		font-size: 30px;
+		font-size: 25px;
 		text-decoration: none;
 		transition-duration: 1s;
 	}
