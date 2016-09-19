@@ -1,33 +1,27 @@
 	$(document).ready(function(){
-		var $body = $("body"),
-			$toggle_on = $(".fa-toggle-on"),
-			$toggle_off = $(".fa-toggle-off"),
-			$icon = $(".icon");
-
+		
 		//預設狀態
-		$toggle_on.hide();
-		$icon.hide();
+		$(".fa-toggle-on").hide();
+		$(".icon").hide();
 
-		$toggle_off.click(function(){
+		$(".fa-toggle-off").click(function(){
 			$(this).hide();
-			$toggle_on.show();
-			$icon.show();
+			$(".fa-toggle-on").show();
+			$(".icon").show();
 		});
 
-		$toggle_on.click(function(){
+		$(".fa-toggle-on").click(function(){
 			$(this).hide();
-			$toggle_off.show();
-			$icon.hide();
+			$(".fa-toggle-off").show();
+			$(".icon").hide();
 		});
 
-		$fun = $(".fun");
-
-		$fun.click(function(){
+		$(".fun").click(function(){
 			alert("\n" + "呆呆獸：蛤？");
 		})
 
 		//鎖定右鍵選單
-        $body.contextmenu(function(e){
+        $("body").contextmenu(function(e){
             e.preventDefault();
         });
 
@@ -37,8 +31,26 @@
 	    }
 	    else {
 	        console.log("#Device : PC");
-	        $body.css({
+
+	        $("body").css({
 	        	"margin-left":"35%"
+	        })
+	        $(".mid").css({
+				"margin-left":"-60px"
+	        })
+	        $(".list").css({
+	        	"width":"360px",
+	        	"height":"500px"
+	        })
+	        $(".introduction").css({
+	        	"display":"inline-flex",
+	        	"margin-left":"0px"
+	        })
+	        $(".author").css({
+	        	"width":"320px"
+	        })
+	        $(".author-line").css({
+	        	"height":"10px"
 	        })
 	    }
 

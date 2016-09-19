@@ -38,7 +38,7 @@
 		height: auto;
 		background-color: var(--milk);
 		background-size: auto;
-		font-family: Microsoft JhengHei;
+		font-family: Microsoft JhengHei; /* 微軟正黑體 */
 	}
 
 	/* 內容 */
@@ -111,7 +111,7 @@
         line-height: 16px;
 	}
 	.social-font{
-		font-size: 19px;
+		font-size: 18.5px;
 		color: var(--bodypink);
 		background-color: var(--milk);
 		border: 1px solid var(--bodypink);
@@ -142,8 +142,8 @@
 	.list{
 		width: 300px;
 		height: 400px;
-		/*background-image: url(body_bg.png);*/
-		background-color: purple;
+		background-image: url(body_bg.png);
+		/*background-color: purple;*/
 		background-size: auto;
         text-align: center;
 		border: 3px solid none;
@@ -159,13 +159,13 @@
 		font-weight: bolder;
 	}
 	.text{
-		color: black;
+		color: white;
 		font-size: 25px;
 		text-decoration: none;
 		transition-duration: 1s;
 	}
 	.text:hover{
-		color: white;
+		color: var(--milk);
 		background-color: var(--bodypink);
 		font-weight: bolder;
 		border: 3px solid none;
@@ -173,8 +173,9 @@
 		box-shadow: 0px 10px 10px var(--milk);
 	}
 	.text:active{
-		color: var(--milk);
-		box-shadow: 0px 0px 0px var(--milk);
+		color: var(--bodypink);
+		background-color: var(--lightblue);
+		box-shadow: 0px 0px 0px yellow;
 	}
 
 	/* 作者 */
@@ -227,7 +228,7 @@
 		width: auto;
 		height: auto;
 		text-align: center;
-		margin-top: 30px;
+		margin-top: 20px;
 		margin-left: 2px;
 	}
 	.img{
