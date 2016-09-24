@@ -15,7 +15,7 @@ $(function(){
         $speed = $("#speed"),
         enemy_count = 1, //障礙物數量
         enemy_fall_speed = 5, //障礙物初始掉落速度
-        enemy_fall_max_speed = 20, //障礙物掉落極限速度
+        //enemy_fall_max_speed = 20, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
         hit_test_r = 20, //碰撞半徑
@@ -37,7 +37,8 @@ $(function(){
         //console.log("使用行動裝置!");
         console.log("#Device : Mobile");
 
-        var fps = 30; //顯示的fps偵數，滑順度
+        var fps = 60, //顯示的fps偵數，滑順度
+            enemy_fall_max_speed = 50; //障礙物掉落極限速度
 
         //取得滑鼠移動x, y座標
         $body.mousedown(function(e){
@@ -59,7 +60,8 @@ $(function(){
         //console.log("使用桌上型裝置!");
         console.log("#Device : PC");
 
-        var fps = 60; //顯示的fps偵數，滑順度
+        var fps = 60, //顯示的fps偵數，滑順度
+            enemy_fall_max_speed = 30; //障礙物掉落極限速度
 
         //左鍵點擊事件
         function left_click_action(){
