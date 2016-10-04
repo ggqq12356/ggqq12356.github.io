@@ -3,9 +3,16 @@ body{
     /*background-color: aquamarine;*/
     background-image: url(body_bg.png);
 }
+a{
+    text-decoration: none;
+}
 .topic{
     color: yellow;
     font-size: 30px;
+    transition-duration: 1s;
+}
+.topic:hover{
+    color: purple;
 }
 .screen{
     width: 400px;

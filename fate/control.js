@@ -11,7 +11,7 @@ $(document).ready(function(){
     $("body").contextmenu(function(e){
         e.preventDefault()
     });
-
+    
     //參數
     var contain = $(".contain")
         img = $(".image")
