@@ -15,7 +15,7 @@ $(function(){
         $speed = $("#speed"),
         enemy_count = 1, //障礙物數量
         enemy_fall_speed = 5, //障礙物初始掉落速度
-        enemy_fall_max_speed = 20, //障礙物掉落極限速度
+        //enemy_fall_max_speed = 20, //障礙物掉落極限速度
         enemy_wave = 0, //障礙物初始波數
         enemy_wave_gap = 250, //障礙物間距
         hit_test_r = 20, //碰撞半徑
@@ -37,7 +37,8 @@ $(function(){
         //console.log("使用行動裝置!");
         console.log("#Device : Mobile");
 
-        var fps = 30; //顯示的fps偵數，滑順度
+        var fps = 60, //顯示的fps偵數，滑順度
+            enemy_fall_max_speed = 50; //障礙物掉落極限速度
 
         //取得滑鼠移動x, y座標
         $body.mousedown(function(e){
@@ -59,7 +60,8 @@ $(function(){
         //console.log("使用桌上型裝置!");
         console.log("#Device : PC");
 
-        var fps = 60; //顯示的fps偵數，滑順度
+        var fps = 60, //顯示的fps偵數，滑順度
+            enemy_fall_max_speed = 30; //障礙物掉落極限速度
 
         //左鍵點擊事件
         function left_click_action(){
@@ -78,7 +80,7 @@ $(function(){
         $body.keypress(function(e){
             $key = String.fromCharCode(e.keyCode);
 
-            console.log('[Key] : ', $key);
+            //console.log('[Key] : ', $key);
 
             $x_place = "left";
             $y_place = "top";
@@ -148,19 +150,71 @@ $(function(){
     //生成障礙物
     function createEnemy(){
     	var enemy_pos = [10, 110, 210]; //障礙物初始位置
-        for (var i=0 ; i<enemy_count ; i++)
-        {
+        //for (var i=0 ; i<enemy_count ; i++)
+        //{
             $stage.append("<div class='sprite enemy'></div>");
             var $enemy = $stage.find(".enemy:last");
             $enemy.data("wave", enemy_wave);
+
             var rand_index = getRandomInt(0, enemy_pos.length-1);
             var enemy_x = enemy_pos.splice(rand_index, 1)[0];
 
             //障礙物起始位置
             $enemy.css("left", enemy_x+"px");
             $enemy.css("top", -($enemy.height())+"px");
+        //};
+    }
 
-        };
+    //計時器(處理落下動畫跟碰撞機制)
+    function loop_func(){
+
+        $stage.find(".enemy").each(function(){
+            var enemy_y = parseInt($(this).css("top"));
+            if (enemy_y > enemy_wave_gap && $(this).data("wave") == enemy_wave){
+                enemy_wave++;
+                createEnemy();
+            }
+
+            //計算碰撞距離
+            var px = parseInt($player.css("left"))+$player.width()/2,
+                py = parseInt($player.css("top"))+$player.height()/2,
+                ex = parseInt($(this).css("left"))+$(this).width()/2,
+                ey = parseInt($(this).css("top"))+$(this).height()/2,
+                p_e_dist = Math.sqrt(Math.pow(px-ex,2)+Math.pow(py-ey,2));
+
+            //吃到皮卡丘&&加分
+            if (hit_test_r*2 > p_e_dist){
+            	$(this).remove();
+		        score += score_add;
+		        score = parseInt(score); //轉為整數，去除小數點
+            }
+
+            //超出範圍移除
+            if (enemy_y > $stage.height()){
+                GameOver();
+            }
+
+            //障礙物加速
+            $(this).css("top", enemy_y+enemy_fall_speed+"px");
+
+            //顯示分數
+            $score.html(score+':分數');
+
+            //顯示加速度
+            speed = parseInt(enemy_fall_speed);
+        	$speed.html('速度:'+speed);
+        })
+    }
+
+    //每秒增加落下速度
+    var add_speed = 0.5; //落下加速度
+    function speedup_func(){
+        if (enemy_fall_speed >= enemy_fall_max_speed)
+        {
+            enemy_fall_speed = enemy_fall_max_speed;
+            clearInterval(speedup);
+        }
+        enemy_fall_speed += add_speed;
     }
 
     //遊戲結束
@@ -206,57 +260,6 @@ $(function(){
 
             resetGame();
         })
-    }
-
-    //計時器(處理落下動畫跟碰撞機制)
-    function loop_func(){
-
-        $stage.find(".enemy").each(function(){
-            var enemy_y = parseInt($(this).css("top"));
-            if (enemy_y > enemy_wave_gap && $(this).data("wave") == enemy_wave){
-                enemy_wave++;
-                createEnemy();
-
-            }
-
-            //計算碰撞距離
-            var px = parseInt($player.css("left"))+$player.width()/2,
-                py = parseInt($player.css("top"))+$player.height()/2,
-                ex = parseInt($(this).css("left"))+$(this).width()/2,
-                ey = parseInt($(this).css("top"))+$(this).height()/2,
-                p_e_dist = Math.sqrt(Math.pow(px-ex,2)+Math.pow(py-ey,2));
-
-            //吃到皮卡丘&&加分
-            if (hit_test_r*2 > p_e_dist){
-            	$(this).remove();
-		        score += score_add;
-		        score = parseInt(score); //轉為整數，去除小數點
-            }
-
-            //超出範圍移除
-            if (enemy_y > $stage.height()){
-                GameOver();
-            }
-            $(this).css("top", enemy_y+enemy_fall_speed+"px");
-
-            //顯示分數
-            $score.html(score+':分數');
-
-            //顯示加速度
-            speed = parseInt(enemy_fall_speed);
-        	$speed.html('速度:'+speed);
-        })
-    }
-
-    //每秒增加落下速度
-    var add_speed = 0.2; //落下加速度
-    function speedup_func(){
-        if (enemy_fall_speed >= enemy_fall_max_speed)
-        {
-            enemy_fall_speed = 20;
-            clearInterval(speedup);
-        }
-        enemy_fall_speed += add_speed;
     }
 
 })

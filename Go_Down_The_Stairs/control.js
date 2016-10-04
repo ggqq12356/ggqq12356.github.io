@@ -49,8 +49,12 @@ $(function(){
         //console.log(width_data);
 
     //人物初始位置
-    $player.css("left", ($screen.width()-$player.width())/2+"px");
-    $player.css("top", $screen.height()-$player.height());
+    /*
+    $player.css("left", (screen_width - player_width)/2+"px");
+    $player.css("top", (screen_height - player_height));
+    */
+    $player.css("left", (screen_width - player_width)/2+"px");
+    $player.css("top", player_height);
 
 /**************************************************************************/
 
@@ -137,6 +141,11 @@ $(function(){
 /**************************************************************************/
 
     //////////人物動作//////////
+    /*
+    未做功能:
+    1. timeout的簡化
+    2. 地心引力
+    */
     //參數
     var delayTime = 50,     //延遲時間
         moveDis = 80;       //移動距離
@@ -189,7 +198,7 @@ $(function(){
         window.clearTimeout(jmp);
     }
 
-    ////人物向下
+    //人物向下
     var dwn;
     function down_action() {
         $player.css({"background-image":"url(player_j.png)"});
@@ -205,6 +214,27 @@ $(function(){
         window.clearTimeout(dwn);
     }
 
+    //人物墜落
+    var drop;
+    function drop_action() {
+        $player.css({"background-image":"url(player_j.png)"});
+        drop = window.setTimeout(drop_start, delayTime);
+    }
+    function drop_start() {
+        var y = parseInt($player.css("top")),
+            sy_t = parseInt($screen.offset().top);  //上 - 螢幕座標
+
+        parseInt($player.css("top", y + moveDis));
+
+        //判斷是否到底 or 判斷人物腳下是否有階梯
+        drop_stop();
+    }
+    function drop_stop() {
+        $player.css({"background-image":"url(player_n.png)"});
+        window.clearTimeout(drop);
+    }
+    drop_action();
+
 /**************************************************************************/
 
     //////////障礙物 && 階梯//////////
@@ -212,11 +242,13 @@ $(function(){
     function createEnemy() {
         $enemy_div = "<div id=\"enemy\" class=\"enemy\"></div>";
         $screen.append($enemy_div);
-        enemy_place = $screen.find(".enemy");
-        enemy_place.css("top", 0);
-        enemy_place.css("left", 0);
+        $enemy_place = $screen.find(".enemy");
+
+        //障礙物生成位置
+        $enemy_place.css("top", 0);
+        $enemy_place.css("left", 0);
     }
-    createEnemy();
+    //createEnemy();
 
     //生成新階梯
     //var c_t = setInterval(createStairs, 3000);
@@ -227,7 +259,7 @@ $(function(){
 
         //新階梯起始位置
         $stairs_space.css("left", screen_width / 2 - 40);   //x軸位置
-        $stairs_space.css("top", $screen.height());         //y軸位置
+        $stairs_space.css("top", screen_height - 20);            //y軸位置
     }
     createStairs();
 
