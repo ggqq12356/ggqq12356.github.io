@@ -19,6 +19,7 @@ $(document).ready(function(){
         cleaner = $(".cleaner")
         r_max = 0
         t = 0
+        count = 0
         ball_selected = false
         card_selected = false
         Bulbasaur_selected = false
@@ -27,7 +28,7 @@ $(document).ready(function(){
     	player = ["Bulbasaur", "Zubat", "Dragonite", "Hoothoot", "Kingler", "Jynx"]
         player_c = ["妙蛙種子", "超音蝠", "快龍", "咕咕", "巨鉗蟹", "迷唇姐"]
         punishment = ["用屁股寫名字", "畫臉", "跳繩", "交互蹲跳", "夾夾子", "跑操場"]
-        player_max = 10
+        player_max = 10 //玩家人數
         player_list = []
 
     function randomNum(r_max){
@@ -40,26 +41,19 @@ $(document).ready(function(){
 
         //判斷2人角色不重複
         if (Bulbasaur_selected == true){
-            if(x==0){
-                x+=2
-            }
+            if(x==0) x+=2
         }
         if (Zubat_selected == true){
-            if (x==1){
-                x+=3
-            }
+            if (x==1) x+=3
         }
         if (Bulbasaur_selected == false){
-            if (x==0){
-                Bulbasaur_selected = true
-            }
+            if (x==0) Bulbasaur_selected = true
         }
         if (Zubat_selected == false){
-            if (x==1){
-                Zubat_selected = true
-            }
+            if (x==1) Zubat_selected = true
         }
-        t = x
+
+        t = x //暫存變數
         return x
     }
 
@@ -78,8 +72,18 @@ $(document).ready(function(){
                 contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
                 var image = $(".image"+i)
                 image.css({"background-image":"url("+player[p]+".png)"})
+                if(p==0 || p==1){
+                    count += 2
+                }
+                else{
+                    count += 1
+                }
+
+                if (count >= 10){
+                    break
+                }
             }
-            //ball_selected = true //重複按紐控制
+            ball_selected = true //重複按紐控制
             console.log('player_list:', player_list)
         }
     })
@@ -94,7 +98,7 @@ $(document).ready(function(){
             cardcontain.remove()
             imagegroup.remove()
             contain.append("<div class='cardcontain'>"+punishment[p]+"</div>")
-            //card_selected = true //重複按紐控制
+            card_selected = true //重複按紐控制
             console.log('punishment:', punishment[p])
         }
     })
@@ -109,5 +113,6 @@ $(document).ready(function(){
         card_selected = false
         Bulbasaur_selected = false
         Zubat_selected = false
+        count = 0
     })
 })
