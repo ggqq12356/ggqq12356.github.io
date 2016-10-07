@@ -19,9 +19,11 @@ $(document).ready(function(){
         cleaner = $(".cleaner")
         r_max = 0
         t = 0
+        Bulbasaur_selected = false
+        Zubat_selected = false
         //"Plusle_Minun", "正負拍拍"
-    	player = ["Bulbasaur", "Dragonite", "Hoothoot", "Kingler", "Zubat", "Jynx"]
-        player_c = ["妙蛙種子", "快龍", "咕咕", "巨鉗蟹", "超音蝠", "迷唇姐"]
+    	player = ["Bulbasaur", "Zubat", "Dragonite", "Hoothoot", "Kingler", "Jynx"]
+        player_c = ["妙蛙種子", "超音蝠", "快龍", "咕咕", "巨鉗蟹", "迷唇姐"]
         punishment = ["用屁股寫名字", "畫臉", "跳繩", "交互蹲跳", "夾夾子", "跑操場"]
         player_max = 10
         player_list = []
