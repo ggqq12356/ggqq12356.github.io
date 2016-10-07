@@ -41,7 +41,7 @@ $(document).ready(function(){
 
         //判斷2人角色不重複
         if (Bulbasaur_selected == true){
-            if(x==0) x+=2
+            if (x==0) x+=2
         }
         if (Zubat_selected == true){
             if (x==1) x+=3
@@ -51,6 +51,10 @@ $(document).ready(function(){
         }
         if (Zubat_selected == false){
             if (x==1) Zubat_selected = true
+        }
+        if(count>=9){
+            if (x==0) x+=2
+            if (x==1) x+=3
         }
 
         t = x //暫存變數
@@ -72,6 +76,7 @@ $(document).ready(function(){
                 contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
                 var image = $(".image"+i)
                 image.css({"background-image":"url("+player[p]+".png)"})
+
                 if(p==0 || p==1){
                     count += 2
                 }
