@@ -19,9 +19,11 @@ $(document).ready(function(){
         cleaner = $(".cleaner")
         r_max = 0
         t = 0
+        ball_selected = false
+        card_selected = false
         Bulbasaur_selected = false
         Zubat_selected = false
-        //"Plusle_Minun", "正負拍拍"
+        //暫停角色："Plusle_Minun", "正負拍拍"
     	player = ["Bulbasaur", "Zubat", "Dragonite", "Hoothoot", "Kingler", "Jynx"]
         player_c = ["妙蛙種子", "超音蝠", "快龍", "咕咕", "巨鉗蟹", "迷唇姐"]
         punishment = ["用屁股寫名字", "畫臉", "跳繩", "交互蹲跳", "夾夾子", "跑操場"]
@@ -30,44 +32,71 @@ $(document).ready(function(){
 
     function randomNum(r_max){
         var x = Math.floor(Math.random() * r_max)
+
+        //減少重複機率
         if (x==t){
             x = Math.floor(Math.random() * r_max)
+        }
+
+        //判斷2人角色不重複
+        if (Bulbasaur_selected == true){
+            if(x==0){
+                x+=2
+            }
+        }
+        if (Zubat_selected == true){
+            if (x==1){
+                x+=3
+            }
+        }
+        if (Bulbasaur_selected == false){
+            if (x==0){
+                Bulbasaur_selected = true
+            }
+        }
+        if (Zubat_selected == false){
+            if (x==1){
+                Zubat_selected = true
+            }
         }
         t = x
         return x
     }
 
     ball.click(function(){
-        var r_max = player.length
-            imagegroup = $(".image-group")
-            cardcontain = $(".cardcontain")
+        if (ball_selected == false){
+            var r_max = player.length
+                imagegroup = $(".image-group")
+                cardcontain = $(".cardcontain")
 
-        cardcontain.remove()
-        imagegroup.remove()
+            cardcontain.remove()
+            imagegroup.remove()
 
-        for (var i = 0; i < player_max; i++) {
-            var p = randomNum(r_max)
-            player_list[i] = player_c[p]
-
-            contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
-            var image = $(".image"+i)
-            image.css({"background-image":"url("+player[p]+".png)"})
+            for (var i = 0; i < player_max; i++) {
+                var p = randomNum(r_max)
+                player_list[i] = player_c[p]
+                contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
+                var image = $(".image"+i)
+                image.css({"background-image":"url("+player[p]+".png)"})
+            }
+            //ball_selected = true //重複按紐控制
+            console.log('player_list:', player_list)
         }
-        //console.log('p:', p, 't:', t, player_c[p])
-        console.log('player_list:', player_list)
     })
 
     card.click(function(){
-        var r_max = punishment.length
-            p = randomNum(r_max)
-            imagegroup = $(".image-group")
-            cardcontain = $(".cardcontain")
+        if (card_selected == false){
+            var r_max = punishment.length
+                p = randomNum(r_max)
+                imagegroup = $(".image-group")
+                cardcontain = $(".cardcontain")
 
-        cardcontain.remove()
-        imagegroup.remove()
-        contain.append("<div class='cardcontain'>"+punishment[p]+"</div>")
-        //console.log('p:', p, 't:', t, punishment[p])
-        console.log('punishment:', punishment[p])
+            cardcontain.remove()
+            imagegroup.remove()
+            contain.append("<div class='cardcontain'>"+punishment[p]+"</div>")
+            //card_selected = true //重複按紐控制
+            console.log('punishment:', punishment[p])
+        }
     })
 
     cleaner.click(function(){
@@ -76,5 +105,9 @@ $(document).ready(function(){
 
         cardcontain.remove()
         imagegroup.remove()
+        ball_selected = false
+        card_selected = false
+        Bulbasaur_selected = false
+        Zubat_selected = false
     })
 })
