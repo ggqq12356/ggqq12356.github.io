@@ -16,7 +16,7 @@
 			background-image: url(pokemon_bg.png);
 			background-size: auto;
 			width: 480px;
-			height: 600px;
+			height: 650px;
 		}
 		.logo{
 			width: 152px;
@@ -24,28 +24,63 @@
 			background-image: url(pokemon_go_logo.png);
 			background-size: cover;
 			margin-left: 170px;
+			margin-bottom: 20px;
 			cursor: pointer;
 		}
-		.img, .img0, .img1, .img2, .img3, .img4, .img5, .img6, .img7, .img8, .img9{
+		.image-group{
 			background-image: url();
 			background-size: cover;
-			width: 300px;
-			height: 300px;
-			margin-left: 100px;
-			margin-top: 30px;
-		}
-		.imagecontain{
 			color: yellow;
-			font-size: 50px;
-			margin-top: -500px;
-			margin-left: 30px;
 			text-align: center;
+			width: 120px;
+			height: 120px;
+		}
+		.image0{
+			margin-top: -620px;
+			margin-left: 80px;
+		}
+		.image1{
+			margin-top: -120px;
+			margin-left: 200px;
+		}
+		.image2{
+			margin-top: -120px;
+			margin-left: 320px;
+		}
+		.image3{
+			margin-top: 5px;
+			margin-left: 80px;
+		}
+		.image4{
+			margin-top: -120px;
+			margin-left: 200px;
+		}
+		.image5{
+			margin-top: -120px;
+			margin-left: 320px;
+		}
+		.image6{
+			margin-top: 5px;
+			margin-left: 80px;
+		}
+		.image7{
+			margin-top: -120px;
+			margin-left: 200px;
+		}
+		.image8{
+			margin-top: -120px;
+			margin-left: 320px;
+		}
+		.image9{
+			margin-top: 0px;
+			margin-left: 200px;
 		}
 		.bt{
 			position: relative;
 			display: inline-flex;
-			margin-left: 135px;
-			margin-top: 50px;
+			margin-left: 80px;
+			margin-top: 500px;
+			margin-bottom: 0px;
 			width: auto;
 			height: auto;
 		}
@@ -76,6 +111,13 @@
 			padding-bottom: 30px;
 			padding-left: 0px;
 		}
+		.cleaner{
+			background-image: url(Cleaner.png);
+			background-size: cover;
+			width: 112px;
+			height: 112px;
+			cursor: pointer;
+		}
 	</style>
     <script src="../jquery-3.1.0.min.js"></script>
     <script src="control.js"></script>
@@ -85,10 +127,10 @@
 	<a href="../" target="_top">
 		<div class="logo"></div>
 	</a>
-	<div class="img"></div>
 	<div class="bt">
 		<div class="ball"></div>
 		<div class="card"></div>
+		<div class="cleaner"></div>
 	</div>
 </div>
 </body>
