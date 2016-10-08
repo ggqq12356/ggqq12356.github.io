@@ -37,7 +37,7 @@
 			height: 120px;
 		}
 		.image0{
-			margin-top: -620px;
+			margin-top: -650px;
 			margin-left: 80px;
 		}
 		.image1{
@@ -84,14 +84,45 @@
 			margin-top: -120px;
 			margin-left: 320px;
 		}
+		.titletext{
+			color: yellow;
+			font-size: 24px;
+			text-align: center;
+			width: auto;
+			height: auto;
+			margin-top: 500px;
+		}
+		.playertitle{
+			margin-left: -335px;
+			margin-top: 0px;
+		}
+		.selecttitle{
+			margin-left: -110px;
+			margin-top: -32px;
+		}
+		.fatetitle{
+			margin-left: 110px;
+			margin-top: -32px;
+		}
+		.cleantitle{
+			margin-left: 335px;
+			margin-top: -32px;
+		}
 		.bt{
 			position: relative;
 			display: inline-flex;
-			margin-left: 0px;
-			margin-top: 500px;
+			margin-left: 15px;
+			margin-top: 0px;
 			margin-bottom: 0px;
 			width: auto;
 			height: auto;
+		}
+		.playercount{
+			background-color: purple;
+			font-size: 80px;
+			text-align: center;
+			width: 112px;
+			height: 112px;
 		}
 		.ball{
 			background-image: url(Ball_Poke.png);
@@ -146,13 +177,6 @@
 			height: 112px;
 			cursor: pointer;
 		}
-		.playercount{
-			background-color: purple;
-			font-size: 50px;
-			text-align: center;
-			width: 112px;
-			height: auto;
-		}
 	</style>
     <script src="../jquery-3.1.0.min.js"></script>
     <script src="control.js"></script>
@@ -162,6 +186,12 @@
 	<a href="../" target="_top">
 		<div class="logo"></div>
 	</a>
+	<div class="titletext">
+		<div class="playertitle">玩家人數</div>
+		<div class="selecttitle">抽籤</div>
+		<div class="fatetitle">命運卡</div>
+		<div class="cleantitle">清除</div>
+	</div>
 	<div class="bt">
 		<input type="text" class="playercount" placeholder="人數" value="10" onkeyup="value=value.replace(/[^\d]/g,'')">
 		<div class="ball"></div>
