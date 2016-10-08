@@ -27,8 +27,9 @@ $(document).ready(function(){
         //暫停角色："Plusle_Minun", "正負拍拍"
     	player = ["Bulbasaur", "Zubat", "Dragonite", "Hoothoot", "Kingler", "Jynx"]
         player_c = ["妙蛙種子", "超音蝠", "快龍", "咕咕", "巨鉗蟹", "迷唇姐"]
-        punishment = ["用屁股寫名字", "畫臉", "跳繩", "交互蹲跳", "夾夾子", "跑操場"]
-        player_max = 10 //玩家人數
+        punishment = ["用屁股寫名字", "畫臉", "跳繩5/10下", "交互蹲跳10下", "全隊跑1圈"]
+        //player_max = 10 //玩家人數
+        player_max = $(".playercount").val() //玩家人數
         player_list = []
 
     function randomNum(r_max){
@@ -40,21 +41,33 @@ $(document).ready(function(){
         }
 
         //判斷2人角色不重複
-        if (Bulbasaur_selected == true){
-            if (x==0) x+=2
+        //妙蛙種子
+        if (Bulbasaur_selected == false && x==0){
+            Bulbasaur_selected = true
         }
-        if (Zubat_selected == true){
+        else if (Bulbasaur_selected == true && x==0){
+            x+=2
+        }
+
+        //超音蝠
+        if (Zubat_selected == false && x==1){
+            Zubat_selected = true
+        }
+        else if (Zubat_selected == true && x==1){
+            x+=3
+        }
+
+        if(count>=player_max-1){
+            if (x==0) x+=2
             if (x==1) x+=3
         }
-        if (Bulbasaur_selected == false){
-            if (x==0) Bulbasaur_selected = true
+
+        //人數控制
+        if(x==0 || x==1){
+            count += 2
         }
-        if (Zubat_selected == false){
-            if (x==1) Zubat_selected = true
-        }
-        if(count>=9){
-            if (x==0) x+=2
-            if (x==1) x+=3
+        else{
+            count += 1
         }
 
         t = x //暫存變數
@@ -65,31 +78,32 @@ $(document).ready(function(){
         if (ball_selected == false){
             var r_max = player.length
                 imagegroup = $(".image-group")
+                cardtitle = $(".cardtitle")
                 cardcontain = $(".cardcontain")
+                player_max = $(".playercount").val() //玩家人數
 
-            cardcontain.remove()
             imagegroup.remove()
+            cardtitle.remove()
+            cardcontain.remove()
 
             for (var i = 0; i < player_max; i++) {
                 var p = randomNum(r_max)
                 player_list[i] = player_c[p]
+
                 contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
+
                 var image = $(".image"+i)
                 image.css({"background-image":"url("+player[p]+".png)"})
 
-                if(p==0 || p==1){
-                    count += 2
-                }
-                else{
-                    count += 1
-                }
-
-                if (count >= 10){
+                if (count >= player_max){
                     break
                 }
             }
+
             ball_selected = true //重複按紐控制
-            console.log('player_list:', player_list)
+            //console.log('player_list:', player_list)
+            //console.log('count:', count)
+            //console.log(player_max)
         }
     })
 
@@ -98,22 +112,29 @@ $(document).ready(function(){
             var r_max = punishment.length
                 p = randomNum(r_max)
                 imagegroup = $(".image-group")
+                cardtitle = $(".cardtitle")
                 cardcontain = $(".cardcontain")
 
-            cardcontain.remove()
             imagegroup.remove()
-            contain.append("<div class='cardcontain'>"+punishment[p]+"</div>")
-            card_selected = true //重複按紐控制
-            console.log('punishment:', punishment[p])
+            cardtitle.remove()
+            cardcontain.remove()
+
+            contain.append("<div class='cardtable'><div class='cardtitle'>命運卡</div><div class='cardcontain'>"+punishment[p]+"</div></div>")
+
+            //card_selected = true //重複按紐控制
+            //console.log('punishment:', punishment[p])
         }
     })
 
     cleaner.click(function(){
         var imagegroup = $(".image-group")
+            cardtitle = $(".cardtitle")
             cardcontain = $(".cardcontain")
 
-        cardcontain.remove()
         imagegroup.remove()
+        cardtitle.remove()
+        cardcontain.remove()
+
         ball_selected = false
         card_selected = false
         Bulbasaur_selected = false
