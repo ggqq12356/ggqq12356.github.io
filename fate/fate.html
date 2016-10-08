@@ -7,9 +7,11 @@
 	<link rel="shortcut icon" href="../game.ico"/>
 	<link rel="bookmark" href="../game.ico"/>
 	<style type="text/css">
+		@import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
 		*{
-			font-family: Microsoft JhengHei; /* 微軟正黑體 */
+			/*font-family: Microsoft JhengHei; /* 微軟正黑體 */
 			/*font-family: DFKai-sb; /* 標楷體字型 */
+			font-family: 'cwTeXHei', serif; /* Google思源黑體 */
             font-weight: bold; /* 字體粗細 */
 		}
 		.contain{
@@ -30,7 +32,7 @@
 		.image-group{
 			background-image: url();
 			background-size: cover;
-			color: #FFFF00;
+			color: yellow;
 			font-size: 22px;
 			text-align: left;
 			width: 120px;
@@ -118,11 +120,16 @@
 			height: auto;
 		}
 		.playercount{
-			background-color: purple;
-			font-size: 80px;
+			color: white;
+			background-color: tomato;
+			font-size: 70px;
 			text-align: center;
 			width: 112px;
 			height: 112px;
+			border-radius: 90px;
+			border-width: medium;
+			border-style: solid;
+			border-color: lawngreen;
 		}
 		.ball{
 			background-image: url(Ball_Poke.png);
@@ -140,35 +147,39 @@
 		}
 		.cardtitle{
 			color: orange;
-			background-color: none;
+			background-color: white;
 			font-size: 80px;
 			text-align: center;
 			margin-top: -580px;
-			margin-left: 30px;
-			margin-right: 30px;
+			margin-left: 50px;
+			margin-right: 50px;
 			padding-top: 10px;
 			padding-bottom: 10px;
 			border-color: #00FF00;
-			border-style: dashed;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
+			border-style: dotted;
+			border-width: thick;
+			border-top-left-radius: 50px;
+			border-top-right-radius: 50px;
+			opacity: 0.9;
 		}
 		.cardcontain{
-			color: yellow;
-			background-color: none;
+			color: lawngreen;
+			background-color: white;
 			font-size: 60px;
 			text-align: center;
 			margin-top: 0px;
-			margin-left: 30px;
-			margin-right: 30px;
+			margin-left: 50px;
+			margin-right: 50px;
 			padding-top: 80px;
 			padding-bottom: 80px;
 			padding-left: 0px;
 			border-color: #00FF00;
-			border-style: dashed;
+			border-style: dotted;
 			border-top: 0px;
-			border-bottom-left-radius: 10px;
-			border-bottom-right-radius: 10px;
+			border-width: thick;
+			border-bottom-left-radius: 50px;
+			border-bottom-right-radius: 50px;
+			opacity: 0.9;
 		}
 		.cleaner{
 			background-image: url(Cleaner.png);
