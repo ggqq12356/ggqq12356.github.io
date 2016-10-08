@@ -78,13 +78,11 @@ $(document).ready(function(){
         if (ball_selected == false){
             var r_max = player.length
                 imagegroup = $(".image-group")
-                cardtitle = $(".cardtitle")
-                cardcontain = $(".cardcontain")
+                cardtable = $(".cardtable")
                 player_max = $(".playercount").val() //玩家人數
 
             imagegroup.remove()
-            cardtitle.remove()
-            cardcontain.remove()
+            cardtable.remove()
 
             for (var i = 0; i < player_max; i++) {
                 var p = randomNum(r_max)
@@ -112,28 +110,24 @@ $(document).ready(function(){
             var r_max = punishment.length
                 p = randomNum(r_max)
                 imagegroup = $(".image-group")
-                cardtitle = $(".cardtitle")
-                cardcontain = $(".cardcontain")
+                cardtable = $(".cardtable")
 
             imagegroup.remove()
-            cardtitle.remove()
-            cardcontain.remove()
+            cardtable.remove()
 
             contain.append("<div class='cardtable'><div class='cardtitle'>命運卡</div><div class='cardcontain'>"+punishment[p]+"</div></div>")
 
-            //card_selected = true //重複按紐控制
+            card_selected = true //重複按紐控制
             //console.log('punishment:', punishment[p])
         }
     })
 
     cleaner.click(function(){
         var imagegroup = $(".image-group")
-            cardtitle = $(".cardtitle")
-            cardcontain = $(".cardcontain")
+            cardtable = $(".cardtable")
 
         imagegroup.remove()
-        cardtitle.remove()
-        cardcontain.remove()
+        cardtable.remove()
 
         ball_selected = false
         card_selected = false
