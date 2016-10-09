@@ -18,7 +18,8 @@ $(document).ready(function(){
         card = $(".card")
         cleaner = $(".cleaner")
         r_max = 0
-        t = 0
+        t1 = 0
+        t2 = 0
         count = 0
         ball_selected = false
         card_selected = false
@@ -27,16 +28,26 @@ $(document).ready(function(){
         //暫停角色："Plusle_Minun", "正負拍拍"
     	player = ["Bulbasaur", "Zubat", "Dragonite", "Hoothoot", "Kingler", "Jynx"]
         player_c = ["妙蛙種子", "超音蝠", "快龍", "咕咕", "巨鉗蟹", "迷唇姐"]
-        punishment = ["用屁股寫名字", "畫臉", "跳繩5/10下", "交互蹲跳10下", "全隊跑1圈"]
+        punishment = ["用屁股寫名字", "畫臉", "跳繩5/10下", "用屁股寫名字", "交互蹲跳10下", "全隊跑1圈", "用屁股寫名字"]
         //player_max = 10 //玩家人數
         player_max = $(".playercount").val() //玩家人數
         player_list = []
 
-    function randomNum(r_max){
+    function randomNumY(r_max){
+        var y = Math.floor(Math.random() * r_max)
+
+        //減少重複機率
+        if (y==t2) y = Math.floor(Math.random() * r_max)
+
+        t2 = y //暫存變數
+        return y
+    }
+
+    function randomNumX(r_max){
         var x = Math.floor(Math.random() * r_max)
 
         //減少重複機率
-        if (x==t) x = Math.floor(Math.random() * r_max)
+        if (x==t1) x = Math.floor(Math.random() * r_max)
 
         //判斷2人角色不重複
         //妙蛙種子
@@ -70,7 +81,7 @@ $(document).ready(function(){
         if (x==0 || x==1) count+=2
         else count+=1
 
-        t = x //暫存變數
+        t1 = x //暫存變數
         return x
     }
 
@@ -85,7 +96,7 @@ $(document).ready(function(){
             cardtable.remove()
 
             for (var i=0 ; i<player_max ; i++) {
-                var p = randomNum(r_max)
+                var p = randomNumX(r_max)
                 player_list[i] = player_c[p]
 
                 contain.append("<div class='image-group image"+i+"'>"+"("+(i+1)+")"+player_c[p]+"</div>")
@@ -106,7 +117,7 @@ $(document).ready(function(){
     card.click(function(){
         if (card_selected == false){
             var r_max = punishment.length
-                p = randomNum(r_max)
+                p = randomNumY(r_max)
                 imagegroup = $(".image-group")
                 cardtable = $(".cardtable")
 
@@ -115,7 +126,7 @@ $(document).ready(function(){
 
             contain.append("<div class='cardtable'><div class='cardtitle'>命運卡</div><div class='cardcontain'>"+punishment[p]+"</div></div>")
 
-            card_selected = true //重複按紐控制
+            //card_selected = true //重複按紐控制
             //console.log('punishment:', punishment[p])
         }
     })
