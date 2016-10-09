@@ -95,7 +95,8 @@ $(document).ready(function(){
             imagegroup.remove()
             cardtable.remove()
 
-            for (var i=0 ; i<player_max ; i++) {
+            var i=0
+            for (i=0 ; i<player_max ; i++){
                 var p = randomNumX(r_max)
                 player_list[i] = player_c[p]
 
@@ -126,7 +127,7 @@ $(document).ready(function(){
 
             contain.append("<div class='cardtable'><div class='cardtitle'>命運卡</div><div class='cardcontain'>"+punishment[p]+"</div></div>")
 
-            //card_selected = true //重複按紐控制
+            card_selected = true //重複按紐控制
             //console.log('punishment:', punishment[p])
         }
     })
