@@ -36,39 +36,39 @@ $(document).ready(function(){
         var x = Math.floor(Math.random() * r_max)
 
         //減少重複機率
-        if (x==t){
-            x = Math.floor(Math.random() * r_max)
-        }
+        if (x==t) x = Math.floor(Math.random() * r_max)
 
         //判斷2人角色不重複
         //妙蛙種子
-        if (Bulbasaur_selected == false && x==0){
-            Bulbasaur_selected = true
-        }
-        else if (Bulbasaur_selected == true && x==0){
+        if (count<=4 && x==0){
             x+=2
         }
-
+        else if (x==0){
+            if (Bulbasaur_selected != true){
+                Bulbasaur_selected = true
+            }
+            else{
+                x+=2
+            }
+        }
         //超音蝠
-        if (Zubat_selected == false && x==1){
-            Zubat_selected = true
-        }
-        else if (Zubat_selected == true && x==1){
-            x+=3
+        if (x==1){
+            if (Zubat_selected != true){
+                Zubat_selected = true
+            }
+            else{
+                x+=3
+            }
         }
 
-        if(count>=player_max-1){
+        if (count>=player_max-1){
             if (x==0) x+=2
             if (x==1) x+=3
         }
 
         //人數控制
-        if(x==0 || x==1){
-            count += 2
-        }
-        else{
-            count += 1
-        }
+        if (x==0 || x==1) count+=2
+        else count+=1
 
         t = x //暫存變數
         return x
@@ -84,7 +84,7 @@ $(document).ready(function(){
             imagegroup.remove()
             cardtable.remove()
 
-            for (var i = 0; i < player_max; i++) {
+            for (var i=0 ; i<player_max ; i++) {
                 var p = randomNum(r_max)
                 player_list[i] = player_c[p]
 
@@ -93,9 +93,7 @@ $(document).ready(function(){
                 var image = $(".image"+i)
                 image.css({"background-image":"url("+player[p]+".png)"})
 
-                if (count >= player_max){
-                    break
-                }
+                if (count >= player_max) break
             }
 
             ball_selected = true //重複按紐控制
