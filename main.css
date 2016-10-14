@@ -13,7 +13,7 @@
 		--shadow-color: none;
 		--line-color: none;
 
-		/* 
+		/*
 		display : inline / inline-block / inline-flex / inline-grid / inline-table
 		position : relative / absolute
 
@@ -142,8 +142,8 @@
 	.list{
 		width: 300px;
 		height: 400px;
-		background-image: url(body_bg.png);
-		/*background-color: purple;*/
+		/*background-image: url(body_bg.png);*/
+		background-color: purple;
 		background-size: auto;
         text-align: center;
 		border: 3px solid none;
