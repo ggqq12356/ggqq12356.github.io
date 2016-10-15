@@ -40,7 +40,7 @@
 	 */
 	 /*
 	@font-face {
-	  font-family: 'cwTeXHei';
+	  font-family: cwTeXHei;
 	  font-style: normal;
 	  font-weight: 500;
 	  src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot);
@@ -51,13 +51,19 @@
 	}
 	*/
 
+	@font-face {
+		font-family: 'Suicide Squad Font';
+		src: url('./font/Suicide Squad Font.ttf');
+	}
+
 	*{
 		width: auto;
 		height: auto;
-		font-family: Microsoft JhengHei; /* 微軟正黑體 */
+		/*font-family: Microsoft JhengHei, sans-serif; /* 微軟正黑體 */
+		font-family: 'Suicide Squad Font', 'Microsoft JhengHei';
 		/*font-family: DFKai-sb; /* 標楷體字型 */
 		/*font-family: 'cwTeXHei', serif; /* Google思源黑體 */
-		font-weight: bold; /* 字體粗細 */
+		font-weight: normal; /* 字體粗細 */
 	}
 
 	body{
@@ -92,7 +98,7 @@
 	}
 	.barfont{
 		font-size: 50px;
-		font-weight: bolder;
+		font-weight: bold;
 		color: var(--milk);
 		transition-duration: 0.5s;
 	}
@@ -175,6 +181,7 @@
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
 		margin-left: 5px;
+
 	}
 	.title{
 		width: auto;
