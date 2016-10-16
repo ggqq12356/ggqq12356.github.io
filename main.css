@@ -22,10 +22,10 @@
 		--top-display: auto;
 		--top-position: auto;
 
-		--mid-display: inline-flex;
+		--mid-display: flex;
 		--mid-position: auto;
 
-		--introduction-display: flex;
+		--introduction-display: auto;
 		--introduction-position: auto;
 
 		--top-z-index: 0;
@@ -131,7 +131,7 @@
 		display: var(--mid-display);
 		position: var(--mid-position);
 		width: auto;
-		height: auto;
+		height: 400px;
 		top: 50%;
 		margin-top: 5px;
 		margin-bottom: 5px;
@@ -142,7 +142,7 @@
     /* horizon line */
 	.line{
 		width: auto;
-		height: 10px;
+		height: 5px;
 		background-color: var(--milk);
 		border: 0px;
 	}
@@ -156,7 +156,7 @@
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
-        margin-top: 0px;
+        margin: 0px;
         padding-top: 21px;
         line-height: 16px;
 		text-align: center;
@@ -182,7 +182,10 @@
 		color: var(--milk);
 		transition-duration: 0.5s;
 	}
-	.icon:hover{font-size: 48px; cursor: pointer;}
+	.icon:hover{
+		font-size: 48px;
+		cursor: pointer;
+	}
 	.fa-github:hover{color: var(--github-color);}
 	.fa-facebook-square:hover{color: var(--facebook-color);}
 	.fa-youtube-square:hover{color: var(--youtube-color);}
@@ -192,7 +195,7 @@
 
 	/* 清單 */
 	.list{
-		width: 300px;
+		width: 360px;
 		height: auto;
 		/*background-image: url(body_bg.png);*/
 		background-color: purple;
@@ -213,7 +216,7 @@
 	}
 	.text{
 		color: white;
-		font-size: 30px;
+		font-size: 25px;
 		text-decoration: none;
 		transition-duration: 1s;
 		font-family: 'Funkrocker', 'cwTeXHei';
@@ -239,24 +242,23 @@
 		top: 50%;
 		left: 50%;
 		margin-top: 0px;
-		margin-left: 5px;
+		margin-left: 0px;
 		margin-bottom: 0px;
-		padding-left: 5px;
 		display: var(--introduction-display);
 		position: var(--introduction-position);
 		z-index: var(--introduction-z-index);
 	}
 	.author{
-		width: 300px;
-		height: auto;
+		width: 360px;
+		height: 475px;
 		color: var(--bodypink);
 		background-color: var(--lightblue);
 		border: 3px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
 		transition-duration: 0.5s;
-		padding-top: 8px;
-		padding-bottom: 7px;
+		padding-top: 0px;
+		padding-bottom: 0px;
 	}
 	.author:hover{
 		color: var(--lightblue);
