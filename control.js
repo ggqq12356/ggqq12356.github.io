@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$(".icon").hide();
 	});
 	*/
-
+	
 	$(".fun").click(function(){
 		alert("\n" + "呆呆獸：蛤？");
 	})

@@ -1,0 +1,71 @@
+body{
+    text-align: center;
+    background-color: rgb(124, 196, 255);
+    font-family: 微軟正黑體;
+    z-index: 1;
+}
+.header{
+    background-color: white;
+    z-index: 2;
+    opacity: 0.5;
+    margin-bottom: 10px;
+}
+.title{
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    position: static;
+    display: block;
+}
+.contain{
+    width: auto;
+    height: auto;
+    position: relative;
+    display: inline-block;
+}
+.image{
+    width: 646.5px;
+    height: 713px;
+    background-image: url(popmusic.jpg);
+    background-size: cover;
+    margin-left: 240px;
+    border-radius: 45px;
+}
+.tb{
+    width: 260px;
+    height: 640px;
+    background-color: #ff7e7e;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+.btb1{
+    margin-left: -30px;
+    margin-top: -700px;
+}
+.btb2{
+    margin-left: 917px;
+    margin-top: -660px;
+}
+.bt{
+    width: 200px;
+    height: 60px;
+    background-color: lightgreen;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 0px 90px 0px 90px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: blue;
+    text-align: center;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.bt:hover{
+    color: red;
+    padding-left: 15px;
+    border-color: yellow;
+}
+.bt:active{
+    color: yellow;
+}
