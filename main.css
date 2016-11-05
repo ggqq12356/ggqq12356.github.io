@@ -73,11 +73,11 @@
 	*{
 		width: auto;
 		height: auto;
-		font-weight: normal; /* 字體粗細 */
+		font-weight: bold; /* 字體粗細 */
 		/* 字體 */
 		/*font-family: 標楷體;*/
 		/*font-family: 新細明體;*/
-		/*font-family: 微軟正黑體;*/
+		font-family: 微軟正黑體;*/
 		/*font-family: 'cwTeXHei'; /* Google思源黑體 */
 		/*font-family: 'DK Crayon Crumble', 'cwTeXHei';*/
 		/*font-family: 'FNL_DEMO-KCFonts', 'cwTeXHei';*/
@@ -120,7 +120,7 @@
 		font-weight: bold;
 		color: var(--milk);
 		transition-duration: 0.5s;
-		font-family: 'Suicide Squad Font';
+		/*font-family: 'Suicide Squad Font';*/
 	}
 	.barfont:hover{
 		color: yellow;
@@ -167,7 +167,7 @@
 		background-color: var(--milk);
 		border: 1px solid var(--bodypink);
 		border-radius: 0px;
-		font-family: 'Suicide Squad Font';
+		/*font-family: 'Suicide Squad Font';*/
 	}
 	.bt{
 		color: var(--milk);
@@ -212,14 +212,14 @@
 		color: white;
 		font-size: 37px;
 		font-weight: bolder;
-		font-family: 'DK Crayon Crumble';
+		/*font-family: 'DK Crayon Crumble';*/
 	}
 	.text{
 		color: white;
 		font-size: 25px;
 		text-decoration: none;
 		transition-duration: 1s;
-		font-family: 'Funkrocker', 'cwTeXHei';
+		/*font-family: 'Funkrocker', 'cwTeXHei';*/
 	}
 	.text:hover{
 		color: var(--milk);
@@ -276,7 +276,7 @@
 		transition-duration: 0.5s;
 		cursor: pointer;
 		text-align: left;
-		font-family: 'Suicide Squad Font', 'cwTeXHei';
+		/*font-family: 'Suicide Squad Font', 'cwTeXHei';*/
 	}
 	.authorfont:hover{
 		color: var(--milk);
