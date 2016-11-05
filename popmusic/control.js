@@ -10,7 +10,7 @@ window.onload = function(){
 
     var max = 12
     var min = 1
-    var r = parseInt(Math.random() * (max - min + 1))
+    var r = parseInt(Math.random() * (max - min + 1) + 1)
     ans = 's'+r
     console.log('[答案]：'+ans)
 
