@@ -2,34 +2,39 @@ body{
     background-color: grey;
 }
 .contain{
-    width: 750px;
+    width: 825px;
     height: 750px;
-    text-align: center;
     margin-left: 20%;
     margin-top: 2.5%;
     background-color: darkgrey;
 }
+.header{
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 9px;
+}
 .title{
     color: white;
     font-size: 50px;
-    padding-top: 1.25%;
     cursor: pointer;
     transition-duration: 0.5s;
     text-decoration: none;
 }
 .title:hover{
-    color: yellow;
+    color: green;
 }
 .window{
-    width: 600px;
+    width: 675px;
     height: 600px;
     background-color: white;
-    margin-left: 12.5%;
-    margin-top: 2.5%;
+    margin-left: 75px;
+    /*margin-top: 25px;*/
 }
 .player{
     width: 75px;
     height: 75px;
-    background-color: black;
+    background-color: red;
+    color: blue;
+    font-size: 50px;
     cursor: pointer;
 }
