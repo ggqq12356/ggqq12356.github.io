@@ -181,6 +181,7 @@ $(document).ready(function() {
 					t_m = t_array[1]
 
 					if (Am_Pm=='下午'||Am_Pm=='下午 ') t_h = parseInt(t_h)+12
+					if(t_h.length<2) t_h = '0'+t_h
 					t = t_h+':'+t_m
 					Start_Times.push(t) //起始時間
 					break;
@@ -196,6 +197,7 @@ $(document).ready(function() {
 					t_m = t_array[1]
 
 					if (Am_Pm=='下午'||Am_Pm=='下午 ') t_h = parseInt(t_h)+12
+					if(t_h.length<2) t_h = '0'+t_h
 					t = t_h+':'+t_m
 					End_Times.push(t) //結束時間
 					break;
@@ -222,8 +224,7 @@ $(document).ready(function() {
 	setTimeout(function() {
 
 		for(i=0;i<Bands_Name.length;i++){
-			Test_Events[i] = 
-			{
+			Test_Events[i] = {
 				title: Bands_Name[i],
 			    start: Date_Times[i]+'T'+Start_Times[i],
 			    end:   Date_Times[i]+'T'+End_Times[i],
