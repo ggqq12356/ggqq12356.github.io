@@ -250,6 +250,6 @@ $(document).ready(function() {
 		//$('#calendar').fullCalendar( 'renderEvents', Band_Events, true );
 		$('#calendar').fullCalendar( 'addEventSource', Test_Events );
 
-	}, 400);
+	}, 1000);
 		
 });
