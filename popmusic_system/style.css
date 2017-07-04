@@ -1,0 +1,73 @@
+body{
+	background-color: #990099;
+}
+
+.main{
+	margin-left: 0%;
+}
+
+.top{
+	
+}
+
+.mid{
+
+}
+
+.bottom{
+
+}
+
+.title{
+	font-size: 20px;
+	color: yellow;
+}
+
+.font{
+	font-size: 20px;
+	color: yellow;
+}
+
+/*
+@media screen and (min-width: 950px) {
+    body {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}
+*/
+
+.fc-left,
+.fc-right {
+    font-size: 16px;
+    color: #000;
+}
+ 
+.fc-today {
+    background-color: #DDD !important
+}
+
+.fc-toolbar {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #888888;
+    background-color: white;
+    text-shadow: 0 0 5px #C6C6C6;
+}
+ 
+.fc-view-container {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #888888;
+    background-color: white;
+}
+ 
+.fc-day-number {
+    font-size: 20px;
+}
+
+.excel {
+	width: 1100px;
+	height: 200px;
+}
+

@@ -1,0 +1,12 @@
+spreadsheetId
+1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M
+
+api
+AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA
+
+https://sheets.googleapis.com/v4/spreadsheets/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/values/A1%3AG2?key=AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA
+
+
+https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/1/public/values?alt=json
+
+https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/2/public/values?alt=json

@@ -247,4 +247,17 @@ $(function(){
         score_add *= 1.05;
     }
 
+    //stats.js
+    var script=document.createElement('script');
+    script.onload=function(){
+        var stats=new Stats();
+        document.body.appendChild(stats.dom);
+        requestAnimationFrame(function loop(){
+            stats.update();
+            requestAnimationFrame(loop)});
+    };
+    //script.src='//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+    script.src='../js/stats.min.js';
+    document.head.appendChild(script);
+
 })
