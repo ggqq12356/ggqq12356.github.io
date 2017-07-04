@@ -21,6 +21,8 @@ body{
 .title{
 	font-size: 20px;
 	color: yellow;
+    margin-left: 20px;
+    text-decoration:none;
 }
 
 .font{

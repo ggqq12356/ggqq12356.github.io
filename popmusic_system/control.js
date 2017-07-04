@@ -40,9 +40,11 @@ $(document).ready(function() {
 
     	defaultView: 'agendaWeek',
     	height: 650,
-        selectable: true,
-        selectHelper: true,
-        //unselectAuto: false,
+        //selectable: true,
+        //selectHelper: true,
+        //unselectAuto: true,
+
+        //timezone: 'UTC',
 
         /*
         //Google Calendar
@@ -78,10 +80,101 @@ $(document).ready(function() {
 
         //修改事件
         eventClick: function(event, element, view) {
-        	//var new_title = prompt('編輯', event.title);
-	        //event.title = new_title;
-	        //$('#calendar').fullCalendar('updateEvent', event);
-			return false;
+        	/*
+        	var new_title = prompt('編輯', event.title);
+	        event.title = new_title;
+	        $('#calendar').fullCalendar('updateEvent', event);
+	        console.log(event.title)
+	        */
+			return false
+	    },
+
+    	//typeof()
+    	//.toString()
+    	//.parseInt()
+
+	    //選擇
+	    select: function( start, end, jsEvent, view, resource){
+
+	    	//start
+	    	slt_st = start._i
+	    	slt_st = slt_st.toString().split(",")
+
+	    	slt_yr_st = slt_st[0]
+	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
+	    	slt_day_st = slt_st[2]
+	    	slt_hr_st = slt_st[3]
+	    	slt_min_st = slt_st[4]
+
+	    	//格式轉換
+	    	if(slt_mth_st.length<2) slt_mth_st = '0'+slt_mth_st
+	    	if(slt_day_st.length<2) slt_day_st = '0'+slt_day_st
+	    	if(slt_hr_st.length<2) slt_hr_st = '0'+slt_hr_st
+	    	if(slt_min_st.length<2) slt_min_st = '0'+slt_min_st
+			
+	    	//end
+	    	slt_end = end._i
+	    	slt_end = slt_end.toString().split(",")
+
+	    	slt_yr_end = slt_end[0]
+	    	slt_mth_end = (parseInt(slt_end[1])+1).toString()
+	    	slt_day_end = slt_end[2]
+	    	slt_hr_end = slt_end[3]
+	    	slt_min_end = slt_end[4]
+
+	    	//格式轉換
+	    	if(slt_mth_end.length<2) slt_mth_end = '0'+slt_mth_end
+	    	if(slt_day_end.length<2) slt_day_end = '0'+slt_day_end
+	    	if(slt_hr_end.length<2) slt_hr_end = '0'+slt_hr_end
+	    	if(slt_min_end.length<2) slt_min_end = '0'+slt_min_end
+	    	
+	    	//
+	    	dt_st = slt_yr_st+'-'+slt_mth_st+'-'+slt_day_st
+	    	st_t = slt_hr_st+':'+slt_min_st
+	    	Select_Events_Start = dt_st+'T'+st_t
+
+	    	dt_end = slt_yr_end+'-'+slt_mth_end+'-'+slt_day_end
+	    	end_t = slt_hr_end+':'+slt_min_end
+	    	Select_Events_End = dt_end+'T'+end_t
+
+	    	//console.log(Select_Events_Start)
+	    	//console.log(Select_Events_End)
+
+	    	//New_Band_Name = prompt('團名', event.title);
+	    	//New_Band_Name = bootbox.prompt('團名', function(result){});
+
+	    	New_Band_Name = ''
+
+	    	bootbox.prompt({ 
+			  size: "small",
+			  title: "團名", 
+			  callback: function(result){
+
+			  	New_Band_Name = result
+				console.log(New_Band_Name)
+			  	if(New_Band_Name==null||New_Band_Name==''){}
+		    	else{
+			    	Select_Events = [];
+					Select_Events.push(
+					{
+						title: New_Band_Name,
+					    start: Select_Events_Start,
+					    end:   Select_Events_End,
+					    color: 'yellow',
+						textColor: 'black',
+					    editable: false,
+					});
+
+					//console.log(Select_Events)
+
+					$('#calendar').fullCalendar( 'addEventSource', Select_Events );
+				}
+
+			  }
+
+			})			
+
+	    	
 	    },
 
 	    /*
