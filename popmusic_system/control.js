@@ -40,8 +40,8 @@ $(document).ready(function() {
 
     	defaultView: 'agendaWeek',
     	height: 650,
-        selectable: true,
-        //selectHelper: true,
+        //selectable: true,
+        selectHelper: true,
         //unselectAuto: true,
 
         //timezone: 'UTC',
@@ -210,9 +210,9 @@ $(document).ready(function() {
 	AjaxUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/"+ranges+"?key="+API_KEY;
 	*/
 
-	AjaxUrl_1 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/1/public/values?alt=json';
+	AjaxUrl_1 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/2/public/values?alt=json';
 
-	AjaxUrl_2 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/2/public/values?alt=json';
+	AjaxUrl_2 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/3/public/values?alt=json';
 
 	Json = ''; //json
 	Timestamps = []; //時間戳記
