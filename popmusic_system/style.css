@@ -1,5 +1,5 @@
 body{
-	background-color: #990099;
+	background-color: grey;
 }
 
 .main{
@@ -18,15 +18,38 @@ body{
 
 }
 
-.excel {
-    width: 400px;
+.popmusic_logo{
+    background-image: url('popmusic.jpg');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-attachment: inherit;
+    background-size: cover;
+    margin:0px auto;
+    width: 200px;
     height: 200px;
+}
+
+.toolbar{
+    margin:0px auto;
+    width: 300px;
+    text-align: center;
+    border:5px orange solid;
+}
+
+.excel-table{
+    margin:0px auto;
+    text-align: center;
+}
+
+.excel {
+    //width: auto;
+    height: 300px;
 }
 
 .title{
 	font-size: 20px;
 	color: yellow;
-    margin-left: 20px;
+    //margin-right: 20px;
     text-decoration:none;
 }
 

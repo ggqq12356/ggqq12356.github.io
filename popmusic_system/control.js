@@ -1,36 +1,68 @@
 $(document).ready(function() {
 
 	/*
+	API_KEY = 'AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA'
+	CLIENT_ID = '754211882017-b1ieivvifmrdvga3jq6atcefs5l4s33k.apps.googleusercontent.com'
+	scope = 'https://www.googleapis.com/auth/calendar'
+
 	function start() {
-		// 2. Initialize the JavaScript client library.
-		gapi.client.init({
-		'apiKey': 'AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA',
-		// Your API key will be automatically added to the Discovery Document URLs.
-		'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
-		// clientId and scope are optional if auth is not required.
-		'clientId': '754211882017-b1ieivvifmrdvga3jq6atcefs5l4s33k.apps.googleusercontent.com',
-		'scope': 'profile',
-		}).then(function() {
-		// 3. Initialize and make the API request.
-		return gapi.client.people.people.get({
-		  'resourceName': 'people/me',
-		  'requestMask.includeField': 'person.names'
-		});
-		}).then(function(response) {
-		console.log(response.result);
-		}, function(reason) {
-		console.log('Error: ' + reason.result.error.message);
-		});
+		  // 2. Initialize the JavaScript client library.
+		  gapi.client.init({
+		    'apiKey': API_KEY,
+		    // Your API key will be automatically added to the Discovery Document URLs.
+		    'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+		    //https://people.googleapis.com/$discovery/rest
+		    //https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest
+		    // clientId and scope are optional if auth is not required.
+		    'clientId': CLIENT_ID,
+		    'scope': scope,
+		  }).then(function() {
+		    // 3. Initialize and make the API request.
+		    return gapi.client.people.people.get({
+		      'resourceName': 'people/me',
+		      'requestMask.includeField': 'person.names'
+		    });
+		  }).then(function(response) {
+		    console.log(response.result);
+		  }, function(reason) {
+		    console.log('Error: ' + reason.result.error.message);
+		  });
 	};
 	// 1. Load the JavaScript client library.
 	gapi.load('client', start);
 	*/
+	
 
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
+	var styles = 'background: #f0f; color: #fff; padding: 0 100px; font-size: 30px;'
+	console.log("%c"+"阿嘶～～～！(´;ω;`)", styles)
+
+	/*
+    var date = new Date()
+    var d = date.getDate()
+    var m = date.getMonth()
+    var y = date.getFullYear()
+    */
     
+    color = ['red','orange','yellow','green','blue','purple']
+
+    function random(min,max) {
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+
+	//-----------------Excel-Table-----------------
+	winWidth = (window.innerWidth/1.3)
+	$('.excel').css({"width":winWidth})
+
+    //-----------------Full Calendar---------------
+
+
+	Select_Events = []
+
+    newBand_Name = ''
+	Select_Events_Start = ''
+	Select_Events_End = ''
+	RegisterTime = ''
+
     $('#calendar').fullCalendar({
     	header:{
     		left:   'title',
@@ -40,8 +72,8 @@ $(document).ready(function() {
 
     	defaultView: 'agendaWeek',
     	height: 650,
-        //selectable: true,
-        selectHelper: true,
+        selectable: true,
+        //selectHelper: true,
         //unselectAuto: true,
 
         //timezone: 'UTC',
@@ -81,9 +113,9 @@ $(document).ready(function() {
         //修改事件
         eventClick: function(event, element, view) {
         	/*
-        	var new_title = prompt('編輯', event.title);
-	        event.title = new_title;
-	        $('#calendar').fullCalendar('updateEvent', event);
+        	var new_title = prompt('編輯', event.title)
+	        event.title = new_title
+	        $('#calendar').fullCalendar('updateEvent', event)
 	        console.log(event.title)
 	        */
 			return false
@@ -95,16 +127,19 @@ $(document).ready(function() {
 
 	    //選擇
 	    select: function( start, end, jsEvent, view, resource){
-
+	    	
 	    	//start
 	    	slt_st = start._i
 	    	slt_st = slt_st.toString().split(",")
+
 
 	    	slt_yr_st = slt_st[0]
 	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
 	    	slt_day_st = slt_st[2]
 	    	slt_hr_st = slt_st[3]
 	    	slt_min_st = slt_st[4]
+
+
 
 	    	//格式轉換
 	    	if(slt_mth_st.length<2) slt_mth_st = '0'+slt_mth_st
@@ -136,46 +171,73 @@ $(document).ready(function() {
 	    	dt_end = slt_yr_end+'-'+slt_mth_end+'-'+slt_day_end
 	    	end_t = slt_hr_end+':'+slt_min_end
 	    	Select_Events_End = dt_end+'T'+end_t
+	    	
+	    	RegisterTime = slt_yr_st+'/'+slt_mth_st+'/'+slt_day_st
 
 	    	//console.log(Select_Events_Start)
 	    	//console.log(Select_Events_End)
 
-	    	//New_Band_Name = prompt('團名', event.title);
-	    	//New_Band_Name = bootbox.prompt('團名', function(result){});
+	    	//newBand_Name = prompt('團名', event.title)
+	    	//newBand_Name = bootbox.prompt('團名', function(result){})
 
-	    	New_Band_Name = ''
+	    	newName = ''
+	    	newBand_Name = ''
 
-	    	bootbox.prompt({ 
-			  size: "small",
-			  title: "團名", 
-			  callback: function(result){
+			bootbox.prompt({
+				  size: "small",
+				  title: "團名",
+				  callback: function(result){
 
-			  	New_Band_Name = result
-				//console.log('團名 : '+New_Band_Name)
-			  	if(New_Band_Name==null||New_Band_Name==''){}
-		    	else{
-			    	Select_Events = [];
-					Select_Events.push(
-					{
-						title: New_Band_Name,
-					    start: Select_Events_Start,
-					    end:   Select_Events_End,
-					    color: 'yellow',
-						textColor: 'black',
-					    editable: false,
-					});
+				  	newBand_Name = result
+					//console.log('團名 : '+newBand_Name)
 
-					//console.log(Select_Events)
+					//2017-07-05T17:58:11.939Z
+					d = new Date()
+					newD = d.toLocaleString()
+					newDate = d.toLocaleDateString()
+					newTime = d.toLocaleTimeString()
 
-					$('#calendar').fullCalendar( 'addEventSource', Select_Events );
-				}
+					nt1 = newTime.slice(0,2)
+					nt1 = nt1+' '
+					nt2 = newTime.slice(2)
+					
+					newTime = nt1+nt2
+					//console.log(newTime)
 
-			  }
+					addEventTimestamp = newTime
 
-			})			
+				  	if(newBand_Name==null||newBand_Name==''){}
+			    	else{
+				    	Select_Events = []
+						Select_Events.push(
+						{
+							title: newBand_Name,
+						    start: Select_Events_Start,
+						    end:   Select_Events_End,
+						    color: color[random(0, color.length-1)],
+							textColor: 'black',
+						    editable: false,
+						})
 
-	    	
+						//console.log(Select_Events[0])
+
+						$('#calendar').fullCalendar( 'addEventSource', Select_Events )
+					}
+				  }
+
+			})
+	    	bootbox.prompt({
+				  size: "small",
+				  title: "姓名", 
+				  callback: function(result){
+				  	newName = result
+				  }
+			})
+
+			
+
 	    },
+
 
 	    /*
 	    eventDestroy: function( event, element, view ){
@@ -186,54 +248,100 @@ $(document).ready(function() {
 	    //獲取時間
 	    /*
 	    dayClick: function(date) {
-	        var newDate = date.format();
-	        console.log(newDate);
+	    	console.log(date)
+	        newDate = date.format()
+	        console.log(newDate)
 	    },
 	    */
 
-	});
+	})
     
+
+    //儲存行事曆 送出表單
+    $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存行事曆(尚未完成)</button>')
+
+    $('.fc-button').mouseenter(function(){$(this).addClass('fc-state-hover')})
+    $('.fc-button').mouseleave(function(){$(this).removeClass('fc-state-hover')})
+
+    $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
+    $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
     
+	//---------------AJAX------------------
 
-    //$('.bottom').append("<button class='send'>送出</button>");
-    
-    /*
-    $(".send").click(function(){
+	addEventTimestamp = ''
+	$('.save-calendar').click(function(){
 
-	});
-	*/
-	/*
-	API_KEY = 'AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA';
-	spreadsheetId = '1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M';
-	ranges = 'A1:G2';
+		newTitle = Select_Events[0].title
+		newStart = Select_Events[0].start
+		newEnd = Select_Events[0].end
+		newTime = addEventTimestamp
 
-	AjaxUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/"+ranges+"?key="+API_KEY;
-	*/
+		
+		USER_ENTERED = {
+			"values":[
+				[
+					newTime,
+					newBand_Name,
+					newName,
+					RegisterTime,
+					Select_Events_Start,
+					Select_Events_End
+				]
+			]
+		}
 
-	AjaxUrl_1 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/2/public/values?alt=json';
+		Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/A1:append?valueInputOption="+USER_ENTERED+"&key="+API_KEY
+		
+		$.ajax({
+    		url: Sheets_Append_Url,
+    		method: "POST",
+    		success: function(result){
+    			console.log(result)
+    		}
+    	})
 
-	AjaxUrl_2 = 'https://spreadsheets.google.com/feeds/cells/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/3/public/values?alt=json';
+    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
+	})
 
-	Json = ''; //json
-	Timestamps = []; //時間戳記
-	Bands_Name = []; //團名
-	Names = []; //姓名
-	Date_Times = []; //日期
-	Start_Times = []; //起始時間
-	End_Times = []; //結束時間
+		
+
+	API_KEY = 'AIzaSyBRrsxwlgFO9jvq-QtvciT3zhUv60U1apA'
+	spreadsheetId = '1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M'
+	//ranges = 'A1:G2'
+
+	sheet_flag_1 = '1'
+	sheet_flag_2 = '2'
+	sheet_flag_3 = '3'
+
+	//AjaxUrl_1 = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/"+ranges+"?key="+API_KEY
+
+	AjaxUrl_2 = "https://spreadsheets.google.com/feeds/cells/"+spreadsheetId+"/"+sheet_flag_1+"/public/values?alt=json"
+
+	AjaxUrl_3 = "https://spreadsheets.google.com/feeds/cells/"+spreadsheetId+"/"+sheet_flag_2+"/public/values?alt=json"
+
+	Json = '' //json
+	Timestamps = [] //時間戳記
+	Bands_Name = [] //團名
+	Names = [] //姓名
+	Date_Times = [] //日期
+	Start_Times = [] //起始時間
+	End_Times = [] //結束時間
 
 	$.ajax({
-		url: AjaxUrl_1,
-		type: "GET",
-		success:function(result){
+		url: AjaxUrl_2,
+		method: "GET",
+		success: function(result){
 
 		Json = result
 		JFE = Json.feed.entry
 		JFE_Length = JFE.length;
+		//console.log(JFE[6].content.$t)
 		
 		//由第6個開始跑資料
 		//一列6組資料
 		//迴圈讀取資料 由6開始
+		//console.log(JFE[59].content.$t)
+
 		n = 1;
 		for(var i=6;i<JFE_Length;i++){
 			data = JFE[i].content.$t;
@@ -307,42 +415,28 @@ $(document).ready(function() {
 		console.log(Date_Times)
 		console.log(Start_Times)
 		console.log(End_Times)
+
+		$addEventToCalendar()
 		}
 
-
-	});
-
-	Test_Events = [];
+	}).done(console.log('[訊息] Google Excel 資料載入成功!'))
 	
-	setTimeout(function() {
-
+	$addEventToCalendar = function(){
+		Band_Events = [];
 		for(i=0;i<Bands_Name.length;i++){
-			Test_Events[i] = {
+			Band_Events[i] = {
 				title: Bands_Name[i],
 			    start: Date_Times[i]+'T'+Start_Times[i],
 			    end:   Date_Times[i]+'T'+End_Times[i],
-			    color: 'yellow',
+			    color: color[random(0, color.length-1)],
 				textColor: 'black',
 			    editable: false,
 			};
 		};
 
-		/*
-		Test_Events = [
-			{
-			    title: Bands_Name[0],
-			    start: Date_Times[0]+'T'+Start_Times[0],
-			    end:   Date_Times[0]+'T'+End_Times[0],
-			    color: 'yellow',
-				textColor: 'black',
-			    //editable: true,
-			},
-		];
-		*/
-
 		//$('#calendar').fullCalendar( 'renderEvents', Band_Events, true );
-		$('#calendar').fullCalendar( 'addEventSource', Test_Events );
+		$('#calendar').fullCalendar( 'addEventSource', Band_Events )
+	}
 
-	}, 1000);
-		
+	
 });
