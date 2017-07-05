@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     	defaultView: 'agendaWeek',
     	height: 650,
-        //selectable: true,
+        selectable: true,
         //selectHelper: true,
         //unselectAuto: true,
 
@@ -151,7 +151,7 @@ $(document).ready(function() {
 			  callback: function(result){
 
 			  	New_Band_Name = result
-				console.log(New_Band_Name)
+				//console.log('團名 : '+New_Band_Name)
 			  	if(New_Band_Name==null||New_Band_Name==''){}
 		    	else{
 			    	Select_Events = [];
@@ -303,7 +303,7 @@ $(document).ready(function() {
 
 		//console.log(Timestamps)
 		console.log(Bands_Name)
-		//console.log(Names)
+		console.log(Names)
 		console.log(Date_Times)
 		console.log(Start_Times)
 		console.log(End_Times)

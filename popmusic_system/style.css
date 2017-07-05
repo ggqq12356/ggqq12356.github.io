@@ -30,14 +30,12 @@ body{
 	color: yellow;
 }
 
-/*
 @media screen and (min-width: 950px) {
     body {
         padding-left: 150px;
         padding-right: 150px;
     }
 }
-*/
 
 .fc-left,
 .fc-right {
