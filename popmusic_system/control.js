@@ -73,7 +73,7 @@ $(document).ready(function() {
     	defaultView: 'agendaWeek',
     	height: 650,
         selectable: true,
-        //selectHelper: true,
+        selectHelper: true,
         //unselectAuto: true,
 
         //timezone: 'UTC',
