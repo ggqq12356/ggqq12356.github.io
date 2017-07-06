@@ -51,9 +51,15 @@
 	<script src='../js/bootbox.min.js'></script>
 
 	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	<button id="signin-button"">Sign in</button>
+	<button id="signout-button"">Sign out</button>
 
 	<script src="./control.js"></script>
 	<link href="./style.css" rel='stylesheet' />
+
+
 
 </head>
 
@@ -62,6 +68,7 @@
 		<div class="top">
 				<br>
 				<p class='popmusic_logo'></p>
+
 				<table border="1" class="toolbar">
 
 					　<tr>
@@ -105,5 +112,16 @@
 		<br><br>
 	</div>
 </body>
+
+<!--
+<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+-->
+
+
+
+
 
 </html>
