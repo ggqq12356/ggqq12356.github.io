@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+	/*
+	jQuery.get('file.txt', function(data) {
+   			alert(data)
+			//process text file line by line
+	})
+	*/
+
 	API_KEY = 'AIzaSyBSXyW_Btqv0QTWWzjllBn0NZmYn1jN6mg'
 	CLIENT_ID = '333036251532-o7cs05kl4ck7mrsnb7o66l7ehopihf2v.apps.googleusercontent.com'
 
@@ -558,32 +565,33 @@ $(document).ready(function() {
 
 		EventHeader = Bands_Name
 
-		$addEventToCalendar(EventHeader, Bands_Name, Date_Times, Start_Times, End_Times)
+		$addEventToCalendar(EventHeader, Timestamps, Bands_Name, Names, Date_Times, Start_Times, End_Times)
 
 		}
 
 	}).done(console.log('[訊息] Google Excel 資料載入成功!'))
 	
 
-	//addEventToCalendar新增事件到行事曆
-	$addEventToCalendar = function(EventHeader, Bands_Name, Date_Times, Start_Times, End_Times){
-		Events_Array = []
-		for(i=0;i<EventHeader.length;i++){
-			Events_Array[i] = {
-				title: Bands_Name[i],
-			    start: Date_Times[i]+'T'+Start_Times[i],
-			    end:   Date_Times[i]+'T'+End_Times[i],
-			    color: color[random(0, color.length-1)],
-				textColor: 'black',
-			    editable: false,
+//addEventToCalendar新增事件到行事曆
+$addEventToCalendar = function(EventHeader, Timestamps, Bands_Name, Names, Date_Times, Start_Times, End_Times){
+	Events_Array = []
+	for(i=0;i<EventHeader.length;i++){
+		Events_Array[i] = {
+			//"\n" "\r"
+			title: Bands_Name[i]+"\n"+Names[i],
+		    start: Date_Times[i]+'T'+Start_Times[i],
+		    end:   Date_Times[i]+'T'+End_Times[i],
+		    color: color[random(0, color.length-1)],
+			textColor: 'black',
+		    editable: false,
 
-			    //
-			}
+		    //
 		}
-
-		//$('#calendar').fullCalendar( 'renderEvents', Events_Array, true );
-		$('#calendar').fullCalendar( 'addEventSource', Events_Array )
 	}
+
+	//$('#calendar').fullCalendar( 'renderEvents', Events_Array, true );
+	$('#calendar').fullCalendar( 'addEventSource', Events_Array )
+}
 
 	
 });
