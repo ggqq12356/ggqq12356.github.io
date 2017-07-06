@@ -16,6 +16,14 @@ $(document).ready(function() {
 	range = 'A1'
 
 
+	Select_Events = []
+	newName = ''
+    newBand_Name = ''
+	Select_Events_Start = ''
+	Select_Events_End = ''
+	RegisterTime = ''
+
+
 	//==============================OAuth2.0====================================
 
 	/*
@@ -41,6 +49,7 @@ $(document).ready(function() {
 	// 1. Load the JavaScript client library.
 	gapi.load('client', start)
 	*/
+	
 
 	function initClient() {
 
@@ -48,6 +57,29 @@ $(document).ready(function() {
       //   'https://www.googleapis.com/auth/drive'
       //   'https://www.googleapis.com/auth/drive.file'
       //   'https://www.googleapis.com/auth/spreadsheets'
+	gapi.auth2.init({
+  			client_id: CLIENT_ID
+	}).then()
+
+	/*
+      gapi.auth2.authorize({
+			  client_id: CLIENT_ID,
+			  scope: scope,
+			  response_type: 'id_token permission'
+			}, function(response) {
+			  if (response.error) {
+			    // An error happened!
+			    return;
+			  }
+			  // The user authorized the application for the scopes requested.
+			  var accessToken = response.access_token;
+			  var idToken = response.id_token;
+			  // You can also now use gapi.client to perform authenticated requests.
+
+			  console.log(accessToken)
+			  console.log(idToken)
+		})
+		*/
 
       gapi.client.init({
         'apiKey': API_KEY,
@@ -56,11 +88,19 @@ $(document).ready(function() {
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
       }).then(function() {
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus)
+
         updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get())
-      });
+
+        
+
+      })
     }
 
     gapi.load('client:auth2', initClient)
+
+    
+
+    
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
@@ -76,6 +116,39 @@ $(document).ready(function() {
       gapi.auth2.getAuthInstance().signOut()
     }
 
+    function makeApiCall(newValues) {
+
+	      var params = {
+	        // The ID of the spreadsheet to update.
+	        spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+
+	        // The A1 notation of a range to search for a logical table of data.
+	        // Values will be appended after the last row of the table.
+	        range: range,  // TODO: Update placeholder value.
+
+	        // How the input data should be interpreted.
+	        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
+
+	        // How the input data should be inserted.
+	        insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
+	      };
+
+	      var valueRangeBody = {
+	        // TODO: Add desired properties to the request body.
+	        "range": range,
+			"majorDimension": 'DIMENSION_UNSPECIFIED',
+			"values": newValues,
+	      };
+
+	      var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+	      request.then(function(response) {
+	        // TODO: Change code below to process the `response` object:
+	        console.log(response.result)
+	      }, function(reason) {
+	        console.error('error: ' + reason.result.error.message)
+	      })
+	}
+
     $('#signin-button').click(function(){
     	handleSignInClick()
     })
@@ -83,9 +156,13 @@ $(document).ready(function() {
     	handleSignOutClick()
     })
 
+    $('.save-calendar').click(function(){
+    	console.log('save-calendar clicked!!!')
+    })
 
 	addEventTimestamp = ''
-	$('.save-calendar').click(function(){
+	$('.abc').click(function(){
+		console.log('makeApiCall()')
 
 		newTitle = Select_Events[0].title
 		newStart = Select_Events[0].start
@@ -101,46 +178,15 @@ $(document).ready(function() {
 					Select_Events_End
 		]
 
-		makeApiCall()
-		function makeApiCall() {
-		      var params = {
-		        // The ID of the spreadsheet to update.
-		        spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+		makeApiCall(newValues)
 
-		        // The A1 notation of a range to search for a logical table of data.
-		        // Values will be appended after the last row of the table.
-		        range: range,  // TODO: Update placeholder value.
-
-		        // How the input data should be interpreted.
-		        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
-
-		        // How the input data should be inserted.
-		        insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
-		      };
-
-		      var valueRangeBody = {
-		        // TODO: Add desired properties to the request body.
-		        "range": range,
-				"majorDimension": 'DIMENSION_UNSPECIFIED',
-				"values": newValues,
-		      };
-
-		      var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-		      request.then(function(response) {
-		        // TODO: Change code below to process the `response` object:
-		        console.log(response.result);
-		      }, function(reason) {
-		        console.error('error: ' + reason.result.error.message);
-		      });
-		}
-
-	    /*
 		//old
 		//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/A1:append?valueInputOption="+USER_ENTERED+"&key="+API_KEY
 
 		//new
-		Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
+		//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
 
+		/*
 		$.ajax({
     		url: Sheets_Append_Url,
     		method: "POST",
@@ -152,14 +198,6 @@ $(document).ready(function() {
 
     	console.log('[訊息] '+newTime+' 行事曆已儲存！')
 	})
-
-
-	
-
-
-
-
-
 
 
 
@@ -188,12 +226,7 @@ $(document).ready(function() {
     //-----------------Full Calendar---------------
 
 
-	Select_Events = []
-	newName = ''
-    newBand_Name = ''
-	Select_Events_Start = ''
-	Select_Events_End = ''
-	RegisterTime = ''
+	
 
     $('#calendar').fullCalendar({
 

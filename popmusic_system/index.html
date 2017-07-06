@@ -8,7 +8,7 @@
     
     <!--<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">-->
 	<!-- IE可能不見得有效 -->
-	<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+	<!--<META HTTP-EQUIV="EXPIRES" CONTENT="0">-->
 	<!-- 設定成馬上就過期 -->
 	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 	<!-- 與第一行是同樣的作用 -->
@@ -53,8 +53,10 @@
 	<script src="https://apis.google.com/js/api.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
+	<!--
 	<button id="signin-button"">Sign in</button>
 	<button id="signout-button"">Sign out</button>
+	-->
 
 	<script src="./control.js"></script>
 	<link href="./style.css" rel='stylesheet' />
@@ -104,6 +106,7 @@
 		</div>
 		<br>
 		<div class="mid">
+			<button class="abc">送出</button>
 			<div id="calendar">
 		</div>
 		<br>
@@ -112,16 +115,5 @@
 		<br><br>
 	</div>
 </body>
-
-<!--
-<script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>
--->
-
-
-
-
 
 </html>
