@@ -163,13 +163,24 @@ $(document).ready(function() {
     	handleSignOutClick()
     })
 
-    $('.save-calendar').click(function(){
-    	console.log('save-calendar clicked!!!')
-    })
+    
 
-	addEventTimestamp = ''
-	$('.abc').click(function(){
-		console.log('makeApiCall()')
+
+
+    //儲存行事曆 送出表單
+    $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存</button>')
+
+    $('.fc-button').mouseenter(function(){$(this).addClass('fc-state-hover')})
+    $('.fc-button').mouseleave(function(){$(this).removeClass('fc-state-hover')})
+
+    $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
+    $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
+
+
+
+    addEventTimestamp = ''
+    $('.save-calendar').click(function(){
+    	console.log('makeApiCall()')
 
 		newTitle = Select_Events[0].title
 		newStart = Select_Events[0].start
@@ -204,8 +215,7 @@ $(document).ready(function() {
     	*/
 
     	console.log('[訊息] '+newTime+' 行事曆已儲存！')
-	})
-
+    })
 
 
 
@@ -441,14 +451,7 @@ $(document).ready(function() {
 	})
     
 
-    //儲存行事曆 送出表單
-    $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存</button>')
 
-    $('.fc-button').mouseenter(function(){$(this).addClass('fc-state-hover')})
-    $('.fc-button').mouseleave(function(){$(this).removeClass('fc-state-hover')})
-
-    $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
-    $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
     
 	//---------------AJAX------------------
 
@@ -569,7 +572,64 @@ $(document).ready(function() {
 
 		}
 
-	}).done(console.log('[訊息] Google Excel 資料載入成功!'))
+	}).done(function(){
+
+		console.log('[訊息] Google Excel 資料載入成功!')
+
+		//儲存行事曆 送出表單
+	    $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存</button>')
+
+	    $('.fc-button').mouseenter(function(){$(this).addClass('fc-state-hover')})
+	    $('.fc-button').mouseleave(function(){$(this).removeClass('fc-state-hover')})
+
+	    $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
+	    $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
+
+
+
+	    addEventTimestamp = ''
+	    $('.save-calendar').click(function(){
+	    	console.log('makeApiCall()')
+
+			newTitle = Select_Events[0].title
+			newStart = Select_Events[0].start
+			newEnd = Select_Events[0].end
+			newTime = addEventTimestamp
+
+			newValues = [
+						newTime,
+						newBand_Name,
+						newName,
+						RegisterTime,
+						Select_Events_Start,
+						Select_Events_End
+			]
+
+			makeApiCall(newValues)
+
+			//old
+			//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/A1:append?valueInputOption="+USER_ENTERED+"&key="+API_KEY
+
+			//new
+			//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
+
+			/*
+			$.ajax({
+	    		url: Sheets_Append_Url,
+	    		method: "POST",
+	    		success: function(result){
+	    			console.log(result)
+	    		}
+	    	})
+	    	*/
+
+	    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
+	    })
+	})
+
+
+
+
 	
 
 //addEventToCalendar新增事件到行事曆
