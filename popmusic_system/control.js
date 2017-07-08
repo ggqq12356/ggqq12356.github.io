@@ -7,6 +7,29 @@ $(document).ready(function() {
 	})
 	*/
 
+
+	var styles = 'background: #f0f; color: #fff; padding: 0 100px; font-size: 30px;'
+	console.log("%c"+"阿嘶～～～！(´;ω;`)", styles)
+
+	/*
+    var date = new Date()
+    var d = date.getDate()
+    var m = date.getMonth()
+    var y = date.getFullYear()
+    */
+    
+    color = ['red','orange','yellow','green','blue','purple']
+
+    function random(min,max) {
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+
+	//-----------------Excel-Table-----------------
+	winWidth = (window.innerWidth/1.3)
+	$('.excel').css({"width":winWidth})
+
+
+
 	API_KEY = 'AIzaSyBSXyW_Btqv0QTWWzjllBn0NZmYn1jN6mg'
 	CLIENT_ID = '333036251532-o7cs05kl4ck7mrsnb7o66l7ehopihf2v.apps.googleusercontent.com'
 
@@ -28,144 +51,10 @@ $(document).ready(function() {
     newBand_Name = ''
 	Select_Events_Start = ''
 	Select_Events_End = ''
+
 	RegisterTime = ''
-
-
-	//==============================OAuth2.0====================================
-
-	/*
-	OLD
-	function start() {
-		  // 2. Initialize the JavaScript client library.
-		  gapi.client.init({
-		    'apiKey': API_KEY,
-		    // Your API key will be automatically added to the Discovery Document URLs.
-		    'discoveryDocs': [discoveryDocs],
-		    // clientId and scope are optional if auth is not required.
-		    'clientId': CLIENT_ID,
-		    'scope': scope,
-		  }).then(function() {
-		    // 3. Initialize and make the API request.
-
-		  }).then(function(response) {
-		    //console.log(response)
-		  }, function(reason) {
-		    //console.log('Error: ' + reason.result.error.message);
-		  })
-	}
-	// 1. Load the JavaScript client library.
-	gapi.load('client', start)
-	*/
-	
-
-	function initClient() {
-
-      // TODO: Authorize using one of the following scopes:
-      //   'https://www.googleapis.com/auth/drive'
-      //   'https://www.googleapis.com/auth/drive.file'
-      //   'https://www.googleapis.com/auth/spreadsheets'
-	gapi.auth2.init({
-  			client_id: CLIENT_ID
-	}).then()
-
-	/*
-      gapi.auth2.authorize({
-			  client_id: CLIENT_ID,
-			  scope: scope,
-			  response_type: 'id_token permission'
-			}, function(response) {
-			  if (response.error) {
-			    // An error happened!
-			    return;
-			  }
-			  // The user authorized the application for the scopes requested.
-			  var accessToken = response.access_token;
-			  var idToken = response.id_token;
-			  // You can also now use gapi.client to perform authenticated requests.
-
-			  console.log(accessToken)
-			  console.log(idToken)
-		})
-		*/
-
-      gapi.client.init({
-        'apiKey': API_KEY,
-        'clientId': CLIENT_ID,
-        'scope': scope,
-        'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-      }).then(function() {
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus)
-
-        updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get())
-
-        
-
-      })
-    }
-
-    gapi.load('client:auth2', initClient)
-
-    
-
-    
-
-    function updateSignInStatus(isSignedIn) {
-      if (isSignedIn) {
-        //makeApiCall()
-      }
-    }
-
-    function handleSignInClick(event) {
-      gapi.auth2.getAuthInstance().signIn()
-    }
-
-    function handleSignOutClick(event) {
-      gapi.auth2.getAuthInstance().signOut()
-    }
-
-    function makeApiCall(newValues) {
-
-	      var params = {
-	        // The ID of the spreadsheet to update.
-	        spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
-
-	        // The A1 notation of a range to search for a logical table of data.
-	        // Values will be appended after the last row of the table.
-	        range: range,  // TODO: Update placeholder value.
-
-	        // How the input data should be interpreted.
-	        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
-
-	        // How the input data should be inserted.
-	        insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
-	      };
-
-	      var valueRangeBody = {
-	        // TODO: Add desired properties to the request body.
-	        "range": range,
-			"majorDimension": 'DIMENSION_UNSPECIFIED',
-			"values": newValues,
-	      };
-
-	      var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-	      request.then(function(response) {
-	        // TODO: Change code below to process the `response` object:
-	        console.log(response.result)
-	      }, function(reason) {
-	        console.error('error: ' + reason.result.error.message)
-	      })
-	}
-
-    $('#signin-button').click(function(){
-    	handleSignInClick()
-    })
-    $('#signout-button').click(function(){
-    	handleSignOutClick()
-    })
-
-    
-
-
+	slt_st_full = ''
+	slt_end_full = ''
 
     //儲存行事曆 送出表單
     $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存</button>')
@@ -178,67 +67,11 @@ $(document).ready(function() {
 
 
 
-    addEventTimestamp = ''
-    $('.save-calendar').click(function(){
-    	console.log('makeApiCall()')
-
-		newTitle = Select_Events[0].title
-		newStart = Select_Events[0].start
-		newEnd = Select_Events[0].end
-		newTime = addEventTimestamp
-
-		newValues = [
-					newTime,
-					newBand_Name,
-					newName,
-					RegisterTime,
-					Select_Events_Start,
-					Select_Events_End
-		]
-
-		makeApiCall(newValues)
-
-		//old
-		//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/A1:append?valueInputOption="+USER_ENTERED+"&key="+API_KEY
-
-		//new
-		//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
-
-		/*
-		$.ajax({
-    		url: Sheets_Append_Url,
-    		method: "POST",
-    		success: function(result){
-    			console.log(result)
-    		}
-    	})
-    	*/
-
-    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
-    })
-
-
-
-
-	var styles = 'background: #f0f; color: #fff; padding: 0 100px; font-size: 30px;'
-	console.log("%c"+"阿嘶～～～！(´;ω;`)", styles)
-
-	/*
-    var date = new Date()
-    var d = date.getDate()
-    var m = date.getMonth()
-    var y = date.getFullYear()
-    */
     
-    color = ['red','orange','yellow','green','blue','purple']
 
-    function random(min,max) {
-		return Math.floor(Math.random()*(max-min+1)+min);
-	}
 
-	//-----------------Excel-Table-----------------
-	winWidth = (window.innerWidth/1.3)
-	$('.excel').css({"width":winWidth})
+
+
 
     //-----------------Full Calendar---------------
 
@@ -317,24 +150,42 @@ $(document).ready(function() {
 	    	slt_st = start._i
 	    	slt_st = slt_st.toString().split(",")
 
+	    	//console.log(slt_st)
+
 	    	slt_yr_st = slt_st[0]
 	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
 	    	slt_day_st = slt_st[2]
 	    	slt_hr_st = slt_st[3]
 	    	slt_min_st = slt_st[4]
+	    	slt_sec_st = slt_st[5]
 
 	    	//RegisterTime 轉換格式前
 	    	RegisterTime = slt_yr_st+'/'+slt_mth_st+'/'+slt_day_st
 
+	    	//slt_hr_st 轉換格式前
+	    	slt_hr_st_before = slt_hr_st
+
+	    	//判斷上下午
+	    	if(slt_hr_st>12){
+	    		slt_Am_Pm_st = "下午"
+	    		slt_hr_st_before -= 12
+	    	}
+	    	else slt_Am_Pm_st = "上午"
 
 	    	//格式轉換
 	    	if(slt_mth_st.length<2) slt_mth_st = '0'+slt_mth_st
 	    	if(slt_day_st.length<2) slt_day_st = '0'+slt_day_st
 	    	if(slt_hr_st.length<2) slt_hr_st = '0'+slt_hr_st
 	    	if(slt_min_st.length<2) slt_min_st = '0'+slt_min_st
+	    	if(slt_sec_st.length<2) slt_sec_st = '0'+slt_sec_st
 			
+			//array = [slt_yr_st, slt_mth_st, slt_day_st, slt_hr_st, slt_min_st, slt_sec_st]
+	    	//console.log(array)
 
+	    	slt_st_all = slt_hr_st_before+':'+slt_min_st+':'+slt_sec_st
+	    	slt_st_full = slt_Am_Pm_st + ' ' + slt_st_all
 
+	    	//console.log('slt_st_full : '+slt_st_full)
 
 	    	//end
 	    	slt_end = end._i
@@ -345,19 +196,34 @@ $(document).ready(function() {
 	    	slt_day_end = slt_end[2]
 	    	slt_hr_end = slt_end[3]
 	    	slt_min_end = slt_end[4]
+			slt_sec_end = slt_end[5]
 
+			//slt_hr_end 轉換格式前
+	    	slt_hr_end_before = slt_hr_end
 
-
+	    	//判斷上下午
+	    	if(slt_hr_end>12){
+	    		slt_Am_Pm_end = "下午"
+	    		slt_hr_end_before -= 12
+	    	}
+	    	else slt_Am_Pm_end = "上午"
 
 	    	//格式轉換
 	    	if(slt_mth_end.length<2) slt_mth_end = '0'+slt_mth_end
 	    	if(slt_day_end.length<2) slt_day_end = '0'+slt_day_end
 	    	if(slt_hr_end.length<2) slt_hr_end = '0'+slt_hr_end
 	    	if(slt_min_end.length<2) slt_min_end = '0'+slt_min_end
-	    	
+	    	if(slt_sec_end.length<2) slt_sec_end = '0'+slt_sec_end
 
+	    	//array2 = [slt_yr_end, slt_mth_end, slt_day_end, slt_hr_end, slt_min_end, slt_sec_end]
+	    	//console.log(array2)
 
-	    	//
+	    	slt_end_all = slt_hr_end_before+':'+slt_min_end+':'+slt_sec_end
+	    	slt_end_full = slt_Am_Pm_end + ' ' + slt_end_all
+
+	    	//console.log('slt_end_full : '+slt_end_full)
+
+	    	//格式轉換
 	    	dt_st = slt_yr_st+'-'+slt_mth_st+'-'+slt_day_st
 	    	st_t = slt_hr_st+':'+slt_min_st
 	    	Select_Events_Start = dt_st+'T'+st_t
@@ -383,7 +249,6 @@ $(document).ready(function() {
 				  callback: function(result){
 
 				  	newBand_Name = result
-					//console.log('團名 : '+newBand_Name)
 
 					//2017-07-05T17:58:11.939Z
 					d = new Date()
@@ -395,14 +260,15 @@ $(document).ready(function() {
 					nt1 = nt1+' '
 					nt2 = newTime.slice(2)
 					
-					newTime = nt1+nt2
-					//console.log(newTime)
+					nt = nt1+nt2
 
-					addEventTimestamp = newTime
+					addEventTimestamps = newDate+' '+nt
 
 				  	if(newBand_Name==null||newBand_Name==''){}
 			    	else{
-				    	Select_Events = []
+
+  						//addEventToCalendar(EventHeader, Timestamps, Bands_Name, Names, Date_Times, Start_Times, End_Times)
+			    	
 						Select_Events.push(
 						{
 							title: newBand_Name,
@@ -416,6 +282,7 @@ $(document).ready(function() {
 						//console.log(Select_Events[0])
 
 						$('#calendar').fullCalendar( 'addEventSource', Select_Events )
+						
 					}
 				  }
 
@@ -427,8 +294,6 @@ $(document).ready(function() {
 				  	newName = result
 				  }
 			})
-
-			
 
 	    },
 
@@ -454,10 +319,6 @@ $(document).ready(function() {
 
     
 	//---------------AJAX------------------
-
-	
-
-	
 
 	sheet_flag_1 = '1'
 	sheet_flag_2 = '2'
@@ -559,6 +420,7 @@ $(document).ready(function() {
 			else n++;
 		}
 
+		console.log("[訊息] 載入資料中...")
 		console.log(Timestamps)
 		console.log(Bands_Name)
 		console.log(Names)
@@ -587,25 +449,26 @@ $(document).ready(function() {
 
 
 
-	    addEventTimestamp = ''
+	    addEventTimestamps = ''
 	    $('.save-calendar').click(function(){
-	    	console.log('makeApiCall()')
+	    	
+			newStart = slt_st_full
+			newEnd = slt_end_full
+			newTime = addEventTimestamps
 
-			newTitle = Select_Events[0].title
-			newStart = Select_Events[0].start
-			newEnd = Select_Events[0].end
-			newTime = addEventTimestamp
+			newData = {
+				  "Timestamps": newTime,
+				  "Bands_Name": newBand_Name,
+				  "Names": newName,
+				  "Date_Times": RegisterTime,
+				  "Start_Times": newStart,
+				  "End_Times": newEnd
+			}
 
-			newValues = [
-						newTime,
-						newBand_Name,
-						newName,
-						RegisterTime,
-						Select_Events_Start,
-						Select_Events_End
-			]
+			console.log("[送出資料] :" + newData)
 
-			makeApiCall(newValues)
+			/*
+			///////google api
 
 			//old
 			//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/A1:append?valueInputOption="+USER_ENTERED+"&key="+API_KEY
@@ -613,18 +476,21 @@ $(document).ready(function() {
 			//new
 			//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
 
-			/*
+			*/
+
+			GoogleAppScript = "https://script.google.com/macros/s/AKfycbwXe1UlNdLZErA5ouR45DDPCw9ZctBj9CIoahuQL6rhvcTPCTJj/exec"
+			
 			$.ajax({
-	    		url: Sheets_Append_Url,
+	    		url: GoogleAppScript,
 	    		method: "POST",
+	    		data: newData,
 	    		success: function(result){
 	    			console.log(result)
 	    		}
 	    	})
-	    	*/
-
 	    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
 	    })
+
 	})
 
 
