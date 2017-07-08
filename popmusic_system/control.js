@@ -25,8 +25,8 @@ $(document).ready(function() {
 	}
 
 	//-----------------Excel-Table-----------------
-	winWidth = (window.innerWidth/1.3)/2
-	$('.excel').css({"width":winWidth})
+	excelWidth = (window.innerWidth/1.3)/2
+	$('.excel').css({"width":excelWidth})
 
 
 
@@ -65,19 +65,9 @@ $(document).ready(function() {
     $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
     $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
 
-
-
-    
-
-
-
-
-
     //-----------------Full Calendar---------------
-
-
-	
-
+    WinWidth = window.innerWidth
+    $('#calendar').css({"width":WinWidth/1.35})
     $('#calendar').fullCalendar({
 
     	header:{
@@ -87,12 +77,19 @@ $(document).ready(function() {
     	},
 
     	defaultView: 'agendaWeek',
-    	//網頁全開寬度1058
-    	contentHeight: 1325,
-    	//height: 1349,
+
+    	//選擇
         selectable: true,
         selectHelper: true,
         //unselectAuto: true,
+
+    	//網頁全開寬度1058
+    	contentHeight: 1325,
+    	//height: 1349,
+
+        handleWindowResize: true,
+        //aspectRatio: 2,
+		//windowResizeDelay: 1000,
 
         //timezone: 'UTC',
 
