@@ -25,7 +25,7 @@ $(document).ready(function() {
 	}
 
 	//-----------------Excel-Table-----------------
-	winWidth = (window.innerWidth/1.3)
+	winWidth = (window.innerWidth/1.3)/2
 	$('.excel').css({"width":winWidth})
 
 

@@ -7,7 +7,7 @@ body{
 }
 
 .top{
-	
+    margin-bottom: 0%;
 }
 
 .mid{
@@ -18,15 +18,27 @@ body{
 
 }
 
+.tp1{
+    position: absolute;
+    margin:0px auto;
+    margin-left: 7.5%;
+}
+
+.tp2{
+    position: relative;
+    margin:0px auto;
+    margin-left: 35%;
+}
+
 .popmusic_logo{
     background-image: url('popmusic.jpg');
     background-repeat: no-repeat;
     background-position: center; 
     background-attachment: inherit;
     background-size: cover;
-    margin:0px auto;
     width: 200px;
     height: 200px;
+    margin:0px auto;
 }
 
 .toolbar{
@@ -42,8 +54,9 @@ body{
 }
 
 .excel {
+    //margin:0px auto;
     //width: auto;
-    height: 300px;
+    height: 330px;
 }
 
 .title{
