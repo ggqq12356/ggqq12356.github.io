@@ -7,6 +7,50 @@ $(document).ready(function() {
 	})
 	*/
 
+	//判斷裝置種類
+    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    	console.log("#Device : Mobile")
+				
+
+		CalendarWidth = 600
+		//$('#calendar').css({"width":CalendarWidth})
+
+		$('.tp1').css({"position":"relative"})
+
+		topWidth = window.innerWidth/8
+		//$('.top').css({"margin-left":topWidth})
+
+		//tp2Width = (window.innerWidth)/100
+		//$('.tp2').css({"margin-left":tp2Width})
+		//tp2Width = 1000/2
+		//$('.tp2').css({"margin-left":"-150px"})
+
+		excelWidth = (window.innerWidth)/1.5
+		$('.excel').css({"width":excelWidth})
+
+
+		
+
+    }
+    else {
+        console.log("#Device : PC")
+
+		$('.tp1').css({"position":"absolute"})
+
+		tp2Width = (window.innerWidth)/5
+		$('.tp2').css({"margin-left":tp2Width})
+
+		$('.tp2').append('<div class="excel-table"><iframe src="https://docs.google.com/spreadsheets/d/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/pubhtml?widget=true&amp;headers=false" class="excel"></iframe></div>')
+
+		excelWidth = (window.innerWidth)/2.25
+		$('.excel').css({"width":excelWidth})
+
+
+    }
+    //鎖定右鍵選單
+    $("body").contextmenu(function(e){
+        e.preventDefault()
+    })
 
 	var styles = 'background: #f0f; color: #fff; padding: 0 100px; font-size: 30px;'
 	console.log("%c"+"阿嘶～～～！(´;ω;`)", styles)
@@ -23,12 +67,6 @@ $(document).ready(function() {
     function random(min,max) {
 		return Math.floor(Math.random()*(max-min+1)+min);
 	}
-
-	//-----------------Excel-Table-----------------
-	excelWidth = (window.innerWidth/1.3)/2
-	$('.excel').css({"width":excelWidth})
-
-
 
 	API_KEY = 'AIzaSyBSXyW_Btqv0QTWWzjllBn0NZmYn1jN6mg'
 	CLIENT_ID = '333036251532-o7cs05kl4ck7mrsnb7o66l7ehopihf2v.apps.googleusercontent.com'
@@ -66,8 +104,7 @@ $(document).ready(function() {
     $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
 
     //-----------------Full Calendar---------------
-    WinWidth = window.innerWidth
-    $('#calendar').css({"width":"1000"})
+
     $('#calendar').fullCalendar({
 
     	header:{

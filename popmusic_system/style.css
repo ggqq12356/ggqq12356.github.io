@@ -7,6 +7,7 @@ body{
 }
 
 .top{
+    //margin-left: 15%;
     margin-bottom: 0%;
 }
 
@@ -19,15 +20,15 @@ body{
 }
 
 .tp1{
-    position: absolute;
+    //position: absolute;
     margin:0px auto;
-    margin-left: 7.5%;
+    //margin-left: 20px;
 }
 
 .tp2{
     position: relative;
     margin:0px auto;
-    margin-left: 35%;
+    //margin-left: 330px;
 }
 
 .popmusic_logo{
@@ -49,7 +50,7 @@ body{
 }
 
 .excel-table{
-    margin:0px auto;
+    //margin:0px auto;
     text-align: center;
 }
 
