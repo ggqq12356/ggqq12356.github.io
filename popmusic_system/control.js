@@ -67,7 +67,7 @@ $(document).ready(function() {
 
     //-----------------Full Calendar---------------
     WinWidth = window.innerWidth
-    $('#calendar').css({"width":WinWidth/1.35})
+    $('#calendar').css({"width":"1000"})
     $('#calendar').fullCalendar({
 
     	header:{
