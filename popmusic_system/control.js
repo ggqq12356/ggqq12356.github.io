@@ -47,10 +47,13 @@ $(document).ready(function() {
 
 
     }
+
+	/*
     //鎖定右鍵選單
     $("body").contextmenu(function(e){
         e.preventDefault()
     })
+    */
 
 	var styles = 'background: #f0f; color: #fff; padding: 0 100px; font-size: 30px;'
 	console.log("%c"+"阿嘶～～～！(´;ω;`)", styles)
