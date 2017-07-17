@@ -11,8 +11,8 @@ $(document).ready(function() {
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     	console.log("#Device : Mobile")
 		
-		//MainWidth = window.innerWidth/1.2
-    	//$('.main').css({"width":MainWidth})
+		MainWidth = window.innerWidth/1.2
+    	$('.main').css({"width":MainWidth})
 
 		CalendarWidth = 600
 		//$('#calendar').css({"width":CalendarWidth})
@@ -34,8 +34,8 @@ $(document).ready(function() {
     else {
         console.log("#Device : PC")
 
-		//MainWidth = window.innerWidth/1.2
-    	//$('.main').css({"width":MainWidth})
+		MainWidth = window.innerWidth/1.2
+    	$('.main').css({"width":MainWidth})
 
 		$('.tp1').css({"position":"absolute"})
 
@@ -96,30 +96,6 @@ $(document).ready(function() {
 	RegisterTime = ''
 	slt_st_full = ''
 	slt_end_full = ''
-
-	function TEST(){
-		newData = {
-			  "Timestamps": newTime,
-			  "Bands_Name": newBand_Name,
-			  "Names": newName,
-			  "Date_Times": RegisterTime,
-			  "Start_Times": newStart,
-			  "End_Times": newEnd
-		}
-
-		console.log("[送出資料] :" + newData)
-
-		GoogleAppScript = "https://script.google.com/macros/s/AKfycbwXe1UlNdLZErA5ouR45DDPCw9ZctBj9CIoahuQL6rhvcTPCTJj/exec"
-		
-		$.ajax({
-			url: GoogleAppScript,
-			type: "POST",
-			data: newData,
-			success: function(result){
-				console.log(result)
-			}
-		})
-	}
 
     //-----------------Full Calendar---------------
 
@@ -201,7 +177,8 @@ $(document).ready(function() {
 	    	//start
 	    	slt_st = start._i
 	    	slt_st = slt_st.toString().split(",")
-			//console.log(slt_st)
+
+	    	//console.log(slt_st)
 
 	    	slt_yr_st = slt_st[0]
 	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
@@ -322,12 +299,12 @@ $(document).ready(function() {
 			    	
 						Select_Events.push(
 						{
-							title: newBand_Name+"\n"+newName,
+							title: newBand_Name,
 						    start: Select_Events_Start,
 						    end:   Select_Events_End,
 						    color: color[random(0, color.length-1)],
 							textColor: 'black',
-						    editable: true,
+						    editable: false,
 						})
 
 						//console.log(Select_Events[0])
@@ -335,38 +312,8 @@ $(document).ready(function() {
 						$('#calendar').fullCalendar( 'addEventSource', Select_Events )
 
 						Select_Events = [] //清除事件快取
-
-						//addEventTimestamps = ''
-
-						newStart = slt_st_full
-						newEnd = slt_end_full
-						newTime = addEventTimestamps
-
-						newData = {
-							  "Timestamps": newTime,
-							  "Bands_Name": newBand_Name,
-							  "Names": newName,
-							  "Date_Times": RegisterTime,
-							  "Start_Times": newStart,
-							  "End_Times": newEnd
-						}
-
-						console.log("[送出資料] :" + newData)
-
-						GoogleAppScript = "https://script.google.com/macros/s/AKfycbwXe1UlNdLZErA5ouR45DDPCw9ZctBj9CIoahuQL6rhvcTPCTJj/exec"
-						
-						$.ajax({
-				    		url: GoogleAppScript,
-				    		type: "POST",
-				    		data: newData,
-				    		success: function(result){
-				    			console.log(result)
-				    		}
-				    	})
-				    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
 						
 					}
-
 				  }
 
 			})
@@ -381,9 +328,11 @@ $(document).ready(function() {
 	    },
 
 
+	    /*
 	    eventDestroy: function( event, element, view ){
-			//console.log(event)
+			console.log(event);
 		},
+		*/
 
 	    //獲取時間
 	    /*
@@ -502,12 +451,12 @@ $(document).ready(function() {
 		}
 
 		console.log("[訊息] 載入資料中...")
-		//console.log(Timestamps)
-		//console.log(Bands_Name)
-		//console.log(Names)
-		//console.log(Date_Times)
-		//console.log(Start_Times)
-		//console.log(End_Times)
+		console.log(Timestamps)
+		console.log(Bands_Name)
+		console.log(Names)
+		console.log(Date_Times)
+		console.log(Start_Times)
+		console.log(End_Times)
 
 		EventHeader = Bands_Name
 
@@ -519,7 +468,6 @@ $(document).ready(function() {
 
 		console.log('[訊息] Google Excel 資料載入成功!')
 
-		/*
 		//儲存行事曆 送出表單
 	    $('.fc-left').append('<button type="button" class="save-calendar fc-button fc-state-default fc-corner-left fc-corner-right">儲存</button>')
 
@@ -528,7 +476,8 @@ $(document).ready(function() {
 
 	    $('.fc-button').mousedown(function(){$(this).addClass('fc-state-down')})
 	    $('.fc-button').mouseup(function(){$(this).removeClass('fc-state-down')})
-	
+
+
 
 	    addEventTimestamps = ''
 	    $('.save-calendar').click(function(){
@@ -548,6 +497,7 @@ $(document).ready(function() {
 
 			console.log("[送出資料] :" + newData)
 
+			/*
 			///////google api
 
 			//old
@@ -556,6 +506,7 @@ $(document).ready(function() {
 			//new
 			//Sheets_Append_Url = "https://sheets.googleapis.com/v4/spreadsheets/"+spreadsheetId+"/values/Sheet1!A1:append?valueInputOption=USER_ENTERED"
 
+			*/
 
 			GoogleAppScript = "https://script.google.com/macros/s/AKfycbwXe1UlNdLZErA5ouR45DDPCw9ZctBj9CIoahuQL6rhvcTPCTJj/exec"
 			
@@ -569,8 +520,6 @@ $(document).ready(function() {
 	    	})
 	    	console.log('[訊息] '+newTime+' 行事曆已儲存！')
 	    })
-
-		*/
 
 	})
 
@@ -590,7 +539,7 @@ $addEventToCalendar = function(EventHeader, Timestamps, Bands_Name, Names, Date_
 		    end:   Date_Times[i]+'T'+End_Times[i],
 		    color: color[random(0, color.length-1)],
 			textColor: 'black',
-		    editable: true,
+		    editable: false,
 		}
 	}
 
