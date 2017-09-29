@@ -216,7 +216,7 @@ $(document).ready(function() {
 
 	})
 	*/
-	
+
     //-----------------Full Calendar---------------
 
     $('#calendar').fullCalendar({
@@ -240,7 +240,7 @@ $(document).ready(function() {
     	contentHeight: 1325,
     	//height: 1349,
 
-        handleWindowResize: true,
+        //handleWindowResize: true,
         //aspectRatio: 2,
 		//windowResizeDelay: 1000,
 
@@ -451,7 +451,7 @@ $(document).ready(function() {
 						    end:   Select_Events_End,
 						    color: color[random(0, color.length-1)],
 							textColor: 'black',
-						    editable: true,
+						    editable: false,
 						})
 
 						//console.log(Select_Events[0])
@@ -661,7 +661,7 @@ $(document).ready(function() {
 			    end:   Date_Times[i]+'T'+End_Times[i],
 			    color: color[random(0, color.length-1)],
 				textColor: 'black',
-			    editable: true,
+			    editable: false,
 			}
 		}
 
