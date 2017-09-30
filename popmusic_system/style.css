@@ -7,9 +7,11 @@ body{
 }
 
 .top{
-    //margin-left: 15%;
     margin-top: 1.5%;
-    //margin-bottom: 0%;
+}
+
+.tp1{
+    //position: relative;
 }
 
 .popmusic_logo{
@@ -18,50 +20,50 @@ body{
     background-position: center; 
     background-attachment: inherit;
     background-size: cover;
-    width: 200px;
-    height: 200px;
-    margin:0px auto;
+    width: 400px;
+    height: 400px;
+    margin: 0px auto;
+    margin-top: 5%;
 }
 
-.tp1{
-    //position: relative;
-    //margin:0px auto;
-    //margin-left: 20px;
-    //margin-right: 800px;
+.admin{
+    color: skyblue;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10%;
 }
 
 .tp2{
-    //position: relative;
-    //margin:0px auto;
-    //margin-left: 330px;
+    position: relative;
+    left: 13%;
 }
 
 .toolbar{
-    margin: 0px auto;
-    width: auto;
+    margin-top: -2.5%;
+    width: 612px;
     text-align: center;
-    border:5px orange solid;
+    border: 5px orange solid;
+    margin-bottom: 1%;
 }
 
 .excel-table{
-    //margin:0px auto;
-    text-align: center;
+    //text-align: center;
 }
 
 .excel {
-    //margin:0px auto;
-    //width: auto;
     height: 330px;
 }
 
 .font{
-	font-size: 18px;
-	color: yellow;
+    font-size: 18px;
+    color: yellow;
     text-decoration:none;
 }
 
 .mid{
-
+    //position: relative;
+    //margin-top: 5%;
 }
 
 .bottom{
