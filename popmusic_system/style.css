@@ -3,11 +3,11 @@ body{
 }
 
 .main{
-	//margin-left: 0%;
+    //margin-left: 5%;
 }
 
 .top{
-    margin-top: 1.5%;
+    //margin-top: 1%;
 }
 
 .tp1{
@@ -22,29 +22,23 @@ body{
     background-size: cover;
     width: 400px;
     height: 400px;
-    margin: 0px auto;
-    margin-top: 5%;
 }
 
 .admin{
     color: skyblue;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
-    margin-top: 10%;
 }
 
 .tp2{
-    position: relative;
-    left: 13%;
+    //position: relative;
+    //left: 13%;
 }
 
 .toolbar{
-    margin-top: -2.5%;
-    width: 612px;
     text-align: center;
     border: 5px orange solid;
-    margin-bottom: 1%;
 }
 
 .excel-table{

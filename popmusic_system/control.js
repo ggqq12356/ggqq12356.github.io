@@ -7,45 +7,73 @@ $(document).ready(function() {
 	})
 	*/
 
+
+    ScreenWidth = (window.innerWidth)
+    BodyWidth = $('body').width()
+
 	//判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     	console.log("#Device : Mobile")
 
-		//MainWidth = window.innerWidth/1.2
-    	//$('.main').css({"width":MainWidth})
-
-		CalendarWidth = 600
-		//$('#calendar').css({"width":CalendarWidth})
-
+    	//框架1
 		$('.tp1').css({"position":"relative"})
 
-		topWidth = window.innerWidth/8
-		//$('.top').css({"margin-left":topWidth})
+		//框架2
+		$('.tp2').css({"position":"static"})
 
-		//tp2Width = (window.innerWidth)/100
-		//$('.tp2').css({"margin-left":tp2Width})
-		//tp2Width = 1000/2
-		//$('.tp2').css({"margin-left":"-150px"})
+		//Logo調整
+		$('.popmusic_logo').css({"margin":"0% auto"})
+		$('.popmusic_logo').css({"margin-top":"5%"})
 
-		excelWidth = (window.innerWidth)/1.5
-		$('.excel').css({"width":excelWidth})
+		//admin控制
+		$('.admin').css({"margin-top":"2.5%"})
+		$('.admin').css({"margin-bottom":"2.5%"})
+		$('.admin').css({"font-size":"22px"})
+
+		//表格調整
+		//ToolbarWidth = 612
+		//$('.toolbar').css({'width':ToolbarWidth})
+		$('.toolbar').css({'margin':"0px auto"})
+		$('.toolbar').css({'margin-top':"-5%"})
+		//$('.toolbar').css({'margin-bottom':"-2.5%"})
 
     }
     else {
         console.log("#Device : PC")
 
-		//MainWidth = window.innerWidth/1.2
-    	//$('.main').css({"width":MainWidth})
+        //$('body').css({"width":BodyWidth})
 
+        //框架1
 		$('.tp1').css({"position":"absolute"})
 
-		tp2Width = (window.innerWidth)/5
-		//tp2Width = $('.tp1').css("left")
-		$('.tp2').css({"margin-left":tp2Width})
+		//Logo調整
+		//$('.popmusic_logo').css({"margin":"0% auto"})
+		$('.popmusic_logo').css({"margin-top":"5%"})
 
+		//admin控制
+		$('.admin').css({"margin-top":"15%"})
+		$('.admin').css({"margin-bottom":"15%"})
+		$('.admin').css({"font-size":"28px"})
+
+		//框架2
+		$('.tp2').css({"position":"static"})
+
+		//Table2位置調整
+		tp2Position = $('.popmusic_logo').width() + 30
+		$('.tp2').css({"margin-left":tp2Position})
+		//$('.tp2').css({"margin-top":""})
+
+		//表格調整
+		ToolbarWidth = 612
+		$('.toolbar').css({'width':ToolbarWidth})
+		//$('.toolbar').css({'margin-top':"-2.5%"})
+		$('.toolbar').css({'margin-bottom':"1%"})
+
+		//顯示表單
 		$('.tp2').append('<div class="excel-table"><iframe src="https://docs.google.com/spreadsheets/d/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/pubhtml?widget=true&amp;headers=false" class="excel"></iframe></div>')
 
-		excelWidth = (window.innerWidth)/2.25
+		//表單寬度控制
+		excelWidth = 612 //(window.innerWidth)/2.25
 		$('.excel').css({"width":excelWidth})
 
     }
