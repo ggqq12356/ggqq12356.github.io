@@ -10,38 +10,60 @@ $(document).ready(function() {
 
     ScreenWidth = (window.innerWidth)
     BodyWidth = $('body').width()
+    Device = "unknown"
 
 	//判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    	Device = "Mobile"
     	console.log("#Device : Mobile")
+
+    	//$("body").css({"margin":"0px auto"})
+    	$("body").css({"padding-left":"2%"})
+    	$("body").css({"padding-right":"2%"})
+    	$("body").css({"padding-top":"1%"})
+    	$("body").css({"padding-bottom":"1%"})
 
     	//框架1
 		$('.tp1').css({"position":"relative"})
 
 		//框架2
 		$('.tp2').css({"position":"static"})
+		//$('.tp2').css({"text-align":"center"})
 
 		//Logo調整
-		$('.popmusic_logo').css({"margin":"0% auto"})
-		$('.popmusic_logo').css({"margin-top":"5%"})
+		//$('.popmusic_logo').css({"margin":"0% auto"})
+		$('.popmusic_logo').css({"margin-top":"1%"})
 
 		//admin控制
 		$('.admin').css({"margin-top":"2.5%"})
-		$('.admin').css({"margin-bottom":"2.5%"})
+		//$('.admin').css({"margin-bottom":"-2.5%"})
 		$('.admin').css({"font-size":"22px"})
 
 		//表格調整
+		$('.toolbar').css({'margin':"0% auto"})
+		//$('.toolbar').css({'margin-top':"-5%"})
+		//$('.toolbar').css({'margin-bottom':"-2.5%"})
+		//$('.toolbar').css({"margin-left":"1.5%"})
+
 		//ToolbarWidth = 612
 		//$('.toolbar').css({'width':ToolbarWidth})
-		$('.toolbar').css({'margin':"0px auto"})
-		$('.toolbar').css({'margin-top':"-5%"})
-		//$('.toolbar').css({'margin-bottom':"-2.5%"})
+		
+		//$('.toolbar').css({'padding-left':"5%"})
+		//$('.toolbar').css({'padding-right':"5%"})
+
+		
+		$('.font').css({"font-size":"14px"})
+		//$('.columns').css({"width":"500px"})
 
     }
     else {
+    	Device = "PC"
         console.log("#Device : PC")
 
         //$('body').css({"width":BodyWidth})
+
+    	$("body").css({"padding-left":"10%"})
+    	$("body").css({"padding-right":"10%"})
 
         //框架1
 		$('.tp1').css({"position":"absolute"})
@@ -59,7 +81,7 @@ $(document).ready(function() {
 		$('.tp2').css({"position":"static"})
 
 		//Table2位置調整
-		tp2Position = $('.popmusic_logo').width() + 30
+		tp2Position = $('.popmusic_logo').width() + 50
 		$('.tp2').css({"margin-left":tp2Position})
 		//$('.tp2').css({"margin-top":""})
 
@@ -68,6 +90,8 @@ $(document).ready(function() {
 		$('.toolbar').css({'width':ToolbarWidth})
 		//$('.toolbar').css({'margin-top':"-2.5%"})
 		$('.toolbar').css({'margin-bottom':"1%"})
+
+		$('.font').css({"font-size":"18px"})
 
 		//顯示表單
 		$('.tp2').append('<div class="excel-table"><iframe src="https://docs.google.com/spreadsheets/d/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/pubhtml?widget=true&amp;headers=false" class="excel"></iframe></div>')
@@ -114,7 +138,7 @@ $(document).ready(function() {
     var y = date.getFullYear()
     */
     
-    color = ['red','orange','yellow','green','blue','purple']
+    color = ['PaleTurquoise','PaleGreen','PaleGoldenRod','Orchid','OrangeRed','Plum']
 
     function random(min,max) {
 		return Math.floor(Math.random()*(max-min+1)+min);
@@ -246,7 +270,9 @@ $(document).ready(function() {
 	*/
 
     //-----------------Full Calendar---------------
-
+    CalendarHeight = 0;
+    if (Device == "Mobile") CalendarHeight = 1165
+    if (Device == "PC") CalendarHeight = 1325
     $('#calendar').fullCalendar({
 
 
@@ -265,7 +291,7 @@ $(document).ready(function() {
         //unselectAuto: true,
 
     	//網頁全開寬度1058
-    	contentHeight: 1325,
+    	contentHeight: CalendarHeight,
     	//height: 1349,
 
         //handleWindowResize: true,
