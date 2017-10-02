@@ -19,6 +19,11 @@ body{
     border:5px orange solid;
 }
 
+.schedule{
+	width: 1150px;
+	height: 487px;
+}
+
 .toolbar{
 	text-align: center;
 }

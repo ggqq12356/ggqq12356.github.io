@@ -26,7 +26,6 @@ body{
 
 .admin{
     color: skyblue;
-    font-size: 22px;
     font-weight: bold;
     text-align: center;
 }
@@ -51,7 +50,6 @@ body{
 }
 
 .font{
-    //font-size: 18px;
     color: yellow;
     text-decoration:none;
 }

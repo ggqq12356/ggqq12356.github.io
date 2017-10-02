@@ -23,7 +23,8 @@
 	<!--<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">-->
 	<!-- 常見此寫法 -->
 
-	<script src="../js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<script src="../js/jquery-3.1.0.min.js"></script>
+    <!--<script src="../js/jquery-ui-1.12.1/jquery-ui.min.js"></script>-->
     <link href='../js/jquery-ui-1.12.1/jquery-ui.min.css' rel='stylesheet' />
     <link href='../js/jquery-ui-1.12.1/jquery-ui.structure.min.css' rel='stylesheet' />
     <link href='../js/jquery-ui-1.12.1/jquery-ui.theme.min.css' rel='stylesheet' />
@@ -32,20 +33,7 @@
 	<link rel="bookmark" href="guitar.ico"/>
 
 	<link rel="stylesheet" type="text/css" href="./fixed_bands_style.css">
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-
-			//判斷裝置種類
-		    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		    	console.log("#Device : Mobile");
-		    }
-		    else {
-		        console.log("#Device : PC");
-		    }
-
-		})
-	</script>
+	<script src="./fixed_bands_control.js"></script>
 
 </head>
 
@@ -55,12 +43,15 @@
 			<a href="./" class="gobacktitle">返回-借社辦系統首頁</a>
 		</div>
 
+		<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQniE4DSIM8iEsJUThM-2OpEEDYxHKEnSYMeLinJrTYDd4lE2rMxfqtHe8QAQFHhZtIwdhyR1MmnRcY/pubhtml?gid=1418783684&amp;single=true&amp;widget=true&amp;headers=false" class="schedule"></iframe>
+
+		<!--
 		<table border="1" class="toolbar">
 			<tr>
 				<td colspan="8" class="title">106固定團時間表</td>
 			</tr>
 
-			<!--第一列-->
+			第一列
 			<tr class="day">
 				<td></td>
 				<td>一</td>
@@ -192,9 +183,10 @@
 				<td class="band d6">Ｘ</td>
 				<td class="band d7">水泥蛋蛋</td>
 			</tr>
-			<!--最後一行-->
-
+			最後一行
 		</table>
+		-->
+
 
 </body>
 </html>
