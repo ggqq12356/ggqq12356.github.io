@@ -55,7 +55,7 @@ $(document).ready(function() {
 		//$('.toolbar').css({'padding-right':"5%"})
 
 
-		$('.font').css({"font-size":"10px"})
+		$('.font').css({"font-size":"14px"})
 		//$('.columns').css({"width":"500px"})
 
     }
