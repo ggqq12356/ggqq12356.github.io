@@ -17,17 +17,20 @@ $(document).ready(function() {
     	Device = "Mobile"
     	console.log("#Device : Mobile")
 
-    	//$("body").css({"margin":"0px auto"})
+    	$("body").css({"margin":"0px auto"})
     	$("body").css({"padding-left":"2%"})
     	$("body").css({"padding-right":"2%"})
     	$("body").css({"padding-top":"1%"})
     	$("body").css({"padding-bottom":"1%"})
 
+    	//$(".main").css({"padding-left":"2%"})
+    	//$(".main").css({"padding-right":"2%"})
+
     	//框架1
-		$('.tp1').css({"position":"relative"})
+		//$('.tp1').css({"position":"relative"})
 
 		//框架2
-		$('.tp2').css({"position":"static"})
+		//$('.tp2').css({"position":"static"})
 		//$('.tp2').css({"text-align":"center"})
 
 		//Logo調整
@@ -51,8 +54,8 @@ $(document).ready(function() {
 		//$('.toolbar').css({'padding-left':"5%"})
 		//$('.toolbar').css({'padding-right':"5%"})
 
-		
-		$('.font').css({"font-size":"14px"})
+
+		$('.font').css({"font-size":"20px"})
 		//$('.columns').css({"width":"500px"})
 
     }
