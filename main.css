@@ -227,7 +227,7 @@
 		font-weight: bolder;
 		border: 3px solid none;
 		border-radius: 10px;
-		box-shadow: 0px 10px 10px var(--milk);
+		/*box-shadow: 0px 10px 10px var(--milk);*/
 	}
 	.text:active{
 		color: var(--bodypink);
