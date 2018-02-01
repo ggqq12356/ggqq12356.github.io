@@ -11,14 +11,18 @@
 		h1{
 			color: purple;
 			font-size: 50px;
-			margin-top: 0px;
-			margin-bottom: 0px;
-			margin-left: 200px;
+			margin-top: 20px;
+			margin-left: 110px;
+			float:left;
+		}
+		iframe{
+			width: 100px;
+			height: 100px;
 		}
 		button{
-			width: 200px;
-			height: 100px;
-			font-size: 50px;
+			width: 120px;
+			height: 50px;
+			font-size: 30px;
 			margin-bottom: 10px;
 		}
 		.buttonGroup{
@@ -26,65 +30,37 @@
 			float:left;
 		}
 		img{
+			width: 70%;
+			height: 70%;
 		}
 	</style>
-	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="../js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 
-			// Relay1
-
-			$('.bt1').click(function(){
-				$.ajax({
-				  method: "GET",
-				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay1/2",
-				  success:function(data){
-					console.log('Relay1')
-				  }
-				});
+			$(".bt1").click(function(){
+				$(".link").attr("src","http://wf8266.com/wf8266r/api/service/13615486/Relay1/2");
 			})
 
-			// Relay2
-
-			$('.bt2').click(function(){
-				$.ajax({
-				  method: "GET",
-				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay2/2",
-				  success:function(data){
-					console.log('Relay2')
-				  }
-				});
+			$(".bt2").click(function(){
+				$(".link").attr("src","http://wf8266.com/wf8266r/api/service/13615486/Relay2/2");
 			})
 
-			// Relay3
-
-			$('.bt3').click(function(){
-				$.ajax({
-				  method: "GET",
-				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay3/2",
-				  success:function(data){
-					console.log('Relay3')
-				  }
-				});
+			$(".bt3").click(function(){
+				$(".link").attr("src","http://wf8266.com/wf8266r/api/service/13615486/Relay3/2");
 			})
 
-			// Relay4
-
-			$('.bt4').click(function(){
-				$.ajax({
-				  method: "GET",
-				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay4/2",
-				  success:function(data){
-					console.log('Relay4')
-				  }
-				});
+			$(".bt4").click(function(){
+				$(".link").attr("src","http://wf8266.com/wf8266r/api/service/13615486/Relay4/2");
 			})
 
-		})
+		});
 	</script>
 </head>
 <body>
 	<h1>宿舍繼電器控制</h1>
+	<iframe frameborder="1" class="link" src="">
+	</iframe>
 	<div class="buttonGroup">
 		<button class="bt1">開關1</button>
 		<button class="bt2">開關2</button>
