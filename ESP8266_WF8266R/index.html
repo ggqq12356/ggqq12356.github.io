@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>宿舍繼電器控制</title>
+	<link rel="shortcut icon" href="https://ggqq12356.github.io/game.ico">
+	<style type="text/css">
+		body{
+			background-color: #ff9999;
+			margin-left: 300px;
+		}
+		h1{
+			color: purple;
+			font-size: 50px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			margin-left: 200px;
+		}
+		button{
+			width: 200px;
+			height: 100px;
+			font-size: 50px;
+			margin-bottom: 10px;
+		}
+		.buttonGroup{
+			text-align: center;
+			float:left;
+		}
+		img{
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			// Relay1
+
+			$('.bt1').click(function(){
+				$.ajax({
+				  method: "GET",
+				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay1/2",
+				  success:function(data){
+					console.log('Relay1')
+				  }
+				});
+			})
+
+			// Relay2
+
+			$('.bt2').click(function(){
+				$.ajax({
+				  method: "GET",
+				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay2/2",
+				  success:function(data){
+					console.log('Relay2')
+				  }
+				});
+			})
+
+			// Relay3
+
+			$('.bt3').click(function(){
+				$.ajax({
+				  method: "GET",
+				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay3/2",
+				  success:function(data){
+					console.log('Relay3')
+				  }
+				});
+			})
+
+			// Relay4
+
+			$('.bt4').click(function(){
+				$.ajax({
+				  method: "GET",
+				  url: "http://wf8266.com/wf8266r/api/service/13615486/Relay4/2",
+				  success:function(data){
+					console.log('Relay4')
+				  }
+				});
+			})
+
+		})
+	</script>
+</head>
+<body>
+	<h1>宿舍繼電器控制</h1>
+	<div class="buttonGroup">
+		<button class="bt1">開關1</button>
+		<button class="bt2">開關2</button>
+		<button class="bt3">開關3</button>
+		<button class="bt4">開關4</button>
+	<div>
+	<img src='https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.0-9/27067111_10157143232996038_5904774409030287986_n.jpg?oh=0ca63e66a3343ffa42bb72ae1461eff4&oe=5B22A6F4'>
+	<br>
+</body>
+</html>
