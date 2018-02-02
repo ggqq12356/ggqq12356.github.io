@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>宿舍繼電器控制</title>
-	<link rel="shortcut icon" href="https://ggqq12356.github.io/game.ico">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../game.ico"/>
+	<link rel="bookmark" href="../game.ico"/>
 	<style type="text/css">
 		body{
 			background-color: #ff9999;
@@ -44,12 +47,14 @@
 	</style>
 	<script src="../js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
 
+		$(document).ready(function(){
 			
+			$Device_ID = $('.device_id').val()
+			console.log("$Device_ID", $Device_ID)
 
 			$('.bt1').click(function(){
-				$Device_ID = $('.device_id').attr('value')
+				$Device_ID = $('.device_id').val()
 				$.ajax({
 				  method: "GET",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay1/2",
@@ -60,7 +65,7 @@
 			})
 
 			$('.bt2').click(function(data){
-				$Device_ID = $('.device_id').attr('value')
+				$Device_ID = $('.device_id').val()
 				$.ajax({
 				  method: "GET",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay2/2",
@@ -71,7 +76,7 @@
 			})
 
 			$('.bt3').click(function(data){
-				$Device_ID = $('.device_id').attr('value')
+				$Device_ID = $('.device_id').val()
 				$.ajax({
 				  method: "GET",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay3/2",
@@ -82,7 +87,7 @@
 			})
 
 			$('.bt4').click(function(data){
-				$Device_ID = $('.device_id').attr('value')
+				$Device_ID = $('.device_id').val()
 				$.ajax({
 				  method: "GET",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay4/2",
