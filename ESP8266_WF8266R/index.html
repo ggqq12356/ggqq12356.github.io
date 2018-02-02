@@ -44,7 +44,15 @@
 			$width = $( window ).width();
 			$height = $( window ).height();
 
-			$('.content').css({"margin-left":$width/4})
+			//判斷裝置種類
+		    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		    	console.log("#Device : Mobile");
+		    	$('.content').css({"margin-left":"10px"})
+		    }
+		    else {
+		        console.log("#Device : PC");
+		        $('.content').css({"margin-left":$width/4})
+		    }
 			
 			$('.bt1').click(function(){
 				$Device_ID = $('.device_id').val()
