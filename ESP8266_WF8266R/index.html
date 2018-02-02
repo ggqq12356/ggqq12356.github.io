@@ -9,46 +9,47 @@
 	<style type="text/css">
 		body{
 			background-color: #ff9999;
+			position: relative;
 		}
 		.content{
-			margin-left: 250px;
 			text-align: center;
-			width: 800px;
+			width: auto;
 			height: auto;
 		}
 		h1{
 			color: purple;
 			font-size: 50px;
-			margin-top: 20px;
-			margin-left: 110px;
-			float:left;
+			margin-top: -10px;
+			margin-bottom: 0px;
+			margin-left: -200px;
 		}
-		.link{
-			width: auto;
-			height: auto;
-		}
-		.stateGroup{
-			color: purple;
-			font-size: 50px;
+		.device{
+			margin-left: -200px;
 		}
 		.buttonGroup{
 			margin-left: 100px;
+			margin-bottom: 5px;
 		}
 		button{
 			width: 120px;
 			height: 50px;
 			font-size: 30px;
-			margin-bottom: 10px;
 		}
 		img{
-			width: 70%;
-			height: 70%;
+			margin-left: -300px;
+			width: 50%;
+			height: 50%;
 		}
 	</style>
 	<script src="../js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript">
 
 		$(document).ready(function(){
+
+			$width = $( window ).width();
+			$height = $( window ).height();
+
+			$('.content').css({"margin-left":$width/4})
 			
 			$('.bt1').click(function(){
 				$Device_ID = $('.device_id').val()
@@ -85,16 +86,20 @@
 					<h1>宿舍繼電器控制</h1>
 				</th>
 				<th>
-					Device_ID
-					<input type="text" class="device_id" value="Device_ID">
+					<div class="device">
+						Device_ID
+						<input type="text" class="device_id" value="Device_ID">
+					</div>
 				</th>
 			</tr>
-			<tr class="buttonGroup">
+			<tr>
 				<td>
-					<button class="bt1">開關1</button>
-					<button class="bt2">開關2</button>
-					<button class="bt3">開關3</button>
-					<button class="bt4">開關4</button>
+					<div class="buttonGroup">
+						<button class="bt1">開關1</button>
+						<button class="bt2">開關2</button>
+						<button class="bt3">開關3</button>
+						<button class="bt4">開關4</button>
+					</div>
 				</td>
 			</tr>
 		</table>
