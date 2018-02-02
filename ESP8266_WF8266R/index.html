@@ -56,7 +56,7 @@
 			$('.bt1').click(function(){
 				$Device_ID = $('.device_id').val()
 				$.ajax({
-				  method: "GET",
+				  method: "POST",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay1/2",
 				  success:function(data){
 					console.log('Done.')
@@ -67,7 +67,7 @@
 			$('.bt2').click(function(data){
 				$Device_ID = $('.device_id').val()
 				$.ajax({
-				  method: "GET",
+				  method: "POST",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay2/2",
 				  success:function(){
 					console.log('Done.')
@@ -78,7 +78,7 @@
 			$('.bt3').click(function(data){
 				$Device_ID = $('.device_id').val()
 				$.ajax({
-				  method: "GET",
+				  method: "POST",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay3/2",
 				  success:function(){
 					console.log('Done.')
@@ -89,7 +89,7 @@
 			$('.bt4').click(function(data){
 				$Device_ID = $('.device_id').val()
 				$.ajax({
-				  method: "GET",
+				  method: "POST",
 				  url: "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay4/2",
 				  success:function(){
 					console.log('Done.')
