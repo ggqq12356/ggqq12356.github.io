@@ -1,118 +1,225 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>ÂÆøËàçÁπºÈõªÂô®ÊéßÂà∂</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="../game.ico"/>
-	<link rel="bookmark" href="../game.ico"/>
-	<style type="text/css">
-		body{
-			background-color: #ff9999;
-			position: absolute;
-		}
-		.content{
-			text-align: center;
-			width: auto;
-			height: auto;
-			margin: 10px;
-		}
-		h1{
-			color: purple;
-			font-size: 30px;
-			margin-top: 0px;
-			margin-bottom: 0px;
-		}
-		.device{
-			font-size: 30px;
-		}
-		button{
-			width: 120px;
-			height: 50px;
-			font-size: 30px;
-		}
-		img{
-			width: 503px;
-			height: 672px;
-		}
-	</style>
-	<script src="../js/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WF8266R_WebSocket</title>
+<link rel="shortcut icon" href="../game.ico">
+<link rel="bookmark" href="../game.ico">
+<script src="../js/jquery-3.1.0.min.js"></script>
+<!--
+<script src="http://wf8266.com/wf8266r/webcomponent/jquery-2.1.4.min.js"></script>
+-->
+<script>
+    $(document).ready(function(){
 
-		$(document).ready(function(){
+        $('.st1').attr("disabled","True")
+        $('.st2').attr("disabled","True")
+        $('.st3').attr("disabled","True")
+        $('.st4').attr("disabled","True")
 
-			$width = $( window ).width();
-			$height = $( window ).height();
+        $('.r1_on').attr("disabled","True")
+        $('.r2_on').attr("disabled","True")
+        $('.r3_on').attr("disabled","True")
+        $('.r4_on').attr("disabled","True")
 
-			//Âà§Êñ∑Ë£ùÁΩÆÁ®ÆÈ°û
-		    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		    	console.log("#Device : Mobile");
-		    	$('.content').css({"margin-left":"0px"})
-		    }
-		    else {
-		        console.log("#Device : PC");
-		        $('.content').css({"margin-left":$width/4})
-		    }
-			
-			$('.bt1').click(function(){
-				$Device_ID = $('.device_id').val()
-				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay1/2"
-				window.open($url)
-			})
+        $('.r1_off').attr("disabled","True")
+        $('.r2_off').attr("disabled","True")
+        $('.r3_off').attr("disabled","True")
+        $('.r4_off').attr("disabled","True")
 
-			$('.bt2').click(function(data){
-				$Device_ID = $('.device_id').val()
-				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay2/2"
-				window.open($url)
-			})
+        $('.connect').click(function(){
+            local_address = $('.local_address').val()
 
-			$('.bt3').click(function(data){
-				$Device_ID = $('.device_id').val()
-				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay3/2"
-				window.open($url)
-			})
+            console.log('local_address:'+local_address)
 
-			$('.bt4').click(function(data){
-				$Device_ID = $('.device_id').val()
-				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay4/2"
-				window.open($url)
-			})
+            connect(local_address)
+        })
 
-		});
-	</script>
+        function connect(local_address){
+
+            var connection = new WebSocket('ws://'+local_address+':81/api', ['wf8266r']);
+
+            connection.onopen = function (e) {
+                //≥sΩu¶®•\∞e•X©R•O        
+                //connection.send("gpio/adc")
+                connection.send("gpio/readAll")
+
+                $('.st1').removeAttr('disabled')
+                $('.st2').removeAttr('disabled')
+                $('.st3').removeAttr('disabled')
+                $('.st4').removeAttr('disabled')
+
+                $('.r1_on').removeAttr('disabled')
+                $('.r2_on').removeAttr('disabled')
+                $('.r3_on').removeAttr('disabled')
+                $('.r4_on').removeAttr('disabled')
+
+                $('.r1_off').removeAttr('disabled')
+                $('.r2_off').removeAttr('disabled')
+                $('.r3_off').removeAttr('disabled')
+                $('.r4_off').removeAttr('disabled')
+            };
+            connection.onclose = function (e) {
+                //≥sΩu√ˆ≥¨
+                console.log(e)
+            };
+            connection.onmessage = function (e) {
+                //¶¨®Ï®”¶€ WF8266R ™∫∞TÆß
+                console.log(e.data)
+                $('.log').html(e.data)
+            };
+            connection.onerror = function (e) {
+                //§£©˙™∫ø˘ª~
+                console.log(e.type)
+                $('.log').html(e.type)
+            };
+
+            //////////////////////////////////////////////////
+
+            $('.st1').click(function(){
+                connection.send("gpio/read,5=")
+            })
+            $('.st2').click(function(){
+                connection.send("gpio/read,4=")
+            })
+            $('.st3').click(function(){
+                connection.send("gpio/read,12=")
+            })
+            $('.st4').click(function(){
+                connection.send("gpio/read,13=")
+            })
+
+            //////////////////////////////////////////////////
+
+            $('.r1_on').click(function(){
+                connection.send("gpio,5=0")
+            })
+            $('.r2_on').click(function(){
+                connection.send("gpio,4=0")
+            })
+            $('.r3_on').click(function(){
+                connection.send("gpio,12=0")
+            })
+            $('.r4_on').click(function(){
+                connection.send("gpio,13=0")
+            })
+
+            //////////////////////////////////////////////////
+
+            $('.r1_off').click(function(){
+                connection.send("gpio,5=1")
+            })
+            $('.r2_off').click(function(){
+                connection.send("gpio,4=1")
+            })
+            $('.r3_off').click(function(){
+                connection.send("gpio,12=1")
+            })
+            $('.r4_off').click(function(){
+                connection.send("gpio,13=1")
+            })
+        }
+
+            //////////////////////////////////////////////////
+
+    })
+</script>
+<style type="text/css">
+
+    body{
+        background-color: #ff9999;
+        margin: 10px;
+        width: 600px;
+        position: absolute;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .content{
+    }
+
+    .top{
+    }
+
+    .bottom{
+    }
+
+    .title{
+        font-size: 50px;
+        color: purple;
+    }
+
+    .logger{
+        width: auto;
+        height: auto;
+        font-size: 30px;
+    }
+    .log{
+        width: 500px;
+        height: 30px;
+        color: grey;
+        font-size: 20px;
+    }
+
+    .connect_info{
+        font-size: 30px;
+    }
+    .local_address{
+        font-size: 20px;
+        width: 360px;
+    }
+    .connect{
+        //font-size: 20px;
+    }
+
+    .buttongroup{
+        margin: 5px;
+    }
+    button{
+        margin: 2px;
+        width: 120px;
+        height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
-	<div class="content">
-		<table>
-			<tr class="title">
-				<th>
-					<h1>ÂÆøËàçÁπºÈõªÂô®ÊéßÂà∂</h1>
-				</th>
-			</tr>
-			<tr>
-				<th>
-					<div class="device">
-						Device_ID
-						<input type="text" class="device_id" value="Device_ID">
-					</div>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<div class="buttonGroup">
-						<button class="bt1">ÈñãÈóú1</button>
-						<button class="bt2">ÈñãÈóú2</button>
-						<button class="bt3">ÈñãÈóú3</button>
-						<button class="bt4">ÈñãÈóú4</button>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img src='https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.0-9/27067111_10157143232996038_5904774409030287986_n.jpg?oh=0ca63e66a3343ffa42bb72ae1461eff4&oe=5B22A6F4'>
-				</td>
-			</tr>
-		</table>
-	</div>
+    <div class="content">
+        <div class="top">
+            <div class="title">
+                <span>WF8266R_WebSocket</span>
+            </div>
+            <br>
+            <div class="logger">
+                <span>console_log:</span><br>
+                <textarea class="log"></textarea>
+            </div>
+            <div class="connect_info">
+                <span>local_address:</span><br>
+                <input type="text" class="local_address" value="">
+                <button class="connect">Connect</button>
+            </div>
+            <div class="buttongroup">
+                <button class="st1">gpio5_st</button>
+                <button class="st2">gpio4_st</button>
+                <button class="st3">gpio12_st</button>
+                <button class="st4">gpio13_st</button>
+                <br>
+                <button class="r1_on">gpio5_on</button>
+                <button class="r2_on">gpio4_on</button>
+                <button class="r3_on">gpio12_on</button>
+                <button class="r4_on">gpio13_on</button>
+                <br>
+                <button class="r1_off">gpio5_off</button>
+                <button class="r2_off">gpio4_off</button>
+                <button class="r3_off">gpio12_off</button>
+                <button class="r4_off">gpio13_off</button>
+            </div>
+        </div>
+        <div class="bottom">
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FG.E.M.OfficialPage%2F&tabs=timeline%2C%20events&width=500&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
+    </div>
 </body>
 </html>

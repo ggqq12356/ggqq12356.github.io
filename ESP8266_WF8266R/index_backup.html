@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>宿舍繼電器控制</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../game.ico"/>
+	<link rel="bookmark" href="../game.ico"/>
+	<style type="text/css">
+		body{
+			background-color: #ff9999;
+			position: absolute;
+		}
+		.content{
+			text-align: center;
+			width: auto;
+			height: auto;
+			margin: 10px;
+		}
+		h1{
+			color: purple;
+			font-size: 30px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		.device{
+			font-size: 30px;
+		}
+		button{
+			width: 120px;
+			height: 50px;
+			font-size: 30px;
+		}
+		img{
+			width: 503px;
+			height: 672px;
+		}
+	</style>
+	<script src="../js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+
+			$width = $( window ).width();
+			$height = $( window ).height();
+
+			//判斷裝置種類
+		    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		    	console.log("#Device : Mobile");
+		    	$('.content').css({"margin-left":"0px"})
+		    }
+		    else {
+		        console.log("#Device : PC");
+		        $('.content').css({"margin-left":$width/4})
+		    }
+			
+			$('.bt1').click(function(){
+				$Device_ID = $('.device_id').val()
+				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay1/2"
+				window.open($url)
+			})
+
+			$('.bt2').click(function(data){
+				$Device_ID = $('.device_id').val()
+				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay2/2"
+				window.open($url)
+			})
+
+			$('.bt3').click(function(data){
+				$Device_ID = $('.device_id').val()
+				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay3/2"
+				window.open($url)
+			})
+
+			$('.bt4').click(function(data){
+				$Device_ID = $('.device_id').val()
+				$url = "http://wf8266.com/wf8266r/api/service/"+$Device_ID+"/Relay4/2"
+				window.open($url)
+			})
+
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<table>
+			<tr class="title">
+				<th>
+					<h1>宿舍繼電器控制</h1>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div class="device">
+						Device_ID
+						<input type="text" class="device_id" value="Device_ID">
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<div class="buttonGroup">
+						<button class="bt1">開關1</button>
+						<button class="bt2">開關2</button>
+						<button class="bt3">開關3</button>
+						<button class="bt4">開關4</button>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src='https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.0-9/27067111_10157143232996038_5904774409030287986_n.jpg?oh=0ca63e66a3343ffa42bb72ae1461eff4&oe=5B22A6F4'>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
