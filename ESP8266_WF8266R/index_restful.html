@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WF8266R_RESTful</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../game.ico"/>
+	<link rel="bookmark" href="../game.ico"/>
+	<style type="text/css">
+		body{
+			background-color: #ff9999;
+			position: absolute;
+		}
+		.content{
+			text-align: center;
+			width: auto;
+			height: auto;
+			margin: 10px;
+		}
+		.title{
+			color: purple;
+			font-size: 30px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		.local_address_info{
+			font-size: 30px;
+		}
+		button{
+			width: 120px;
+			height: 50px;
+			font-size: 30px;
+		}
+		img{
+			width: 503px;
+			height: 672px;
+		}
+		iframe{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+
+			$width = $( window ).width();
+			$height = $( window ).height();
+
+			//判斷裝置種類
+		    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		    	console.log("#Device : Mobile");
+		    	$('.content').css({"margin-left":"0px"})
+		    }
+		    else {
+		        console.log("#Device : PC");
+		        $('.content').css({"margin-left":$width/4})
+		    }
+			
+			$('.bt1').click(function(){
+				$local_address = $('.local_address').val()
+				console.log("$local_address:"+$local_address)
+				$url = "http://"+$local_address+"/gpio?5=2"
+				console.log("$url:"+$url)
+				window.open($url)
+			})
+
+			$('.bt2').click(function(data){
+				$local_address = $('.local_address').val()
+				console.log("$local_address:"+$local_address)
+				$url = "http://"+$local_address+"/gpio?4=2"
+				console.log("$url:"+$url)
+				window.open($url)
+			})
+
+			$('.bt3').click(function(data){
+				$local_address = $('.local_address').val()
+				console.log("$local_address:"+$local_address)
+				$url = "http://"+$local_address+"/gpio?12=2"
+				console.log("$url:"+$url)
+				window.open($url)
+			})
+
+			$('.bt4').click(function(data){
+				$local_address = $('.local_address').val()
+				console.log("$local_address:"+$local_address)
+				$url = "http://"+$local_address+"/gpio?13=2"
+				console.log("$url:"+$url)
+				window.open($url)
+			})
+
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<table>
+			<tr class="title">
+				<th>
+					<a href="./">WF8266R_RESTful</a>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div class="local_address_info">
+						local_address + port
+						<input type="text" class="local_address" value="">
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<div class="buttonGroup">
+						<button class="bt1">開關1</button>
+						<button class="bt2">開關2</button>
+						<button class="bt3">開關3</button>
+						<button class="bt4">開關4</button>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+            		<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FG.E.M.OfficialPage%2F&tabs=timeline%2C%20events&width=500&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

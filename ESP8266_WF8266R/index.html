@@ -5,127 +5,8 @@
 <title>WF8266R_WebSocket</title>
 <link rel="shortcut icon" href="../game.ico">
 <link rel="bookmark" href="../game.ico">
-<script src="../js/jquery-3.1.0.min.js"></script>
-<!--
-<script src="http://wf8266.com/wf8266r/webcomponent/jquery-2.1.4.min.js"></script>
--->
-<script>
-    $(document).ready(function(){
-
-        $('.st1').attr("disabled","True")
-        $('.st2').attr("disabled","True")
-        $('.st3').attr("disabled","True")
-        $('.st4').attr("disabled","True")
-
-        $('.r1_on').attr("disabled","True")
-        $('.r2_on').attr("disabled","True")
-        $('.r3_on').attr("disabled","True")
-        $('.r4_on').attr("disabled","True")
-
-        $('.r1_off').attr("disabled","True")
-        $('.r2_off').attr("disabled","True")
-        $('.r3_off').attr("disabled","True")
-        $('.r4_off').attr("disabled","True")
-
-        $('.connect').click(function(){
-            local_address = $('.local_address').val()
-
-            console.log('local_address:'+local_address)
-
-            connect(local_address)
-        })
-
-        function connect(local_address){
-
-            var connection = new WebSocket('ws://'+local_address+':81/api', ['wf8266r']);
-
-            connection.onopen = function (e) {
-                //連線成功送出命令        
-                //connection.send("gpio/adc")
-                connection.send("gpio/readAll")
-
-                $('.st1').removeAttr('disabled')
-                $('.st2').removeAttr('disabled')
-                $('.st3').removeAttr('disabled')
-                $('.st4').removeAttr('disabled')
-
-                $('.r1_on').removeAttr('disabled')
-                $('.r2_on').removeAttr('disabled')
-                $('.r3_on').removeAttr('disabled')
-                $('.r4_on').removeAttr('disabled')
-
-                $('.r1_off').removeAttr('disabled')
-                $('.r2_off').removeAttr('disabled')
-                $('.r3_off').removeAttr('disabled')
-                $('.r4_off').removeAttr('disabled')
-            };
-            connection.onclose = function (e) {
-                //連線關閉
-                console.log(e)
-            };
-            connection.onmessage = function (e) {
-                //收到來自 WF8266R 的訊息
-                console.log(e.data)
-                $('.log').html(e.data)
-            };
-            connection.onerror = function (e) {
-                //不明的錯誤
-                console.log(e.type)
-                $('.log').html(e.type)
-            };
-
-            //////////////////////////////////////////////////
-
-            $('.st1').click(function(){
-                connection.send("gpio/read,5=")
-            })
-            $('.st2').click(function(){
-                connection.send("gpio/read,4=")
-            })
-            $('.st3').click(function(){
-                connection.send("gpio/read,12=")
-            })
-            $('.st4').click(function(){
-                connection.send("gpio/read,13=")
-            })
-
-            //////////////////////////////////////////////////
-
-            $('.r1_on').click(function(){
-                connection.send("gpio,5=0")
-            })
-            $('.r2_on').click(function(){
-                connection.send("gpio,4=0")
-            })
-            $('.r3_on').click(function(){
-                connection.send("gpio,12=0")
-            })
-            $('.r4_on').click(function(){
-                connection.send("gpio,13=0")
-            })
-
-            //////////////////////////////////////////////////
-
-            $('.r1_off').click(function(){
-                connection.send("gpio,5=1")
-            })
-            $('.r2_off').click(function(){
-                connection.send("gpio,4=1")
-            })
-            $('.r3_off').click(function(){
-                connection.send("gpio,12=1")
-            })
-            $('.r4_off').click(function(){
-                connection.send("gpio,13=1")
-            })
-        }
-
-            //////////////////////////////////////////////////
-
-    })
-</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
-
     body{
         background-color: #ff9999;
         margin: 10px;
@@ -134,88 +15,17 @@
         text-align: center;
         font-weight: bold;
     }
-
-    .content{
-    }
-
     .top{
-    }
-
-    .bottom{
-    }
-
-    .title{
         font-size: 50px;
-        color: purple;
-    }
-
-    .logger{
-        width: auto;
-        height: auto;
-        font-size: 30px;
-    }
-    .log{
-        width: 500px;
-        height: 30px;
-        color: grey;
-        font-size: 20px;
-    }
-
-    .connect_info{
-        font-size: 30px;
-    }
-    .local_address{
-        font-size: 20px;
-        width: 360px;
-    }
-    .connect{
-        //font-size: 20px;
-    }
-
-    .buttongroup{
-        margin: 5px;
-    }
-    button{
-        margin: 2px;
-        width: 120px;
-        height: 50px;
-        font-size: 20px;
-        font-weight: bold;
     }
 </style>
 </head>
 <body>
     <div class="content">
         <div class="top">
-            <div class="title">
-                <span>WF8266R_WebSocket</span>
-            </div>
-            <br>
-            <div class="logger">
-                <span>console_log:</span><br>
-                <textarea class="log"></textarea>
-            </div>
-            <div class="connect_info">
-                <span>local_address:</span><br>
-                <input type="text" class="local_address" value="">
-                <button class="connect">Connect</button>
-            </div>
-            <div class="buttongroup">
-                <button class="st1">gpio5_st</button>
-                <button class="st2">gpio4_st</button>
-                <button class="st3">gpio12_st</button>
-                <button class="st4">gpio13_st</button>
-                <br>
-                <button class="r1_on">gpio5_on</button>
-                <button class="r2_on">gpio4_on</button>
-                <button class="r3_on">gpio12_on</button>
-                <button class="r4_on">gpio13_on</button>
-                <br>
-                <button class="r1_off">gpio5_off</button>
-                <button class="r2_off">gpio4_off</button>
-                <button class="r3_off">gpio12_off</button>
-                <button class="r4_off">gpio13_off</button>
-            </div>
+            <a href="index_websocket.html">index_websocket</a><br>
+            <a href="index_api.html">index_api</a><br>
+            <a href="index_restful.html">index_restful</a><br>
         </div>
         <div class="bottom">
             <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FG.E.M.OfficialPage%2F&tabs=timeline%2C%20events&width=500&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
