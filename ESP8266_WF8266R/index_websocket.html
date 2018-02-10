@@ -9,6 +9,19 @@
 <script>
     $(document).ready(function(){
 
+        $width = $( window ).width();
+        $height = $( window ).height();
+
+        //åˆ¤æ–·è£ç½®ç¨®é¡
+        if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            console.log("#Device : Mobile");
+            $('.content').css({"margin-left":"0px"})
+        }
+        else {
+            console.log("#Device : PC");
+            $('.content').css({"margin-left":$width/4})
+        }
+
         $('.st1').attr("disabled","True")
         $('.st2').attr("disabled","True")
         $('.st3').attr("disabled","True")
@@ -37,7 +50,7 @@
             var connection = new WebSocket('ws://'+local_address+'/api', ['wf8266r']);
 
             connection.onopen = function (e) {
-                //³s½u¦¨¥\°e¥X©R¥O        
+                //Â³sÂ½uÂ¦Â¨Â¥\Â°eÂ¥XÂ©RÂ¥O        
                 //connection.send("gpio/adc")
                 connection.send("gpio/readAll")
 
@@ -57,16 +70,16 @@
                 $('.r4_off').removeAttr('disabled')
             };
             connection.onclose = function (e) {
-                //³s½uÃö³¬
+                //Â³sÂ½uÃƒÃ¶Â³Â¬
                 console.log(e)
             };
             connection.onmessage = function (e) {
-                //¦¬¨ì¨Ó¦Û WF8266R ªº°T®§
+                //Â¦Â¬Â¨Ã¬Â¨Ã“Â¦Ã› WF8266R ÂªÂºÂ°TÂ®Â§
                 console.log(e.data)
                 $('.log').html(e.data)
             };
             connection.onerror = function (e) {
-                //¤£©úªº¿ù»~
+                //Â¤Â£Â©ÃºÂªÂºÂ¿Ã¹Â»~
                 console.log(e.type)
                 $('.log').html(e.type)
             };
@@ -125,14 +138,15 @@
 
     body{
         background-color: #ff9999;
-        margin: 10px;
-        width: 600px;
         position: absolute;
-        text-align: center;
-        font-weight: bold;
     }
 
     .content{
+        width: auto;
+        height: auto;
+        margin: 10px;
+        text-align: center;
+        font-weight: bold;
     }
 
     .top{
@@ -167,21 +181,18 @@
         font-size: 20px;
         width: 360px;
     }
-    .connect{
-        //font-size: 20px;
-    }
 
     .buttongroup{
-        margin: 5px;
+        margin: 2.5px;
     }
     button{
-        margin: 2px;
-        width: 120px;
+        margin: 2.5px;
+        width: 115px;
         height: 50px;
         font-size: 20px;
         font-weight: bold;
     }
-    
+
 </style>
 </head>
 <body>
