@@ -1,7 +1,7 @@
 body{
 	background-color: grey;
     //background-color: #E0E0E0;
-    //font-family:"微軟正黑體";
+    font-family:"微軟正黑體";
 }
 
 .main{
@@ -35,9 +35,12 @@ body{
 .tp2{
     //position: relative;
     //left: 13%;
+    padding-top: 1.5%;
 }
 
 .toolbar{
+    //margin-top: 10%;
+    font-size: 24px;
     text-align: center;
     border: 5px orange solid;
     width: auto;

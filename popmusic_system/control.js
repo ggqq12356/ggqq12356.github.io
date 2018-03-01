@@ -26,6 +26,7 @@ $(document).ready(function() {
     		//"padding-right":"2%",
     		//"padding-top":"1%",
     		//"padding-bottom":"1%",
+    		//"width":ScreenWidth,
     	})
 
     	$(".main").css({
@@ -153,40 +154,37 @@ $(document).ready(function() {
 
     }
 
-    /*
-    $('.tp2').append("<table border='1' class='toolbar'></table>")
-
     $('.toolbar').append("<!--第1列-->")
 
-    $('.toolbar').append("AJHADSHJASJHKJHKASD")
-
     $('.toolbar').append(
-	"<tr><td colspan='2'><a href='./'' target='_top' style='font-size: 24px;color: yellow;text-decoration:none;'>聯大熱音社 - 借社辦系統</a></td></tr>"
+	"<tr>"+
+	"<td colspan='2'><a href='./'' target='_top' style='font-size: 24px;color: yellow;text-decoration:none;'>聯大熱音社 - 借社辦系統</a></td>"+
+	"</tr>"
 	)
 
 	$('.toolbar').append("<!--第2列-->")
 	$('.toolbar').append(
-	"<tr>",
-	"<td class='columns'><a href='https://fb.me/nuupopmusic' target='_blank' class='font'>聯大熱音社 - FB粉絲專頁</a></td>",
-	"<td class='columns'><a href='https://fb.com/groups/133450906754131/' target='_blank' class='font'>聯大熱音社 - FB社團</a></td>",
+	"<tr>"+
+	"<td class='columns'><a href='https://fb.me/nuupopmusic' target='_blank' class='font'>聯大熱音社 - FB粉絲專頁</a></td>"+
+	"<td class='columns'><a href='https://fb.com/groups/133450906754131/' target='_blank' class='font'>聯大熱音社 - FB社團</a></td>"+
 	"</tr>"
 	)
 
 	$('.toolbar').append("<!--第3列-->")
 	$('.toolbar').append(
-	"<tr>",
-	"<td class='columns'><a href='https://goo.gl/jXvAAT' target='_blank' class='font'>106(下)固定團時間表</a></td>",
-	"<td class='columns'><a href='https://goo.gl/kpYBvz' target='_blank' class='font'>106(下)新生表演</a></td>"
+	"<tr>"+
+	"<td class='columns'><a href='https://goo.gl/jXvAAT' target='_blank' class='font'>106(下)固定團時間表</a></td>"+
+	"<td class='columns'><a href='https://goo.gl/kpYBvz' target='_blank' class='font'>106(下)新生表演</a></td>"+
 	"</tr>"
 	)
 
 	$('.toolbar').append("<!--第4列-->")
 	$('.toolbar').append(
-	"<tr>",
-	"<td class='columns'><a href='https://goo.gl/GvXhcF' target='_blank' class='font'>106(下)固定團</a></td><td class='columns'></td>",
+	"<tr>"+
+	"<td class='columns'><a href='https://goo.gl/GvXhcF' target='_blank' class='font'>106(下)固定團</a></td>"+
+	"<td class='columns'><a href='https://goo.gl/TgNb3o' target='_blank' class='font'>借社辦紀錄</a></td>"+
 	"</tr>"
 	)
-	*/
 
     //鎖定右鍵選單
     $("body").contextmenu(function(e){
@@ -467,7 +465,8 @@ $(document).ready(function() {
 	    	
 	    	//start
 	    	slt_st = start._i
-	    	slt_st = slt_st.toString().split(",")			//console.log(slt_st)
+	    	slt_st = slt_st.toString().split(",")
+	    	//console.log(slt_st)
 
 	    	slt_yr_st = slt_st[0]
 	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
@@ -628,7 +627,7 @@ $(document).ready(function() {
 							  "End_Times": newEnd
 						}
 
-						console.log("[送出資料] :"), console.log(newData)
+						//console.log("[送出資料] :"), console.log(newData)
 
 						$.ajax({
 				    		url: GoogleAppScript,
