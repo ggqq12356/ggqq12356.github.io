@@ -7,6 +7,9 @@ $(document).ready(function() {
 	})
 	*/
 
+	function random(min,max) {
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
 
     ScreenWidth = (window.innerWidth)
     BodyWidth = $('body').width()
@@ -17,93 +20,173 @@ $(document).ready(function() {
     	Device = "Mobile"
     	console.log("#Device : Mobile")
 
-    	$("body").css({"margin":"0px auto"})
-    	$("body").css({"padding-left":"2%"})
-    	$("body").css({"padding-right":"2%"})
-    	$("body").css({"padding-top":"1%"})
-    	$("body").css({"padding-bottom":"1%"})
+    	$("body").css({
+    		//"margin":"30px auto",
+    		//"padding-left":"2%",
+    		//"padding-right":"2%",
+    		//"padding-top":"1%",
+    		//"padding-bottom":"1%",
+    	})
 
-    	//$(".main").css({"padding-left":"2%"})
-    	//$(".main").css({"padding-right":"2%"})
+    	$(".main").css({
+    		"margin":"10px",
+    		//"padding-left":"5%",
+    		//"padding-right":"5%",
+    		//"display":"grid",
+    	})
+
+    	$('.top').css({
+			//"display":"flex",
+    	})
 
     	//框架1
-		//$('.tp1').css({"position":"relative"})
+		$('.tp1').css({
+			//"position":"relative",
+			//"position":"static",
+		})
 
 		//框架2
-		//$('.tp2').css({"position":"static"})
-		//$('.tp2').css({"text-align":"center"})
+		$('.tp2').css({
+			//"position":"static",
+			//"text-align":"center",
+		})
 
 		//Logo調整
-		//$('.popmusic_logo').css({"margin":"0% auto"})
-		$('.popmusic_logo').css({"margin-top":"1%"})
+		$('.popmusic_logo').css({
+			//"margin-top":"1%",
+			//"margin-left":"300px",
+			"margin-left":"11.5%",
+			//"width":"200%",
+			//"height":"85%",
+		})
 
 		//admin控制
-		$('.admin').css({"margin-top":"2.5%"})
-		//$('.admin').css({"margin-bottom":"-2.5%"})
-		$('.admin').css({"font-size":"22px"})
+		$('.admin').css({
+			"margin-top":"2.5%",
+			"margin-bottom":"-2.5%",
+			"font-size":"22px",
+		})
+
+		$('.mid').css({
+			//"margin":"10px",
+		})
 
 		//表格調整
-		$('.toolbar').css({'margin':"0% auto"})
-		//$('.toolbar').css({'margin-top':"-5%"})
-		//$('.toolbar').css({'margin-bottom':"-2.5%"})
-		//$('.toolbar').css({"margin-left":"1.5%"})
-
 		//ToolbarWidth = 612
-		//$('.toolbar').css({'width':ToolbarWidth})
-		
-		//$('.toolbar').css({'padding-left':"5%"})
-		//$('.toolbar').css({'padding-right':"5%"})
+		ToolbarWidth = innerWidth/1.5
+		$('.toolbar').css({
+			"margin":"0% auto",
+			//"margin-top":"40%",
+			//"margin-bottom":"-2.5%",
+			//"margin-left":"1.5%",
+			"width":ToolbarWidth,
+			//"padding-left":"5%",
+			//"padding-right":"5%",
+		})
 
+		$('.font').css({
+			"font-size":"14px",
+		})
 
-		$('.font').css({"font-size":"14px"})
-		//$('.columns').css({"width":"500px"})
+		$('.columns').css({
+			//"width":"500px",
+		})
 
     }
     else {
     	Device = "PC"
         console.log("#Device : PC")
 
-        //$('body').css({"width":BodyWidth})
-
-    	$("body").css({"padding-left":"10%"})
-    	$("body").css({"padding-right":"10%"})
+        $('body').css({
+        	//"width":BodyWidth,
+        	"padding-left":"10%",
+        	"padding-right":"10%",
+        })
 
         //框架1
-		$('.tp1').css({"position":"absolute"})
+		$('.tp1').css({
+			"position":"absolute",
+		})
 
 		//Logo調整
-		//$('.popmusic_logo').css({"margin":"0% auto"})
-		$('.popmusic_logo').css({"margin-top":"5%"})
+		$('.popmusic_logo').css({
+			//"margin":"0% auto",
+			"margin-top":"5%",
+		})
 
 		//admin控制
-		$('.admin').css({"margin-top":"15%"})
-		$('.admin').css({"margin-bottom":"15%"})
-		$('.admin').css({"font-size":"28px"})
+		$('.admin').css({
+			//"margin-top":"15%",
+			//"margin-bottom":"15%",
+			"font-size":"28px",
+		})
 
 		//框架2
-		$('.tp2').css({"position":"static"})
-
 		//Table2位置調整
 		tp2Position = $('.popmusic_logo').width() + 50
-		$('.tp2').css({"margin-left":tp2Position})
-		//$('.tp2').css({"margin-top":""})
+		$('.tp2').css({
+			"position":"static",
+			"margin-left":tp2Position,
+			//"margin-top":"",
+		})
 
 		//表格調整
 		ToolbarWidth = 612
-		$('.toolbar').css({'width':ToolbarWidth})
-		//$('.toolbar').css({'margin-top':"-2.5%"})
-		$('.toolbar').css({'margin-bottom':"1%"})
+		$('.toolbar').css({
+			"width":ToolbarWidth,
+			//"margin-top":"-2.5%",
+			"margin-bottom":"1%",
+		})
 
-		$('.font').css({"font-size":"18px"})
+		$('.font').css({
+			"font-size":"18px",
+		})
 
 		//顯示表單
 		$('.tp2').append('<div class="excel-table"><iframe src="https://docs.google.com/spreadsheets/d/1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M/pubhtml?widget=true&amp;headers=false" class="excel"></iframe></div>')
 
 		//表單寬度控制
 		excelWidth = 612 //(window.innerWidth)/2.25
-		$('.excel').css({"width":excelWidth})
+		$('.excel').css({
+			"width":excelWidth,
+		})
 
     }
+
+    /*
+    $('.tp2').append("<table border='1' class='toolbar'></table>")
+
+    $('.toolbar').append("<!--第1列-->")
+
+    $('.toolbar').append("AJHADSHJASJHKJHKASD")
+
+    $('.toolbar').append(
+	"<tr><td colspan='2'><a href='./'' target='_top' style='font-size: 24px;color: yellow;text-decoration:none;'>聯大熱音社 - 借社辦系統</a></td></tr>"
+	)
+
+	$('.toolbar').append("<!--第2列-->")
+	$('.toolbar').append(
+	"<tr>",
+	"<td class='columns'><a href='https://fb.me/nuupopmusic' target='_blank' class='font'>聯大熱音社 - FB粉絲專頁</a></td>",
+	"<td class='columns'><a href='https://fb.com/groups/133450906754131/' target='_blank' class='font'>聯大熱音社 - FB社團</a></td>",
+	"</tr>"
+	)
+
+	$('.toolbar').append("<!--第3列-->")
+	$('.toolbar').append(
+	"<tr>",
+	"<td class='columns'><a href='https://goo.gl/jXvAAT' target='_blank' class='font'>106(下)固定團時間表</a></td>",
+	"<td class='columns'><a href='https://goo.gl/kpYBvz' target='_blank' class='font'>106(下)新生表演</a></td>"
+	"</tr>"
+	)
+
+	$('.toolbar').append("<!--第4列-->")
+	$('.toolbar').append(
+	"<tr>",
+	"<td class='columns'><a href='https://goo.gl/GvXhcF' target='_blank' class='font'>106(下)固定團</a></td><td class='columns'></td>",
+	"</tr>"
+	)
+	*/
 
     //鎖定右鍵選單
     $("body").contextmenu(function(e){
@@ -143,11 +226,7 @@ $(document).ready(function() {
     
     color = ['PaleTurquoise','PaleGreen','PaleGoldenRod','Orchid','OrangeRed','Plum']
 
-    function random(min,max) {
-		return Math.floor(Math.random()*(max-min+1)+min);
-	}
-
-	API_KEY = 'AIzaSyBSXyW_Btqv0QTWWzjllBn0NZmYn1jN6mg'
+	API_KEY = 'AIzaSyAyHn3qgU8cgp5Mbpmp57RsHy4qlxrzRTQ'
 	CLIENT_ID = '333036251532-o7cs05kl4ck7mrsnb7o66l7ehopihf2v.apps.googleusercontent.com'
 
 	//scope = 'https://www.googleapis.com/auth/calendar'
@@ -162,7 +241,7 @@ $(document).ready(function() {
 	spreadsheetId = '1yS-MW2BMESK6o5_-qYwzNi1BPu7kmtx3w7JqAF1wO0M'
 	range = 'A1'
 
-	GoogleAppScript = "https://script.google.com/macros/s/AKfycbwXe1UlNdLZErA5ouR45DDPCw9ZctBj9CIoahuQL6rhvcTPCTJj/exec"
+	GoogleAppScript = 'https://script.google.com/macros/s/AKfycbwT8Qictwvyo_WvqFbCTgHaqpopPo2J9GTFfF3co3Ee9kzCIN8l/exec'
 
 	Select_Events = []
 	newName = ''
@@ -273,11 +352,10 @@ $(document).ready(function() {
 	*/
 
     //-----------------Full Calendar---------------
-    CalendarHeight = 0;
     if (Device == "Mobile") CalendarHeight = 1165
-    if (Device == "PC") CalendarHeight = 1325
-    $('#calendar').fullCalendar({
+    if (Device == "PC") CalendarHeight = 1124
 
+    $('#calendar').fullCalendar({
 
     	//行事曆設定
     	header:{
@@ -303,7 +381,25 @@ $(document).ready(function() {
 
         //timezone: 'UTC',
 
+        //預設
+        events: [
+        /*
+        {
+	      title: '昨天的活動',
+	      start: moment().subtract(1, 'days').format('YYYY-MM-DD')
+	    },
+	    */
+	    ],
 
+        //
+        dayClick: function(date, event, view) {
+        	/*
+		    console.log('add event');
+		    console.log(date);
+		    console.log(event);
+		    cosole.log(view);
+		    */
+		},
 
         //按下
         eventClick: function(event, element, view) {
@@ -371,8 +467,7 @@ $(document).ready(function() {
 	    	
 	    	//start
 	    	slt_st = start._i
-	    	slt_st = slt_st.toString().split(",")
-			//console.log(slt_st)
+	    	slt_st = slt_st.toString().split(",")			//console.log(slt_st)
 
 	    	slt_yr_st = slt_st[0]
 	    	slt_mth_st = (parseInt(slt_st[1])+1).toString()
@@ -533,7 +628,7 @@ $(document).ready(function() {
 							  "End_Times": newEnd
 						}
 
-						//console.log("[送出資料] :"), console.log(newData)
+						console.log("[送出資料] :"), console.log(newData)
 
 						$.ajax({
 				    		url: GoogleAppScript,
@@ -542,8 +637,9 @@ $(document).ready(function() {
 				    		success: function(result){
 				    			console.log(result)
 				    		}
+				    	}).done(function(){
+				    		console.log('[訊息] '+newTime+' 已儲存！')
 				    	})
-				    	console.log('[訊息] '+newTime+' 已儲存！')
 						
 					}
 
@@ -703,6 +799,274 @@ $(document).ready(function() {
 		console.log('[訊息] Google Excel 資料載入成功!')
 	})
 
+
+	//固定團時間
+	AjaxUrl_Fixed_Band = "https://spreadsheets.google.com/feeds/cells/19ufVwi9Nu1Z9N30hywUe_Mjv16qfUmr5nTQUbRdIglo/1/public/values?alt=json"
+
+	$.ajax({
+		url: AjaxUrl_Fixed_Band,
+		method: "GET",
+		success: function(result){
+
+		//console.log(result)
+
+		Json = result
+		JFE = Json.feed.entry
+		JFE_Length = JFE.length;
+
+		$('.bottom').append("<table border='1' class='view'></table>")
+
+		L1 = []
+		L2 = []
+		L3 = []
+		L4 = []
+		L5 = []
+		L6 = []
+		L7 = []
+		L8 = []
+
+		for(i=0;i<JFE_Length;i++){
+			data = JFE[i].content.$t
+
+			if( (i+1)%8==0 ){
+				$('.view').append("<tr class='row"+( (i+1)/8-1 )+"'>test</tr>")
+			}
+
+			switch( (i+1)%8 ){
+				case 1:
+					L1.push(data)
+					break
+				case 2:
+					L2.push(data)
+					break
+				case 3:
+					L3.push(data)
+					break
+				case 4:
+					L4.push(data)
+					break
+				case 5:
+					L5.push(data)
+					break
+				case 6:
+					L6.push(data)
+					break
+				case 7:
+					L7.push(data)
+					break
+				case 0:
+					L8.push(data)
+					break
+			}
+
+		}
+
+		for(i=0;i<=L1.length;i++){
+			$('.row'+i).append("<td class='vi vi1 week'>"+L1[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi2 week'>"+L2[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi3 week'>"+L3[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi4 week'>"+L4[i]+"</td>")
+
+			$('.row'+i).append("<td class='vi vi5 week'>"+L5[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi6 week'>"+L6[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi7 week'>"+L7[i]+"</td>")
+			$('.row'+i).append("<td class='vi vi8 week'>"+L8[i]+"</td>")
+		}
+
+		$('.vi').css({
+			"color":"blue",
+			"background-color":"rgb(214,216,217)",
+			"border":"2px solid black",
+			"font-size":"20px",
+			"font-weight":"bold",
+			"text-align":"center",
+			"width":"150px",
+			"height":"50px",
+		})
+
+		vi_colors = [
+			"rgb(214,216,217)",
+			"rgb(219,112,147)",
+			"rgb(173,216,230)",
+			"rgb(144,238,144)",
+			"rgb(250,250,210)",
+			"rgb(147,112,219)",
+			"rgb(240,230,140)",
+			"rgb(255,182,193)",
+		]
+
+		for(i=0;i<8;i++){
+			$('.vi'+(i+1)).css({
+				"color":"black",
+				"background-color":vi_colors[i],
+				"font-family":"微軟正黑體",
+			})
+		}
+
+		/*
+		console.log(L1)
+		console.log(L2)
+		console.log(L3)
+		console.log(L4)
+		console.log(L5)
+		console.log(L6)
+		console.log(L7)
+		console.log(L8)
+		*/
+
+		// 新增至行事曆
+		Monday = []
+		Tuesday = []
+		Wednesday = []
+		Thursday = []
+		Friday = []
+		Saturday = []
+		Sunday = []
+
+		for(i=1;i<L1.length;i++){
+
+			//1
+			if(L2[i]!='Ｘ'){
+				data = "一"+"|"+L1[i]+"|"+L2[i]
+				Monday.push(data)
+			}
+
+			//2
+			if(L3[i]!='Ｘ'){
+				data = "二"+"|"+L1[i]+"|"+L3[i]
+				Tuesday.push(data)
+			}
+
+			//3
+			if(L4[i]!='Ｘ'){
+				data = "三"+"|"+L1[i]+"|"+L4[i]
+				Wednesday.push(data)
+			}
+
+			//4
+			if(L5[i]!='Ｘ'){
+				data = "四"+"|"+L1[i]+"|"+L5[i]
+				Thursday.push(data)
+			}
+
+			//5
+			if(L6[i]!='Ｘ'){
+				data = "五"+"|"+L1[i]+"|"+L6[i]
+				Friday.push(data)
+			}
+
+			//6
+			if(L7[i]!='Ｘ'){
+				data = "六"+"|"+L1[i]+"|"+L7[i]
+				Saturday.push(data)
+			}
+
+			//7
+			if(L8[i]!='Ｘ'){
+				data = "日"+"|"+L1[i]+"|"+L8[i]
+				Sunday.push(data)
+			}
+		}
+
+		/*
+		console.log(Monday)
+		console.log(Tuesday)
+		console.log(Wednesday)
+		console.log(Thursday)
+		console.log(Friday)
+		console.log(Saturday)
+		console.log(Sunday)
+		*/
+
+		fixed_Bands = []
+		Weeks = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+		k=0
+		for(i=0;i<Weeks.length;i++){
+			for(j=0;j<Weeks[i].length;j++){
+
+				data = Weeks[i][j]
+
+				week = data.split('|')[0]
+				time = data.split('|')[1].split('~')
+				start = time[0]
+				end = time[1]
+				name = data.split('|')[2]
+
+				/*
+				console.log(week)
+				console.log(start)
+				console.log(end)
+				console.log(name)
+				*/
+
+				fixed_Bands[k] = {
+					"week":week, 
+					"start":start, 
+					"end":end, 
+					"name":name
+				}
+				k++
+			}
+		}
+
+		//console.log(fixed_Bands)
+
+		Events_Array = []
+		for(i=0 ; i<fixed_Bands.length ; i++){
+
+			week = fixed_Bands[i]['week']
+			start = fixed_Bands[i]['start']
+			end = fixed_Bands[i]['end']
+			name = fixed_Bands[i]['name']
+
+			//console.log( moment().subtract(1, 'days').format('YYYY-MM-DD') )
+
+			switch(week){
+				case '一':
+					week = 1
+					break
+				case '二':
+					week = 2
+					break
+				case '三':
+					week = 3
+					break
+				case '四':
+					week = 4
+					break
+				case '五':
+					week = 5
+					break
+				case '六':
+					week = 6
+					break
+				case '日':
+					week = 0
+					break
+			}
+
+			Events_Array[i] = {
+				title: name,
+			    start: start,
+			    end: end,
+			    dow: [week],
+			    color: color[random(0, color.length-1)],
+				textColor: 'black',
+			    editable: false,
+			}
+		}
+
+		//console.log(Events_Array)
+		
+		//$('#calendar').fullCalendar( 'renderEvents', Events_Array, true );
+		$('#calendar').fullCalendar( 'addEventSource', Events_Array )
+		
+
+		}
+
+	}).done(function(){
+		console.log('[訊息] Google Excel 資料載入成功!')
+	})
 
 
 	//addEventToCalendar新增事件到行事曆

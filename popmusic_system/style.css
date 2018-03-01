@@ -1,5 +1,7 @@
 body{
 	background-color: grey;
+    //background-color: #E0E0E0;
+    //font-family:"微軟正黑體";
 }
 
 .main{
@@ -41,17 +43,13 @@ body{
     width: auto;
 }
 
-.rows{
-    //width: auto;
-}
-
 .columns{
     //width: 500px;
 }
 
 .font{
     color: yellow;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .excel-table{
@@ -86,7 +84,7 @@ body{
 
 .fc-left,
 .fc-right {
-    font-size: 16px;
+    font-size: 20px;
     color: #000;
 }
  
@@ -113,3 +111,11 @@ body{
     font-size: 20px;
 }
 
+.fc-content{
+    font-size: 18px;
+    font-weight: bold;
+    font-family:"微軟正黑體";
+    //font-family:"標楷體";
+    //font-family:"新細明體";
+    text-align: center;
+}
