@@ -32,17 +32,12 @@ $(document).ready(function(){
     	'小瑪莉(瑪仔台), ./slot_machine/',
     ]
 
-    //標題列
-
-				
-    $('.list').append("<!--第0列-->")
-
-    n=1
     for(i=0 ; i<menu_list.length ; i++){
 
     	title = menu_list[i].split(',')[0]
 		href = menu_list[i].split(',')[1]
 
+        $('.list').append("<!--第"+(i+1)+"列-->")
     	$('.list').append("<a href='"+href+"' target='_top' class='text'>"+title+"</a><br>")
 
     }
