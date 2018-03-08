@@ -1,42 +1,16 @@
 $(document).ready(function(){
-
-	//預設狀態
-	/*
-	$(".fa-toggle-on").hide();
-	$(".icon").hide();
-
-	$(".fa-toggle-off").click(function(){
-		$(this).hide();
-		$(".fa-toggle-on").show();
-		$(".icon").show();
-	});
-
-	$(".fa-toggle-on").click(function(){
-		$(this).hide();
-		$(".fa-toggle-off").show();
-		$(".icon").hide();
-	});
-	*/
-	
-	$(".fun").click(function(){
-		alert("\n" + "呆呆獸：蛤？");
-	})
-
-	//鎖定右鍵選單
-    $("body").contextmenu(function(e){
-        e.preventDefault();
-    });
-
 	//判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    	console.log("#Device : Mobile");
+    	console.log("#Device : Mobile")
+    	Device = "Mobile"
 
 		$(".list").css({
 			"width":"300px"
 		})
     }
     else {
-        console.log("#Device : PC");
+        console.log("#Device : PC")
+    	Device = "PC"
 
         $("body").css({
         	"margin-left":"35%"
@@ -45,5 +19,71 @@ $(document).ready(function(){
 			"margin-left":"-60px"
         })
     }
+
+    //動態生成表格
+    //表格清單
+    menu_list = [
+    	'聯大熱音社-借社辦系統, https://nuupopmusic.github.io',
+    	'命運大岩蛇之天堂與地獄, ./fate/',
+    	'Pokemon Ver.1, ./Pokemon_Game_1/',
+    	'Pokemon Ver.2, ./Pokemon_Game_2/',
+    	'ESP8266_WF8266R, ./ESP8266_WF8266R/',
+    	'Ramdom, ./random/',
+    	'小瑪莉(瑪仔台), ./slot_machine/',
+    ]
+
+    //標題列
+
+				
+    $('.list').append("<!--第0列-->")
+
+    n=1
+    for(i=0 ; i<menu_list.length ; i++){
+
+    	title = menu_list[i].split(',')[0]
+		href = menu_list[i].split(',')[1]
+
+    	$('.list').append("<a href='"+href+"' target='_top' class='text'>"+title+"</a><br>")
+
+    }
+
+    //表格字體
+    if(Device=='Mobile'){
+    	$('.text').css({
+			"font-size":"30px",
+		})
+    }
+    if(Device=='PC'){
+    	$('.text').css({
+			"font-size":"26px",
+		})	
+    }
+
+    //預設狀態
+	/*
+	$(".fa-toggle-on").hide()
+	$(".icon").hide()
+
+	$(".fa-toggle-off").click(function(){
+		$(this).hide()
+		$(".fa-toggle-on").show()
+		$(".icon").show()
+	})
+
+	$(".fa-toggle-on").click(function(){
+		$(this).hide()
+		$(".fa-toggle-off").show()
+		$(".icon").hide()
+	})
+	*/
+	
+	$(".fun").click(function(){
+		bootbox.alert({size: 'small', message: '呆呆獸：蛤？'})
+	})
+
+	//鎖定右鍵選單
+    $("body").contextmenu(function(e){
+        e.preventDefault()
+    })
 
 });
