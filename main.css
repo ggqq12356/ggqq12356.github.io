@@ -1,4 +1,4 @@
-	/* 自訂參數 */
+﻿	/* 自訂參數 */
 	:root{
 
 		/* color */
@@ -197,8 +197,8 @@
 	.list{
 		width: 360px;
 		height: auto;
-		/*background-image: url(body_bg.png);*/
-		background-color: purple;
+		/*background-color: purple;*/
+		background-image: url(body_bg.png);
 		background-size: auto;
         text-align: center;
 		border: 3px solid none;
@@ -210,9 +210,12 @@
 		width: auto;
 		height: auto;
 		color: white;
-		font-size: 37px;
+		font-size: 40px;
 		font-weight: bolder;
-		/*font-family: 'DK Crayon Crumble';*/
+		//font-family: 'DK Crayon Crumble';
+	}
+	.list-line{
+		margin-top: 0px;
 	}
 	.text{
 		color: white;
@@ -250,7 +253,7 @@
 	}
 	.author{
 		width: 360px;
-		height: 475px;
+		height: 550px;
 		color: var(--bodypink);
 		background-color: var(--lightblue);
 		border: 3px solid none;

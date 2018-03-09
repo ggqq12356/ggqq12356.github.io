@@ -4,19 +4,45 @@ $(document).ready(function(){
     	console.log("#Device : Mobile")
     	Device = "Mobile"
 
-		$(".list").css({
-			"width":"300px"
-		})
+        if(innerWidth<=360) initial_scale_size = 0.8125
+        else if(innerWidth<=375) initial_scale_size = 0.85
+        else if(innerWidth<=425) initial_scale_size = 0.965
+
+        $('head').append(
+            "<meta name='viewport' content='width=device-width, initial-scale="+initial_scale_size+", maximum-scale=1.0, user-scalable=0'>",
+            "<meta name='theme-color' content='purple'>",
+        )
+
+        $('.contain').css({
+            "margin":"10px",
+        })
+
+        $('.bar').css({
+            "margin-left":"60px",
+        })
+
+        $('.author').css({
+            "margin-left":"60px",
+        })
     }
     else {
         console.log("#Device : PC")
     	Device = "PC"
+        $('head').append(
+            "<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>",
+            "<meta name='theme-color' content='purple'>",
+        )
 
         $("body").css({
         	"margin-left":"35%"
         })
+
         $(".mid").css({
 			"margin-left":"-60px"
+        })
+
+        $('.contain').css({
+            "margin":"10px",
         })
     }
 
