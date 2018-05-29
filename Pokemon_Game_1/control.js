@@ -1,4 +1,4 @@
-//取出隨機整數
+﻿//取出隨機整數
 function getRandomInt(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -75,10 +75,10 @@ $(function(){
             if(x < 210) $player.css("left", x+100+"px");
         }
 
-        //鍵盤 w,a,s,d點擊
+        //鍵盤 點擊
         $body.keypress(function(e){
             $key = String.fromCharCode(e.keyCode);
-            //console.log($key);
+            //console.log('[Key] : ', $key);
             $x_place = "left";
             $y_place = "top";
 
@@ -99,6 +99,9 @@ $(function(){
             if (y < 420)
                 if ($key == 's') $player.css($y_place, y+100+"px");
             */
+
+            //空白鍵
+            if($key == " ") $('.gameover').mousedown()
         });
 
         /*

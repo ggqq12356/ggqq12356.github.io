@@ -9,7 +9,7 @@
 	function meta_set(){
 		$('head').append(
 	    	"<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=0'>",
-	    	"<meta name='theme-color' content='purple'>",
+	    	"<meta name='theme-color' content='purple'>"
 	    )
 	}
 
