@@ -10,6 +10,7 @@
 		--facebook-color: rgb(59, 89, 152);
 		--youtube-color: rgb(223, 41, 37);
 		--wordpress-color: rgb(30, 140, 189);
+		--medium-color: rgb(0, 0, 0);
 		--shadow-color: none;
 		--line-color: none;
 
@@ -31,6 +32,8 @@
 		--top-z-index: 0;
 		--mid-z-index: 0;
 		--introduction-z-index: 0;
+
+		--mid-width: 340px;
 	}
 
 	/*
@@ -94,7 +97,8 @@
 	.contain{
 		width: auto;
 		height: auto;
-		text-align: auto;
+		text-align: center;
+		margin-left: 5px;
 	}
 
 	/* 橫幅 */
@@ -106,24 +110,27 @@
 		z-index: var(--top-z-index);
 	}
 	.bar{
-		width: 360px;
+		width: var(--mid-width);
 		height: auto;
-		background-color: var(--bargreen);
+		background-color: var(--facebook-color);
 		border: 5px solid none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 0px var(--shadow-color);
 		transition-duration: 0.5s;
 		cursor: pointer;
+		margin-top: 5px;
+		margin-left: 60px;
 	}
 	.barfont{
 		font-size: 50px;
 		font-weight: bold;
-		color: var(--milk);
+		color: black;
 		transition-duration: 0.5s;
 		/*font-family: 'Suicide Squad Font';*/
 	}
 	.barfont:hover{
-		color: yellow;
+		color: var(--milk);
+		text-decoration: none;
 	}
 
 	/* 中間 */
@@ -186,16 +193,17 @@
 		font-size: 48px;
 		cursor: pointer;
 	}
-	.fa-github:hover{color: var(--github-color);}
 	.fa-facebook-square:hover{color: var(--facebook-color);}
-	.fa-youtube-square:hover{color: var(--youtube-color);}
+	.fa-youtube:hover{color: var(--youtube-color);}
+	.fa-github:hover{color: var(--github-color);}
 	.fa-wordpress:hover{color: var(--wordpress-color);}
+	.fa-medium:hover{color: var(--medium-color);}
 	.fa:link{color: black;}
 	a{text-decoration: none;}
 
 	/* 清單 */
 	.list{
-		width: 360px;
+		width: var(--mid-width);
 		height: auto;
 		/*background-color: purple;*/
 		background-image: url(body_bg.png);
@@ -220,13 +228,13 @@
 	.text{
 		color: white;
 		font-size: 26px;
-		text-decoration: none;
 		transition-duration: 1s;
 		/*font-family: 'Funkrocker', 'cwTeXHei';*/
 	}
 	.text:hover{
 		color: var(--milk);
-		background-color: var(--bodypink);
+		text-decoration: none;
+		/*background-color: var(--bodypink);*/
 		font-weight: bolder;
 		border: 3px solid none;
 		border-radius: 10px;
@@ -244,17 +252,16 @@
 		height: auto;
 		top: 50%;
 		left: 50%;
-		margin-top: 0px;
-		margin-left: 0px;
-		margin-bottom: 0px;
 		display: var(--introduction-display);
 		position: var(--introduction-position);
 		z-index: var(--introduction-z-index);
 	}
 	.author{
-		width: 360px;
+		width: var(--mid-width);
 		height: 550px;
-		color: var(--milk);
+		margin-left: 60px;
+		margin-bottom: 5px;
+		color: black;
 		background-color: var(--lightblue);
 		border: 3px solid none;
 		border-radius: 10px;
@@ -282,18 +289,16 @@
 		/*font-family: 'Suicide Squad Font', 'cwTeXHei';*/
 	}
 	.authorfont:hover{
-		color: var(--bodypink);
+		color: var(--milk);
 	}
 	.authorfont:active{
 		/*padding-left: 20px;*/
 	}
 	.fun{
-		width: auto;
+		width: var(--mid-width);
 		height: auto;
 		text-align: center;
-		margin-top: 15px;
-		margin-bottom: 0px;
-		margin-left: 0px;
+		padding-top: 10px;
 	}
 	.img{
 		width: 270px;

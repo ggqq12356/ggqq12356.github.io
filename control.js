@@ -1,50 +1,34 @@
 $(document).ready(function(){
+
+    // console.log(innerWidth);
+    // console.log(innerHeight);
+
 	//判斷裝置種類
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    	console.log("#Device : Mobile")
-    	Device = "Mobile"
+        
+        Device = "Mobile";
 
-        if(innerWidth<=360) initial_scale_size = 0.8125
-        else if(innerWidth<=375) initial_scale_size = 0.85
-        else if(innerWidth<=425) initial_scale_size = 0.965
+        initial_scale_size = 0.885;
 
-        $('head').append(
-            "<meta name='viewport' content='width=device-width, initial-scale="+initial_scale_size+", maximum-scale=1.0, user-scalable=0'>",
-            "<meta name='theme-color' content='purple'>",
-        )
+        // if (innerWidth<=360) initial_scale_size = 0.8125;
+        // else if (innerWidth<=375) initial_scale_size = 0.85;
+        // else if (innerWidth<=425) initial_scale_size = 0.965;
 
         $('.contain').css({
-            "margin":"10px",
-        })
+            "width":innerWidth,
+        });
 
-        $('.bar').css({
-            "margin-left":"60px",
-        })
-
-        $('.author').css({
-            "margin-left":"60px",
-        })
     }
     else {
-        console.log("#Device : PC")
-    	Device = "PC"
-        $('head').append(
-            "<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>",
-            "<meta name='theme-color' content='purple'>",
-        )
-
-        $("body").css({
-        	"margin-left":"35%"
-        })
-
-        $(".mid").css({
-			"margin-left":"-60px"
-        })
-
-        $('.contain').css({
-            "margin":"10px",
-        })
+        Device = "PC";
+        initial_scale_size = 1.0;
+        //$("body").css({ "margin-left":"35%" });
     }
+    console.log(`#Device : ${Device}`);
+    $('head').append(
+        `<meta name='viewport' content='width=device-width, initial-scale=${initial_scale_size}, maximum-scale=1.0, user-scalable=0'>`,
+        `<meta name='theme-color' content='purple'>`,
+    );
 
     //動態生成表格
     //表格清單
@@ -96,11 +80,11 @@ $(document).ready(function(){
 	
 	$(".fun").click(function(){
 		bootbox.alert({size: 'small', message: '呆呆獸：蛤？'})
-	})
+	});
 
 	//鎖定右鍵選單
     $("body").contextmenu(function(e){
         e.preventDefault()
-    })
+    });
 
 });
