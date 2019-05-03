@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<title>GuitarChordBook吉他和弦查詢</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
+
+	<style>
+		* {
+			font-family: "微軟正黑體";
+			font-weight: bold;
+		}
+	
+		body {
+			background-color: skyblue;
+		}
+
+		.top{
+			height: 20%;
+		}
+
+		.mid{
+			height: 60%;
+		}
+
+		.bottom{
+			height: 20%;
+		}
+
+		.header{
+			background-color: black;
+		}
+		
+		.banner{
+			background-color: grey;
+			height: 50px;
+			padding: 5px;
+		}
+	</style>
+
+	<script>
+		$(document).ready(main)
+
+		function main() {
+
+			var chordCount = 0;
+			var chordMax = 20;
+			addChord();
+
+			$("#addChord").on("click", function(){
+				if ( ++chordCount > chordMax) return;
+				addChord();
+			})
+
+			$("#clearChord").on("click", function(){
+				$("#chordView").empty();
+			})
+		}
+
+		function addChord() {
+			$("#chordView").append(
+				`
+				<iframe 
+					src="http://www.rittor-music.co.jp/app/shibanzukun/blogparts/bp_gcb_green.html"
+					style="transform: scale(1); width:140px; height:310px; margin-left:0px; margin-top:10px;"
+					scrolling='no'
+					marginwidth='0'
+					marginheight='0'
+					frameborder='0'>
+				</iframe>
+				`
+			);
+		}
+	</script>
+</head>
+<body>
+	<div class="text-center">
+		<div class="top">
+			<div class="header">
+
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<img src="popmusic.png" alt="logo" srcset="nuupopmusic 聯大熱音社" style="width: 50px; height:50px;">
+					<a class="navbar-brand" href="#">聯大熱音社-吉他和弦查詢</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+						aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+							<li class="nav-item active">
+								<a class="nav-link" href="../">回首頁<span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="https://fb.com/nuupopmusic/">Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="https://instagram.com/nuupopmusic/">Instagram</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="https://youtube.com/channel/UCF11xP9-HTke-CCDldi6Irg">Youtube</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="https://m.me/nuupopmusic/">Messenger</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="mailto:nuupopmusic@gmail.com">Email</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" target="_blank" href="https://nuupopmusic.github.io/">借社辦系統</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+
+			</div>
+			<div class="banner">
+				<input type="button" value="新增" class="btn btn-light" id="addChord">
+				<input type="button" value="清除" class="btn btn-light" id="clearChord">
+			</div>
+		</div>
+		<div class="mid">
+			<div id="chordView"></div>
+		</div>
+		<div class="bottom"></div>
+	</div>
+</body>
+</html>

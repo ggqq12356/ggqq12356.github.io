@@ -48,37 +48,33 @@ $(document).ready(function(){
 
     //動態生成表格
     //表格清單
-    menu_list = [
-    	'聯大熱音社-借社辦系統, https://nuupopmusic.github.io',
-    	'命運大岩蛇之天堂與地獄, ./fate/',
-    	'Pokemon Ver.1, ./Pokemon_Game_1/',
-    	'Pokemon Ver.2, ./Pokemon_Game_2/',
-    	'ESP8266_WF8266R, ./ESP8266_WF8266R/',
-    	'Ramdom, ./random/',
-    	'小瑪莉(瑪仔台), ./slot_machine/',
-    ]
+    var menu_list = {
+        0: { name: '聯大熱音社-借社辦系統', link:'https://nuupopmusic.github.io'},
+        1: { name: '聯大熱音社-吉他和弦查詢', link: './GuitarChordBook/' },
+        2: { name: '命運大岩蛇之天堂與地獄', link: './fate/' },
+        3: { name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
+        4: { name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
+        5: { name: 'ESP8266_WF8266R', link: './ESP8266_WF8266R/' },
+        6: { name: 'Ramdom', link: './random/' },
+        7: { name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
+    }
 
-    for(i=0 ; i<menu_list.length ; i++){
-
-    	title = menu_list[i].split(',')[0]
-		href = menu_list[i].split(',')[1]
-
-        $('.list').append("<!--第"+(i+1)+"列-->")
-    	$('.list').append("<a href='"+href+"' target='_top' class='text'>"+title+"</a><br>")
-
+    for (let i = 0; i < Object.keys(menu_list).length; ++i ) {
+        $('.list').append(`<!--第${(i + 1)}列-->`);
+        $('.list').append(`<a href='${menu_list[i].link}' target='_top' class='text'>${menu_list[i].name}</a><br>`);
     }
 
     //表格字體
-    if(Device=='Mobile'){
-    	$('.text').css({
-			"font-size":"30px",
-		})
-    }
-    if(Device=='PC'){
-    	$('.text').css({
-			"font-size":"26px",
-		})	
-    }
+    // if(Device=='Mobile'){
+    // 	$('.text').css({
+	// 		"font-size":"30px",
+	// 	})
+    // }
+    // if(Device=='PC'){
+    // 	$('.text').css({
+	// 		"font-size":"26px",
+	// 	})	
+    // }
 
     //預設狀態
 	/*

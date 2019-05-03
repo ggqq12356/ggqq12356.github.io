@@ -75,9 +75,9 @@
 		height: auto;
 		font-weight: bold; /* 字體粗細 */
 		/* 字體 */
-		/*font-family: 標楷體;*/
-		/*font-family: 新細明體;*/
-		font-family: 微軟正黑體;*/
+		/*font-family: '標楷體';*/
+		/*font-family: '新細明體';*/
+		font-family: '微軟正黑體';
 		/*font-family: 'cwTeXHei'; /* Google思源黑體 */
 		/*font-family: 'DK Crayon Crumble', 'cwTeXHei';*/
 		/*font-family: 'FNL_DEMO-KCFonts', 'cwTeXHei';*/
@@ -210,16 +210,16 @@
 		width: auto;
 		height: auto;
 		color: white;
-		font-size: 40px;
+		font-size: 35px;
 		font-weight: bolder;
-		//font-family: 'DK Crayon Crumble';
+		/*font-family: 'DK Crayon Crumble';*/
 	}
 	.list-line{
 		margin-top: 0px;
 	}
 	.text{
 		color: white;
-		font-size: 25px;
+		font-size: 26px;
 		text-decoration: none;
 		transition-duration: 1s;
 		/*font-family: 'Funkrocker', 'cwTeXHei';*/
@@ -254,7 +254,7 @@
 	.author{
 		width: 360px;
 		height: 550px;
-		color: var(--bodypink);
+		color: var(--milk);
 		background-color: var(--lightblue);
 		border: 3px solid none;
 		border-radius: 10px;
@@ -264,8 +264,8 @@
 		padding-bottom: 0px;
 	}
 	.author:hover{
-		color: var(--lightblue);
-		background-color: var(--bodypink);
+		/*color: var(--lightblue);*/
+		/*background-color: var(--bodypink);*/
 	}
 	.author-line{
 		width: auto;
@@ -282,10 +282,10 @@
 		/*font-family: 'Suicide Squad Font', 'cwTeXHei';*/
 	}
 	.authorfont:hover{
-		color: var(--milk);
+		color: var(--bodypink);
 	}
 	.authorfont:active{
-		padding-left: 20px;
+		/*padding-left: 20px;*/
 	}
 	.fun{
 		width: auto;
