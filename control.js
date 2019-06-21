@@ -14,9 +14,9 @@ $(document).ready(function(){
         // else if (innerWidth<=375) initial_scale_size = 0.85;
         // else if (innerWidth<=425) initial_scale_size = 0.965;
 
-        $('.contain').css({
-            "width":innerWidth,
-        });
+        // $('.contain').css({
+        //     "width":innerWidth,
+        // });
 
     }
     else {
@@ -79,7 +79,11 @@ $(document).ready(function(){
 	*/
 	
 	$(".fun").click(function(){
-		bootbox.alert({size: 'small', message: '呆呆獸：蛤？'})
+        // bootbox.alert({size: 'small', message: '呆呆獸：蛤？'})
+        
+        Swal.fire({
+            title: "呆呆獸：蛤？"
+        })
 	});
 
 	//鎖定右鍵選單

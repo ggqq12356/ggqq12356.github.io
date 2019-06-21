@@ -81,11 +81,11 @@
 		/*font-family: '標楷體';*/
 		/*font-family: '新細明體';*/
 		font-family: '微軟正黑體';
-		/*font-family: 'cwTeXHei'; /* Google思源黑體 */
+		/* font-family: 'cwTeXHei'; Google思源黑體 */
 		/*font-family: 'DK Crayon Crumble', 'cwTeXHei';*/
 		/*font-family: 'FNL_DEMO-KCFonts', 'cwTeXHei';*/
 		/*font-family: 'Funkrocker', 'cwTeXHei';*/
-		/*font-family: 'Suicide Squad Font', 'cwTeXHei';*/
+		/* font-family: 'Suicide Squad Font', 'cwTeXHei'; */
 	}
 
 	body{
@@ -109,6 +109,7 @@
 		position: var(--top-position);
 		z-index: var(--top-z-index);
 	}
+	
 	.bar{
 		width: var(--mid-width);
 		height: auto;
@@ -121,6 +122,7 @@
 		margin-top: 5px;
 		margin-left: 60px;
 	}
+
 	.barfont{
 		font-size: 50px;
 		font-weight: bold;
@@ -128,6 +130,7 @@
 		transition-duration: 0.5s;
 		/*font-family: 'Suicide Squad Font';*/
 	}
+
 	.barfont:hover{
 		color: var(--milk);
 		text-decoration: none;
@@ -168,6 +171,7 @@
         line-height: 16px;
 		text-align: center;
 	}
+
 	.social-font{
 		font-size: 18.5px;
 		color: var(--bodypink);
@@ -176,6 +180,7 @@
 		border-radius: 0px;
 		/*font-family: 'Suicide Squad Font';*/
 	}
+
 	.bt{
 		color: var(--milk);
 		margin-top: 0px;
@@ -183,16 +188,19 @@
 		cursor: pointer;
 		transition-duration: 0.5s;
 	}
+
 	.icon{
 		width: 60px;
 		height: 60px;
 		color: var(--milk);
 		transition-duration: 0.5s;
 	}
+
 	.icon:hover{
 		font-size: 48px;
 		cursor: pointer;
 	}
+
 	.fa-facebook-square:hover{color: var(--facebook-color);}
 	.fa-youtube:hover{color: var(--youtube-color);}
 	.fa-github:hover{color: var(--github-color);}
@@ -214,6 +222,7 @@
 		box-shadow: 0px 0px 0px var(--shadow-color);
 		margin-left: 5px;
 	}
+
 	.title{
 		width: auto;
 		height: auto;
@@ -222,15 +231,18 @@
 		font-weight: bolder;
 		/*font-family: 'DK Crayon Crumble';*/
 	}
+
 	.list-line{
 		margin-top: 0px;
 	}
+
 	.text{
 		color: white;
 		font-size: 26px;
 		transition-duration: 1s;
 		/*font-family: 'Funkrocker', 'cwTeXHei';*/
 	}
+
 	.text:hover{
 		color: var(--milk);
 		text-decoration: none;
@@ -240,6 +252,7 @@
 		border-radius: 10px;
 		/*box-shadow: 0px 10px 10px var(--milk);*/
 	}
+
 	.text:active{
 		color: var(--bodypink);
 		background-color: var(--lightblue);
@@ -256,6 +269,7 @@
 		position: var(--introduction-position);
 		z-index: var(--introduction-z-index);
 	}
+
 	.author{
 		width: var(--mid-width);
 		height: 550px;
@@ -270,16 +284,19 @@
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
+
 	.author:hover{
 		/*color: var(--lightblue);*/
 		/*background-color: var(--bodypink);*/
 	}
+
 	.author-line{
 		width: auto;
 		height: 5px;
 		background-color: var(--milk);
 		border: 0px;
 	}
+	
 	.authorfont{
 		font-size: 30px;
 		font-weight: bolder;
@@ -288,25 +305,30 @@
 		text-align: left;
 		/*font-family: 'Suicide Squad Font', 'cwTeXHei';*/
 	}
+
 	.authorfont:hover{
 		color: var(--milk);
 	}
-	.authorfont:active{
+	
+	.authorfont:active {
 		/*padding-left: 20px;*/
 	}
-	.fun{
+
+	.fun {
 		width: var(--mid-width);
 		height: auto;
 		text-align: center;
 		padding-top: 10px;
 	}
-	.img{
+
+	.img {
 		width: 270px;
 		height: 270px;
 		border-radius: 10px;
 		transition-duration: 0.5s;
 		cursor: pointer;
 	}
-	.img:active{
+
+	.img:active {
 		padding-top: 10px;
 	}
