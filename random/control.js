@@ -76,7 +76,7 @@
 		int = []
 		getdata = ($('textarea').val()).split(",")
 
-		for(i=0 ; i<getdata.length ; i++){
+		for(let i=0 ; i<getdata.length ; i++){
 			int.push( parseInt(getdata[i]) )
 		}
 
@@ -84,7 +84,7 @@
 
 		result_list = []
 
-		for (i=0 ; i<showMax ; i++){
+		for (let i=0 ; i<showMax ; i++){
 
 			r = getRandomInt(0, int.length-1)
 
@@ -95,10 +95,11 @@
 			//console.log("int.pop(r)=>"+int.pop(int[r]))
 
 			showValue = int[r]
+			int.pop(r) //clear
 
+			console.log(r, showValue)
+			if ( result_list.includes(showValue) ) continue
 			result_list.push(showValue)
-
-			int.pop(r-1) //clear
 
 			//pop(t) t-> index
 
@@ -115,21 +116,24 @@
 		$('span').append("[排序前]:"+result_list.toString()+"<br>")
 
 		//Sort
-		for (i=0 ; i<result_list.length-1 ; i++){
+		for (let i=0 ; i<result_list.length-1 ; i++) {
 
-			//break
+			let count = 0
 
-			for (j=0 ; j<result_list.length-1 ; j++){
+			for (let j=0 ; j<result_list.length-1 ; j++) {
 
-				if(j!=result_list.length-1){
-					if(result_list[j] > result_list[j+1]){
+				if ( j!=result_list.length-1 ) {
+					if ( result_list[j] < result_list[j+1]  ) {
 						temp = result_list[j]
-						result_list[j] = result_list[j+1]
-						result_list[j+1] = temp
+						result_list[j+1] = result_list[j]
+						result_list[j] = temp
+						++count
 					}
 				}
 				
 			}
+
+			if ( count==result_list.length ) break
 
 			$('span').append("[排序 "+(i+1)+" ]:"+result_list.toString()+"<br>")
 		}
