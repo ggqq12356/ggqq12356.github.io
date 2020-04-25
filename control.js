@@ -33,7 +33,7 @@ $(document).ready(function(){
 	//動態生成表格
 	//表格清單
 	var menu_list = {
-		0: { name: '聯大熱音社-借社辦系統', link:'https://nuupopmusic.github.io'},
+		0: { name: '聯大熱音社-借社辦時間表', link:'https://nuupopmusic.github.io'},
 		1: { name: '聯大熱音社-吉他和弦查詢', link: './GuitarChordBook/' },
 		2: { name: '命運大岩蛇之天堂與地獄', link: './fate/' },
 		3: { name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
