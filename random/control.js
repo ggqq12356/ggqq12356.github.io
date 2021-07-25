@@ -121,19 +121,15 @@
 			let count = 0
 
 			for (let j=0 ; j<result_list.length-1 ; j++) {
-
-				if ( j!=result_list.length-1 ) {
-					if ( result_list[j] < result_list[j+1]  ) {
-						temp = result_list[j]
-						result_list[j+1] = result_list[j]
-						result_list[j] = temp
-						++count
-					}
+				if ( result_list[j] > result_list[j+1]  ) {
+					let temp = result_list[j]
+					result_list[j] = result_list[j+1]
+					result_list[j+1] = temp
+					++count
 				}
-				
 			}
 
-			if ( count==result_list.length ) break
+			if ( count==0 ) break
 
 			$('span').append("[排序 "+(i+1)+" ]:"+result_list.toString()+"<br>")
 		}

@@ -32,18 +32,18 @@ $(document).ready(function(){
 
 	//動態生成表格
 	//表格清單
-	var menu_list = {
-		0: { name: '聯大熱音社-借社辦時間表', link: 'https://nuupopmusic.gitlab.io' },
-		1: { name: '命運大岩蛇之天堂與地獄', link: './fate/' },
-		2: { name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
-		3: { name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
-		4: { name: 'Slidebar', link: './slidebar/' },
-		// 6: { name: 'Ramdom', link: './random/' },
-		// 7: { name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
-		// 8: { name: '聯大熱音社', link: './nuupopmusic/' },
-	}
+	var menu_list = [
+		{ name: '聯大熱音社', link: './nuupopmusic/' },
+		{ name: '聯大熱音社-借社辦系統', link: 'https://nuupopmusic.gitlab.io' },
+		{ name: '命運大岩蛇之天堂與地獄', link: './fate/' },
+		{ name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
+		{ name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
+		{ name: 'Slidebar', link: './slidebar/' },
+		{ name: 'Ramdom', link: './random/' },
+		{ name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
+	]
 
-	for (let i = 0; i < Object.keys(menu_list).length; ++i ) {
+	for (let i = 0; i<menu_list.length; ++i ) {
 		$('.list').append(`<!--第${(i + 1)}列-->`);
 		$('.list').append(`<a href='${menu_list[i].link}' target='_top' class='text'>${menu_list[i].name}</a><br>`);
 	}
