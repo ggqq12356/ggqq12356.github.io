@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slidebar</title>
+
+  <!-- lib -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' integrity='sha512-usVBAd66/NpVNfBge19gws2j6JZinnca12rAe2l+d+QkLU9fiG02O1X8Q6hepIpr/EYKZvKx/I9WsnujJuOmBA==' crossorigin='anonymous'/>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js' integrity='sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ==' crossorigin='anonymous'></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' integrity='sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==' crossorigin='anonymous'/>
+
+  <!-- custom -->
+  <link rel="stylesheet" href="style.css">
+  <script src="slidebar.js"></script>
+
+</head>
+<body class='container-fluid'>
+
+  <div class="overlay"></div>
+
+  <div class="menu">
+
+    <ul id="menuBtn">
+      <li class="item" id="menuOpen">
+        <a href="#">
+          <i class="fas fa-bars"></i>
+        </a>
+      </li>
+      <li class="item" id="menuClose">
+        <a href="#">
+          <i class="fas fa-times"></i>
+        </a>
+      </li>
+    </ul>
+
+    <ul id="menuList">
+      <li class="item">
+        <a href="./">
+          <i class="fas fa-home"></i>
+          <!-- <span class="itemName">Home</span> -->
+        </a>
+        <span class="itemAlt">Home</span>
+      </li>
+      <li class="item">
+        <a href="//fb.com/G.E.M.OfficialPage" target="_blank">
+          <i class="fab fa-facebook"></i>
+          <!-- <span class="itemName">Facebook</span> -->
+        </a>
+        <span class="itemAlt">Facebook</span>
+      </li>
+      <li class="item">
+        <a href="//instagram.com/gem0816" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <!-- <span class="itemName">Instagram</span> -->
+        </a>
+        <span class="itemAlt">Instagram</span>
+      </li>
+      <li class="item">
+        <a  href="//youtube.com/gem0816" target="_blank">
+          <i class="fab fa-youtube"></i>
+          <!-- <span class="itemName">Yoututbe</span> -->
+        </a>
+        <span class="itemAlt">Yoututbe</span>
+      </li>
+      <li class="item">
+        <a href="#">
+          <i class="fab fa-facebook-messenger"></i>
+          <!-- <span class="itemName">Messenger</span> -->
+        </a>
+        <span class="itemAlt">Messenger</span>
+      </li>
+      <li class="item">
+        <a href="#">
+          <i class="fas fa-envelope"></i>
+          <!-- <span class="itemName">Email</span> -->
+        </a>
+        <span class="itemAlt">Email</span>
+      </li>
+      <li class="item">
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          <!-- <span class="itemName">Settings</span> -->
+        </a>
+        <span class="itemAlt">Settings</span>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="row text-center" id="top">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <img src="gem.gif" id="logo">
+      </div>
+    </div>
+    <hr class="line">
+    <div class="row text-center" id="mid">
+      <div class="col-sm"></div>
+      <div class="col-sm">
+        <h3>G.E.M.鄧紫棋官方網站</h3>
+        <a href="//iamgem.com" target="_blank">iamgem</a>
+      </div>
+      <div class="col-sm"></div>
+    </div>
+    <hr class="line">
+    <div class="row text-center" id="bottom">
+      <div class="col-sm"></div>
+      <div class="col-sm">
+        <h3>網站設計師: wj_omg</h3>
+      </div>
+      <div class="col-sm"></div>
+    </div>
+
+  </div>
+  
+</body>
+</html>
