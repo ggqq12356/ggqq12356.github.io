@@ -1,196 +1,196 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PokemonGo</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="../game.ico"/>
-	<link rel="bookmark" href="../game.ico"/>
-	<style type="text/css">
-		/*@import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);*/
-		*{
-			font-family: Microsoft JhengHei; /* 微軟正黑體 */
-			/*font-family: DFKai-sb; /* 標楷體字型 */
-			/*font-family: 'cwTeXHei', serif; /* Google思源黑體 */
-            font-weight: bold; /* 字體粗細 */
-		}
-		.contain{
-			background-image: url(pokemon_bg.png);
-			background-size: auto;
-			width: 480px;
-			height: 650px;
-		}
-		.logo{
-			width: 152px;
-			height: 92px;
-			background-image: url(pokemon_go_logo.png);
-			background-size: cover;
-			margin-left: 170px;
-			margin-bottom: 20px;
-			cursor: pointer;
-		}
-		.image-group{
-			background-image: url();
-			background-size: cover;
-			color: yellow;
-			font-size: 22px;
-			text-align: left;
-			width: 120px;
-			height: 120px;
-		}
-		.image0{
-			margin-top: -650px;
-			margin-left: 80px;
-		}
-		.image1{
-			margin-top: -120px;
-			margin-left: 200px;
-		}
-		.image2{
-			margin-top: -120px;
-			margin-left: 320px;
-		}
-		.image3{
-			margin-top: 5px;
-			margin-left: 80px;
-		}
-		.image4{
-			margin-top: -120px;
-			margin-left: 200px;
-		}
-		.image5{
-			margin-top: -120px;
-			margin-left: 320px;
-		}
-		.image6{
-			margin-top: 5px;
-			margin-left: 80px;
-		}
-		.image7{
-			margin-top: -120px;
-			margin-left: 200px;
-		}
-		.image8{
-			margin-top: -120px;
-			margin-left: 320px;
-		}
-		.image9{
-			margin-top: 5px;
-			margin-left: 80px;
-		}
-		.image10{
-			margin-top: -120px;
-			margin-left: 200px;
-		}
-		.image11{
-			margin-top: -120px;
-			margin-left: 320px;
-		}
-		.titletext{
-			color: yellow;
-			font-size: 24px;
-			text-align: center;
-			width: auto;
-			height: auto;
-			margin-top: 500px;
-		}
-		.playertitle{
-			margin-left: -335px;
-			margin-top: 0px;
-		}
-		.selecttitle{
-			margin-left: -110px;
-			margin-top: -32px;
-		}
-		.fatetitle{
-			margin-left: 110px;
-			margin-top: -32px;
-		}
-		.cleantitle{
-			margin-left: 335px;
-			margin-top: -32px;
-		}
-		.bt{
-			position: relative;
-			display: inline-flex;
-			margin-left: 15px;
-			margin-top: 5px;
-			margin-bottom: 0px;
-			width: auto;
-			height: auto;
-		}
-		.playercount{
-			color: white;
-			background-color: tomato;
-			font-size: 70px;
-			text-align: center;
-			width: 112px;
-			height: 112px;
-			border-radius: 90px;
-			border-width: 0px;
-			border-style: solid;
-			border-color: lawngreen;
-		}
-		.ball{
-			background-image: url(Ball_Poke.png);
-			background-size: cover;
-			width: 112px;
-			height: 112px;
-			cursor: pointer;
-		}
-		.card{
-			background-image: url(Poker.png);
-			background-size: cover;
-			width: 112px;
-			height: 112px;
-			cursor: pointer;
-		}
-		.cardtitle{
-			color: orange;
-			background-color: white;
-			font-size: 80px;
-			text-align: center;
-			margin-top: -580px;
-			margin-left: 40px;
-			margin-right: 40px;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			border-color: #00FF00;
-			border-style: dotted;
-			border-width: thick;
-			border-top-left-radius: 50px;
-			border-top-right-radius: 50px;
-			opacity: 0.9;
-		}
-		.cardcontain{
-			color: lawngreen;
-			background-color: white;
-			font-size: 60px;
-			text-align: center;
-			margin-top: 0px;
-			margin-left: 40px;
-			margin-right: 40px;
-			padding-top: 80px;
-			padding-bottom: 80px;
-			padding-left: 0px;
-			border-color: #00FF00;
-			border-style: dotted;
-			border-top: 0px;
-			border-width: thick;
-			border-bottom-left-radius: 50px;
-			border-bottom-right-radius: 50px;
-			opacity: 0.9;
-		}
-		.cleaner{
-			background-image: url(Cleaner.png);
-			background-size: cover;
-			width: 112px;
-			height: 112px;
-			cursor: pointer;
-		}
-	</style>
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="control.js"></script>
+<title>PokemonGo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../game.ico"/>
+<link rel="bookmark" href="../game.ico"/>
+<style type="text/css">
+	/*@import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);*/
+	*{
+		font-family: Microsoft JhengHei; /* 微軟正黑體 */
+		/*font-family: DFKai-sb; /* 標楷體字型 */
+		/*font-family: 'cwTeXHei', serif; /* Google思源黑體 */
+					font-weight: bold; /* 字體粗細 */
+	}
+	.contain{
+		background-image: url(pokemon_bg.png);
+		background-size: auto;
+		width: 480px;
+		height: 650px;
+	}
+	.logo{
+		width: 152px;
+		height: 92px;
+		background-image: url(pokemon_go_logo.png);
+		background-size: cover;
+		margin-left: 170px;
+		margin-bottom: 20px;
+		cursor: pointer;
+	}
+	.image-group{
+		background-image: url();
+		background-size: cover;
+		color: yellow;
+		font-size: 22px;
+		text-align: left;
+		width: 120px;
+		height: 120px;
+	}
+	.image0{
+		margin-top: -650px;
+		margin-left: 80px;
+	}
+	.image1{
+		margin-top: -120px;
+		margin-left: 200px;
+	}
+	.image2{
+		margin-top: -120px;
+		margin-left: 320px;
+	}
+	.image3{
+		margin-top: 5px;
+		margin-left: 80px;
+	}
+	.image4{
+		margin-top: -120px;
+		margin-left: 200px;
+	}
+	.image5{
+		margin-top: -120px;
+		margin-left: 320px;
+	}
+	.image6{
+		margin-top: 5px;
+		margin-left: 80px;
+	}
+	.image7{
+		margin-top: -120px;
+		margin-left: 200px;
+	}
+	.image8{
+		margin-top: -120px;
+		margin-left: 320px;
+	}
+	.image9{
+		margin-top: 5px;
+		margin-left: 80px;
+	}
+	.image10{
+		margin-top: -120px;
+		margin-left: 200px;
+	}
+	.image11{
+		margin-top: -120px;
+		margin-left: 320px;
+	}
+	.titletext{
+		color: yellow;
+		font-size: 24px;
+		text-align: center;
+		width: auto;
+		height: auto;
+		margin-top: 500px;
+	}
+	.playertitle{
+		margin-left: -335px;
+		margin-top: 0px;
+	}
+	.selecttitle{
+		margin-left: -110px;
+		margin-top: -32px;
+	}
+	.fatetitle{
+		margin-left: 110px;
+		margin-top: -32px;
+	}
+	.cleantitle{
+		margin-left: 335px;
+		margin-top: -32px;
+	}
+	.bt{
+		position: relative;
+		display: inline-flex;
+		margin-left: 15px;
+		margin-top: 5px;
+		margin-bottom: 0px;
+		width: auto;
+		height: auto;
+	}
+	.playercount{
+		color: white;
+		background-color: tomato;
+		font-size: 70px;
+		text-align: center;
+		width: 112px;
+		height: 112px;
+		border-radius: 90px;
+		border-width: 0px;
+		border-style: solid;
+		border-color: lawngreen;
+	}
+	.ball{
+		background-image: url(Ball_Poke.png);
+		background-size: cover;
+		width: 112px;
+		height: 112px;
+		cursor: pointer;
+	}
+	.card{
+		background-image: url(Poker.png);
+		background-size: cover;
+		width: 112px;
+		height: 112px;
+		cursor: pointer;
+	}
+	.cardtitle{
+		color: orange;
+		background-color: white;
+		font-size: 80px;
+		text-align: center;
+		margin-top: -580px;
+		margin-left: 40px;
+		margin-right: 40px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		border-color: #00FF00;
+		border-style: dotted;
+		border-width: thick;
+		border-top-left-radius: 50px;
+		border-top-right-radius: 50px;
+		opacity: 0.9;
+	}
+	.cardcontain{
+		color: lawngreen;
+		background-color: white;
+		font-size: 60px;
+		text-align: center;
+		margin-top: 0px;
+		margin-left: 40px;
+		margin-right: 40px;
+		padding-top: 80px;
+		padding-bottom: 80px;
+		padding-left: 0px;
+		border-color: #00FF00;
+		border-style: dotted;
+		border-top: 0px;
+		border-width: thick;
+		border-bottom-left-radius: 50px;
+		border-bottom-right-radius: 50px;
+		opacity: 0.9;
+	}
+	.cleaner{
+		background-image: url(Cleaner.png);
+		background-size: cover;
+		width: 112px;
+		height: 112px;
+		cursor: pointer;
+	}
+</style>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="control.js"></script>
 </head>
 <body>
 <div class="contain">
