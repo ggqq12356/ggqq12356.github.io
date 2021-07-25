@@ -261,6 +261,8 @@ $(function(){
 
             resetGame();
         })
+
+        alert(`喔喔!失敗了!你的總分為：${score}`)
     }
 
     //stats.js
