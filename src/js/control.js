@@ -33,14 +33,14 @@ $(document).ready(function(){
 	//動態生成表格
 	//表格清單
 	var menu_list = {
-		0: { name: '聯大熱音社', link: './nuupopmusic/' },
-		1: { name: '聯大熱音社-借社辦時間表', link: 'https://nuupopmusic.gitlab.io' },
-		2: { name: '命運大岩蛇之天堂與地獄', link: './fate/' },
-		3: { name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
-		4: { name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
-		5: { name: 'Slidebar', link: './slidebar/' },
+		0: { name: '聯大熱音社-借社辦時間表', link: 'https://nuupopmusic.gitlab.io' },
+		1: { name: '命運大岩蛇之天堂與地獄', link: './fate/' },
+		2: { name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
+		3: { name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
+		4: { name: 'Slidebar', link: './slidebar/' },
 		// 6: { name: 'Ramdom', link: './random/' },
 		// 7: { name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
+		// 8: { name: '聯大熱音社', link: './nuupopmusic/' },
 	}
 
 	for (let i = 0; i < Object.keys(menu_list).length; ++i ) {
