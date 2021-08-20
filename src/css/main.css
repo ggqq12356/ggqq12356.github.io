@@ -11,8 +11,6 @@
 	--youtube-color: rgb(223, 41, 37);
 	--wordpress-color: rgb(30, 140, 189);
 	--medium-color: rgb(0, 0, 0);
-	--shadow-color: none;
-	--line-color: none;
 
 	/*
 	display : inline / inline-block / inline-flex / inline-grid / inline-table
@@ -20,61 +18,29 @@
 
 	auto -> inline
 	*/
-	--top-display: auto;
-	--top-position: auto;
-
-	--mid-display: flex;
-	--mid-position: auto;
-
-	--introduction-display: auto;
-	--introduction-position: auto;
-
-	--top-z-index: 0;
-	--mid-z-index: 0;
-	--introduction-z-index: 0;
 
 	--mid-width: 340px;
 }
 
 *{
-	width: auto;
-	height: auto;
-	font-weight: bold;
 	font-family: '微軟正黑體';
+	font-weight: bold;
 }
 
 body{
 	background-color: var(--milk);
-	background-size: auto;
 }
 
-/* 內容 */
-.contain{
-	width: auto;
-	height: auto;
-	text-align: center;
-	margin-left: 5px;
-}
-
-/* 橫幅 */
-.top{
-	width: auto;
-	height: auto;
-	display: var(--top-display);
-	position: var(--top-position);
-	z-index: var(--top-z-index);
+a{
+  text-decoration: none;
 }
 
 .bar{
 	width: var(--mid-width);
 	height: auto;
 	background-color: var(--facebook-color);
-	border: 5px solid none;
 	border-radius: 10px;
-	box-shadow: 0px 0px 0px var(--shadow-color);
 	transition-duration: 0.5s;
-	cursor: pointer;
-	margin-top: 5px;
 	margin-left: 60px;
 }
 
@@ -87,23 +53,16 @@ body{
 
 .barfont:hover{
 	color: var(--milk);
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* 中間 */
-.mid{
-	display: var(--mid-display);
-	position: var(--mid-position);
+#mid{
 	width: auto;
 	height: 400px;
-	top: 50%;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	text-align: auto;
-	z-index: var(--mid-z-index);
 }
 
-	/* horizon line */
+/* horizon line */
 .line{
 	width: auto;
 	height: 5px;
@@ -112,18 +71,14 @@ body{
 }
 
 /* Social Icons*/
-.social-list{
+#social-list{
 	width: 55px;
 	height: auto;
 	font-size: 36px;
 	background-color: var(--bodypink);
-	border: 3px solid none;
 	border-radius: 10px;
-	box-shadow: 0px 0px 0px var(--shadow-color);
-	margin: 0px;
 	padding-top: 21px;
 	line-height: 16px;
-	text-align: center;
 }
 
 .social-font{
@@ -151,7 +106,6 @@ body{
 
 .icon:hover{
 	font-size: 48px;
-	cursor: pointer;
 }
 
 .fa-facebook-square:hover{color: var(--facebook-color);}
@@ -160,19 +114,13 @@ body{
 .fa-wordpress:hover{color: var(--wordpress-color);}
 .fa-medium:hover{color: var(--medium-color);}
 .fa:link{color: black;}
-a{text-decoration: none;}
 
 /* 清單 */
 .list{
 	width: var(--mid-width);
 	height: auto;
 	/* background-color: black; */
-	background-size: auto;
-			text-align: center;
-	border: 3px solid none;
 	border-radius: 10px;
-	box-shadow: 0px 0px 0px var(--shadow-color);
-	margin-left: 5px;
 }
 
 .title{
@@ -181,10 +129,6 @@ a{text-decoration: none;}
 	color: white;
 	font-size: 35px;
 	font-weight: bold;
-}
-
-.list-line{
-	margin-top: 0px;
 }
 
 .text{
@@ -196,60 +140,27 @@ a{text-decoration: none;}
 .text:hover{
 	color: var(--milk);
 	text-decoration: none;
-	/*background-color: var(--bodypink);*/
-	font-weight: bolder;
-	border: 3px solid none;
 	border-radius: 10px;
-	/*box-shadow: 0px 10px 10px var(--milk);*/
 }
 
 .text:active{
 	color: var(--bodypink);
-	background-color: var(--lightblue);
-	box-shadow: 0px 0px 0px yellow;
 }
 
 /* 作者 */
-.introduction{
+#introduction{
 	width: auto;
 	height: auto;
-	top: 50%;
-	left: 50%;
-	display: var(--introduction-display);
-	position: var(--introduction-position);
-	z-index: var(--introduction-z-index);
-}
-
-.author{
 	width: var(--mid-width);
 	height: 550px;
 	margin-left: 60px;
-	margin-bottom: 5px;
-	color: black;
 	background-color: var(--lightblue);
-	border: 3px solid none;
 	border-radius: 10px;
-	box-shadow: 0px 0px 0px var(--shadow-color);
 	transition-duration: 0.5s;
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
-
-.author:hover{
-	/*color: var(--lightblue);*/
-	/*background-color: var(--bodypink);*/
-}
-
-.author-line{
-	width: auto;
-	height: 5px;
-	background-color: var(--milk);
-	border: 0px;
 }
 
 .authorfont{
 	font-size: 30px;
-	font-weight: bolder;
 	transition-duration: 0.5s;
 	cursor: pointer;
 	text-align: left;
@@ -257,10 +168,6 @@ a{text-decoration: none;}
 
 .authorfont:hover{
 	color: var(--milk);
-}
-
-.authorfont:active {
-	/*padding-left: 20px;*/
 }
 
 .fun {

@@ -3,45 +3,12 @@
 <head>
 	<title>小瑪莉(瑪仔台)</title>
 	<meta charset="utf-8">
-
 	<META HTTP-EQUIV="expires" CONTENT="0">
 	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
 	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
-	
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-	<script type="text/javascript">
-	$(function(){
-		script_src = ['control.js']
-		link_href = ['main.css']
-
-		date = new Date()
-
-		Y = date.getFullYear()
-		M = date.getMonth() + 1
-		D = date.getDate()
-		h = date.getHours()
-		m = date.getMinutes()
-		s = date.getSeconds()
-
-		if(M<10) M = "0"+M
-		if(D<10) D = "0"+D
-		if(h<10) h = "0"+h
-		if(m<10) m = "0"+m
-		if(s<10) s = "0"+s
-
-		time = Y+"."+M+"."+D+"."+h+"."+m+"."+s
-
-		for (i=0 ; i<script_src.length ; i++){
-			script = "<script src='"+script_src[i]+"?time="+time+"'><\/script>"
-			$('head').append(script)
-		}
-		for (i=0 ; i<link_href.length ; i++){
-			link = "<link rel='stylesheet' type='text/css' href='"+link_href[i]+"?time="+time+"'>"
-			$('head').append(link)
-		}
-	})
-	</script>
-	
+	<link rel="stylesheet" href="./main.css">
+	<script src="./control.js"></script>
 </head>
 <body>
 

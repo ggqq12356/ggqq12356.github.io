@@ -33,14 +33,12 @@ $(document).ready(function(){
 	//動態生成表格
 	//表格清單
 	var menu_list = [
-		{ name: '聯大熱音社', link: './nuupopmusic/' },
-		{ name: '聯大熱音社-借社辦系統', link: 'https://nuupopmusic.gitlab.io' },
 		{ name: '命運大岩蛇之天堂與地獄', link: './fate/' },
 		{ name: 'Pokemon Ver.1', link: './Pokemon_Game_1/' },
 		{ name: 'Pokemon Ver.2', link: './Pokemon_Game_2/' },
 		{ name: 'Slidebar', link: './slidebar/' },
-		{ name: 'Ramdom', link: './random/' },
-		{ name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
+		// { name: 'Ramdom', link: './random/' },
+		// { name: '小瑪莉(瑪仔台)', link: './slot_machine/' },
 	]
 
 	for (let i = 0; i<menu_list.length; ++i ) {
